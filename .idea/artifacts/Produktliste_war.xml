@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Produktliste:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Produktliste</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Produktliste-v1.0-PRODUKTLISTE.war">
+      <element id="artifact" artifact-name="Produktliste:war exploded" />
+    </root>
+  </artifact>
+</component>
