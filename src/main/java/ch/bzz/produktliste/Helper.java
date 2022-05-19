@@ -15,7 +15,7 @@ import java.util.UUID;
  * @verison 1.0
  */
 public class Helper {
-    /**
+    /*
      * erstellt eine UUID für den Hersteller
      *
      * @return Wert der herstellerUUID
@@ -24,7 +24,7 @@ public class Helper {
         return UUID.randomUUID().toString();
     }
 
-    /**
+    /*
      * erstellt eine UUID für den User
      *
      * @return Wert der userUUID
@@ -33,7 +33,7 @@ public class Helper {
         return UUID.randomUUID().toString();
     }
 
-    /**
+    /*
      * erstellt eine UUID für den Produkt
      *
      * @return Wert der produktUUID
@@ -42,7 +42,7 @@ public class Helper {
         return UUID.randomUUID().toString();
     }
 
-    /**
+    /*
      * erstellt eine UUID für den Inhalt
      *
      * @return Wert der inhaltUUID

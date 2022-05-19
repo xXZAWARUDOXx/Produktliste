@@ -21,7 +21,7 @@ public class Config extends Application {
     private static final String PROPERTIES_PATH = "/home/bzz/webapp/produktliste.properties";
     private static Properties properties = null;
 
-    /**
+    /*
      * define all provider classes
      *
      * @return set of classes
@@ -33,7 +33,7 @@ public class Config extends Application {
         return providers;
     }
 
-    /**
+    /*
      * Gets the value of a property
      *
      * @param property the key of the property to be read
@@ -49,7 +49,7 @@ public class Config extends Application {
         return value;
     }
 
-    /**
+    /*
      * liest das Properties-File
      *
      */
@@ -65,7 +65,7 @@ public class Config extends Application {
         }
     }
 
-    /**
+    /*
      * settet die Properties
      *
      * @param properties der Wert den man setzen will

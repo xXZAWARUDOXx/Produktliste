@@ -21,14 +21,14 @@ public class Produkt {
     private List<Inhalt> inhaltListe;
     private List<Hersteller> herstellerListe;
 
-    /**
+    /*
      * default Konstruktor
      *
      */
     public Produkt() {
     }
 
-    /**
+    /*
      * Konstruktor zur Instanzierung
      *
      */
@@ -44,7 +44,7 @@ public class Produkt {
         this.herstellerListe = herstellerListe;
     }
 
-    /**
+    /*
      * gettet produktUUID
      *
      * @return Wert der produktUUID
@@ -53,7 +53,7 @@ public class Produkt {
         return produktUUID;
     }
 
-    /**
+    /*
      * gettet name
      *
      * @return Wert des namens
@@ -62,7 +62,7 @@ public class Produkt {
         return name;
     }
 
-    /**
+    /*
      * settet name
      *
      * @param name
@@ -71,7 +71,7 @@ public class Produkt {
         this.name = name;
     }
 
-    /**
+    /*
      * gettet preis
      *
      * @return Wert des preises
@@ -80,7 +80,7 @@ public class Produkt {
         return preis;
     }
 
-    /**
+    /*
      * settet preis
      *
      * @param preis
@@ -89,7 +89,7 @@ public class Produkt {
         this.preis = preis;
     }
 
-    /**
+    /*
      * gettet datum
      *
      * @return Wert des datums
@@ -98,7 +98,7 @@ public class Produkt {
         return datum;
     }
 
-    /**
+    /*
      * settet datum
      *
      * @param datum
@@ -107,7 +107,7 @@ public class Produkt {
         this.datum = datum;
     }
 
-    /**
+    /*
      * gettet inhaltListe
      *
      * @return die inhaltListe
@@ -116,7 +116,7 @@ public class Produkt {
         return inhaltListe;
     }
 
-    /**
+    /*
      * settet inhaltListe
      *
      * @param inhaltListe
@@ -125,7 +125,7 @@ public class Produkt {
         this.inhaltListe = inhaltListe;
     }
 
-    /**
+    /*
      * gettet herstellerListe
      *
      * @return die herstellerListe
@@ -134,7 +134,7 @@ public class Produkt {
         return herstellerListe;
     }
 
-    /**
+    /*
      * settet herstellerListe
      *
      * @param herstellerListe
@@ -143,7 +143,7 @@ public class Produkt {
         this.herstellerListe = herstellerListe;
     }
 
-    /**
+    /*
      * erstellt ein Produkt
      *
      * @return void
@@ -152,7 +152,7 @@ public class Produkt {
 
     }
 
-    /**
+    /*
      * liest ein Produkt
      *
      * @return void
@@ -161,7 +161,7 @@ public class Produkt {
 
     }
 
-    /**
+    /*
      * liest alle Produkte
      *
      * @return void
@@ -170,7 +170,7 @@ public class Produkt {
 
     }
 
-    /**
+    /*
      * bearbeitet ein Produkt
      *
      * @return void
@@ -179,7 +179,7 @@ public class Produkt {
 
     }
 
-    /**
+    /*
      * löscht ein Produkt
      *
      * @return void
@@ -188,7 +188,7 @@ public class Produkt {
 
     }
 
-    /**
+    /*
      * formatiert die Ausgabe eines Produktes
      *
      * @return produkt als String

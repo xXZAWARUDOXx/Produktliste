@@ -24,7 +24,7 @@ public class DataHandler {
     private List<Hersteller> herstellerListe;
     private List<Inhalt> inhaltListe;
 
-    /**
+    /*
      * privater Konstruktor für die Instanzierung
      */
     private DataHandler() {
@@ -34,7 +34,7 @@ public class DataHandler {
         readBookJSON();
     }
 
-    /**
+    /*
      * sicher ab, dass es nur eine Instanz von diesem Objekt gibt
      * (Singleton-Pattern)
      * @return Instanz des DataHandlers
@@ -45,7 +45,7 @@ public class DataHandler {
         return instance;
     }
 
-    /**
+    /*
      * liest alle Hersteller
      * @return Liste der Hersteller
      */
@@ -53,7 +53,7 @@ public class DataHandler {
         return getHerstellerList();
     }
 
-    /**
+    /*
      * liest einen Hersteller nach seiner UUID
      * @param herstellerUUID
      * @return den Hersteller (null=not found)
@@ -68,7 +68,7 @@ public class DataHandler {
         return hersteller;
     }
 
-    /**
+    /*
      * liest alle Inhalte
      * @return Liste der Inhalte
      */
@@ -76,7 +76,7 @@ public class DataHandler {
         return getInhaltListe();
     }
 
-    /**
+    /*
      * liest einen Inhalt nach seiner UUID
      * @param inhaltUUID
      * @return den Inhalt (null=not found)
@@ -91,7 +91,7 @@ public class DataHandler {
         return inhalt;
     }
 
-    /**
+    /*
      * liest den Hersteller aus einem JSON-File
      */
     private void readBookJSON() {
@@ -110,7 +110,7 @@ public class DataHandler {
         }
     }
 
-    /**
+    /*
      * liest den Inhalt aus einem JSON-File
      */
     private void readPublisherJSON() {
@@ -129,7 +129,7 @@ public class DataHandler {
         }
     }
 
-    /**
+    /*
      * gettet herstellerListe
      *
      * @retun die herstellerListe
@@ -138,7 +138,7 @@ public class DataHandler {
         return herstellerListe;
     }
 
-    /**
+    /*
      * settet herstellerListe
      *
      * @param herstellerListe den Wert den man setzen will
@@ -147,7 +147,7 @@ public class DataHandler {
         this.herstellerListe = herstellerListe;
     }
 
-    /**
+    /*
      * gettet inhaltListe
      *
      * @return Wert der inhaltListet
@@ -156,7 +156,7 @@ public class DataHandler {
         return inhaltListe;
     }
 
-    /**
+    /*
      * settet inhaltListe
      *
      * @param inhaltListe der Wert den man setzen will

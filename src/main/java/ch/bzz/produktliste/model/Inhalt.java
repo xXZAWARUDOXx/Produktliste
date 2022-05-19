@@ -14,14 +14,14 @@ public class Inhalt {
     private String name;
     private String allergiecode;
 
-    /**
+    /*
      * default Konstruktor
      *
      */
     public Inhalt() {
     }
 
-    /**
+    /*
      * Konstruktor zur Instanzierung
      *
      */
@@ -31,7 +31,7 @@ public class Inhalt {
         this.allergiecode = allergiecode;
     }
 
-    /**
+    /*
      * gettet inhaltUUID
      *
      * @return Wert der inhaltUUID
@@ -40,7 +40,7 @@ public class Inhalt {
         return inhaltUUID;
     }
 
-    /**
+    /*
      * gettet name
      *
      * @return Wert des namens
@@ -49,7 +49,7 @@ public class Inhalt {
         return name;
     }
 
-    /**
+    /*
      * settet name
      *
      * @param name
@@ -58,7 +58,7 @@ public class Inhalt {
         this.name = name;
     }
 
-    /**
+    /*
      * gettet allerigecode
      *
      * @return Wert des allergiecodes
@@ -67,7 +67,7 @@ public class Inhalt {
         return allergiecode;
     }
 
-    /**
+    /*
      * settet allerigecode
      *
      * @param allergiecode
@@ -76,7 +76,7 @@ public class Inhalt {
         this.allergiecode = allergiecode;
     }
 
-    /**
+    /*
      * erstellt einen Inhalt
      *
      * @return void
@@ -85,7 +85,7 @@ public class Inhalt {
 
     }
 
-    /**
+    /*
      * liest einen Inhalt
      *
      * @return void
@@ -94,7 +94,7 @@ public class Inhalt {
 
     }
 
-    /**
+    /*
      * liest alle Inhalte
      *
      * @return void
@@ -103,7 +103,7 @@ public class Inhalt {
 
     }
 
-    /**
+    /*
      * bearbeitet einen Inhalt
      *
      * @return void
@@ -112,7 +112,7 @@ public class Inhalt {
 
     }
 
-    /**
+    /*
      * löscht einen Inhalt
      *
      * @return void
@@ -121,7 +121,7 @@ public class Inhalt {
 
     }
 
-    /**
+    /*
      * formatiert einen Inhalt zur Ausgabe
      *
      * @return inhalt als String

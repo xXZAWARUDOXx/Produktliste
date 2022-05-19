@@ -15,14 +15,14 @@ public class User {
     private String role;
     private String password;
 
-    /**
+    /*
      * default Konstruktor
      *
      * */
     public User() {
     }
 
-    /**
+    /*
      * Konstruktor zur Instanzierung
      *
      * */
@@ -34,7 +34,7 @@ public class User {
         this.password = password;
     }
 
-    /**
+    /*
      * gettet userUUID
      *
      * @return Wert der userUUID
@@ -43,7 +43,7 @@ public class User {
         return userUUID;
     }
 
-    /**
+    /*
      * gettet username
      *
      * @return Wert des usernamens
@@ -52,7 +52,7 @@ public class User {
         return username;
     }
 
-    /**
+    /*
      * settet username
      *
      * @param username
@@ -61,7 +61,7 @@ public class User {
         this.username = username;
     }
 
-    /**
+    /*
      * gettet role
      *
      * @return Wert der role
@@ -70,7 +70,7 @@ public class User {
         return role;
     }
 
-    /**
+    /*
      * settet role
      *
      * @param role
@@ -79,7 +79,7 @@ public class User {
         this.role = role;
     }
 
-    /**
+    /*
      * gettet password
      *
      * @return Wert des passwords
@@ -88,7 +88,7 @@ public class User {
         return password;
     }
 
-    /**
+    /*
      * settet password
      *
      * @param password
@@ -97,7 +97,7 @@ public class User {
         this.password = password;
     }
 
-    /**
+    /*
      * loggt den User ein
      *
      * @return void
@@ -106,7 +106,7 @@ public class User {
 
     }
 
-    /**
+    /*
      * loggt den User aus
      *
      * @return void
@@ -115,7 +115,7 @@ public class User {
 
     }
 
-    /**
+    /*
      * formatiert die Ausgabe eines Users
      *
      * @return user als String

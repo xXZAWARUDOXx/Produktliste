@@ -15,14 +15,14 @@ public class Hersteller {
     private int anzFabriken;
     private int anzProduzierbareFlaschenProJahr;
 
-    /**
+    /*
     * default Konstruktor
      *
     * */
     public Hersteller() {
     }
 
-    /**
+    /*
      * Konstruktor zur Instanzierung
      *
      * */
@@ -34,7 +34,7 @@ public class Hersteller {
         this.anzProduzierbareFlaschenProJahr = anzProduzierbareFlaschenProJahr;
     }
 
-    /**
+    /*
      * gettet herstellerUUID
      *
      * @return Wert der herstellerUUID
@@ -43,7 +43,7 @@ public class Hersteller {
         return herstellerUUID;
     }
 
-    /**
+    /*
      * gettet name
      *
      * @return Wert des namens
@@ -52,7 +52,7 @@ public class Hersteller {
         return name;
     }
 
-    /**
+    /*
      * settet name
      *
      * @param name
@@ -62,7 +62,7 @@ public class Hersteller {
     }
 
 
-    /**
+    /*
      * gettet anzFabriken
      *
      * @return Wert der anzFabriken
@@ -71,7 +71,7 @@ public class Hersteller {
         return anzFabriken;
     }
 
-    /**
+    /*
      * settet anzFabriken
      *
      * @param anzFabriken
@@ -80,7 +80,7 @@ public class Hersteller {
         this.anzFabriken = anzFabriken;
     }
 
-    /**
+    /*
      * gettet anzProduzierbareFlaschenProJahr
      *
      * @return Wert der anzProduzierbareFlaschenProJahr
@@ -89,7 +89,7 @@ public class Hersteller {
         return anzProduzierbareFlaschenProJahr;
     }
 
-    /**
+    /*
      * settet anzProduzierbareFlaschenProJahr
      *
      * @param anzProduzierbareFlaschenProJahr
@@ -98,7 +98,7 @@ public class Hersteller {
         this.anzProduzierbareFlaschenProJahr = anzProduzierbareFlaschenProJahr;
     }
 
-    /**
+    /*
      * erstellt einen Hersteller
      *
      * @return void
@@ -107,7 +107,7 @@ public class Hersteller {
 
     }
 
-    /**
+    /*
      * liest einen Hersteller
      *
      * @return void
@@ -116,7 +116,7 @@ public class Hersteller {
 
     }
 
-    /**
+    /*
      * liest alle Hersteller
      *
      * @return void
@@ -125,7 +125,7 @@ public class Hersteller {
 
     }
 
-    /**
+    /*
      * bearbeitet einen Hersteller
      *
      * @return void
@@ -134,7 +134,7 @@ public class Hersteller {
 
     }
 
-    /**
+    /*
      * löscht einen Hersteller
      *
      * @return void
@@ -143,7 +143,7 @@ public class Hersteller {
 
     }
 
-    /**
+    /*
      * formatiert die Ausgabe eines Herstellers
      *
      * @return hersteller als String
