@@ -2,6 +2,7 @@ package ch.bzz.produktliste.data;
 
 import ch.bzz.produktliste.model.Hersteller;
 import ch.bzz.produktliste.model.Inhalt;
+import ch.bzz.produktliste.model.Produkt;
 import ch.bzz.produktliste.service.Config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,15 +24,18 @@ public class DataHandler {
     private static DataHandler instance = null;
     private List<Hersteller> herstellerListe;
     private List<Inhalt> inhaltListe;
+    private List<Produkt> produktList;
 
     /*
      * privater Konstruktor für die Instanzierung
      */
     private DataHandler() {
-        setPublisherList(new ArrayList<>());
-        readPublisherJSON();
-        setBookList(new ArrayList<>());
-        readBookJSON();
+        setInhaltList(new ArrayList<>());
+        readInhaltJSON();
+        setHerstellerList(new ArrayList<>());
+        readHerstellerJSON();
+        setProduktList(new ArrayList<>());
+        readProduktJSON();
     }
 
     /*
@@ -58,7 +62,7 @@ public class DataHandler {
      * @param herstellerUUID
      * @return den Hersteller (null=not found)
      */
-    public Hersteller readBookByUUID(String herstellerUUID) {
+    public Hersteller readHerstellerByUUID(String herstellerUUID) {
         Hersteller hersteller = null;
         for (Hersteller h : getHerstellerList()) {
             if (h.getHerstellerUUID().equals(herstellerUUID)) {
@@ -73,7 +77,7 @@ public class DataHandler {
      * @return Liste der Inhalte
      */
     public List<Inhalt> readAllInhalte() {
-        return getInhaltListe();
+        return getInhaltList();
     }
 
     /*
@@ -81,9 +85,9 @@ public class DataHandler {
      * @param inhaltUUID
      * @return den Inhalt (null=not found)
      */
-    public Inhalt readPublisherByUUID(String inhaltUUID) {
+    public Inhalt readInhaltByUUID(String inhaltUUID) {
         Inhalt inhalt = null;
-        for (Inhalt i : getInhaltListe()) {
+        for (Inhalt i : getInhaltList()) {
             if (i.getInhaltUUID().equals(inhaltUUID)) {
                 inhalt = i;
             }
@@ -92,9 +96,32 @@ public class DataHandler {
     }
 
     /*
+     * liest alle Produkte
+     * @return Liste der Inhalte
+     */
+    public List<Produkt> readAllProdukte() {
+        return getProduktList();
+    }
+
+    /*
+     * liest ein Produkt nach seiner UUID
+     * @param produktUUID
+     * @return das Produkt (null=not found)
+     */
+    public Produkt readProduktByUUID(String produktUUID) {
+        Produkt produkt = null;
+        for (Produkt p : getProduktList()) {
+            if (p.getProduktUUID().equals(produktUUID)) {
+                produkt = p;
+            }
+        }
+        return produkt;
+    }
+
+    /*
      * liest den Hersteller aus einem JSON-File
      */
-    private void readBookJSON() {
+    private void readHerstellerJSON() {
         try {
             String path = Config.getProperty("herstellerJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -113,7 +140,7 @@ public class DataHandler {
     /*
      * liest den Inhalt aus einem JSON-File
      */
-    private void readPublisherJSON() {
+    private void readInhaltJSON() {
         try {
             String path = Config.getProperty("inhaltJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -122,7 +149,26 @@ public class DataHandler {
             ObjectMapper objectMapper = new ObjectMapper();
             Inhalt[] inhalte = objectMapper.readValue(jsonData, Inhalt[].class);
             for (Inhalt inhalt : inhalte) {
-                getInhaltListe().add(inhalt);
+                getInhaltList().add(inhalt);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /*
+     * liest die Produkte aus einem JSON-File
+     */
+    private void readProduktJSON() {
+        try {
+            String path = Config.getProperty("produktJSON");
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(path)
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            Produkt[] produkte = objectMapper.readValue(jsonData, Produkt[].class);
+            for (Produkt produkt : produkte) {
+                getProduktList().add(produkt);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -143,7 +189,7 @@ public class DataHandler {
      *
      * @param herstellerListe den Wert den man setzen will
      */
-    private void setBookList(List<Hersteller> herstellerListe) {
+    private void setHerstellerList(List<Hersteller> herstellerListe) {
         this.herstellerListe = herstellerListe;
     }
 
@@ -152,7 +198,7 @@ public class DataHandler {
      *
      * @return Wert der inhaltListet
      */
-    private List<Inhalt> getInhaltListe() {
+    private List<Inhalt> getInhaltList() {
         return inhaltListe;
     }
 
@@ -161,7 +207,25 @@ public class DataHandler {
      *
      * @param inhaltListe der Wert den man setzen will
      */
-    private void setPublisherList(List<Inhalt> inhaltListe) {
+    private void setInhaltList(List<Inhalt> inhaltListe) {
         this.inhaltListe = inhaltListe;
+    }
+
+    /*
+     * gettet produktListe
+     *
+     * @return Wert der produktListe
+     */
+    public List<Produkt> getProduktList() {
+        return produktList;
+    }
+
+    /*
+     * settet produktListe
+     *
+     * @param produktListe der Wert den man setzen will
+     */
+    public void setProduktList(List<Produkt> produktList) {
+        this.produktList = produktList;
     }
 }

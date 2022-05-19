@@ -43,7 +43,7 @@ public class HerstellerService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readHersteller (@QueryParam("uuid") String herstellerUUID) {
-        Hersteller hersteller = DataHandler.getInstance().readBookByUUID(herstellerUUID);
+        Hersteller hersteller = DataHandler.getInstance().readHerstellerByUUID(herstellerUUID);
         return Response
                 .status(200)
                 .entity(hersteller)
