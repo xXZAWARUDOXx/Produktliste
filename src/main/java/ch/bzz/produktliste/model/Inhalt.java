@@ -1,6 +1,7 @@
 package ch.bzz.produktliste.model;
 
 import ch.bzz.produktliste.Helper;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * ein Inhalt in der Produktliste
@@ -13,6 +14,8 @@ public class Inhalt {
     private final String inhaltUUID = Helper.createInhaltUUID(this);
     private String name;
     private String allergiecode;
+    @JsonIgnore
+    private Produkt produkt;
 
     /*
      * default Konstruktor
@@ -26,9 +29,11 @@ public class Inhalt {
      *
      */
     public Inhalt(String name,
-                  String allergiecode) {
+                  String allergiecode,
+                  Produkt produkt) {
         this.name = name;
         this.allergiecode = allergiecode;
+        this.produkt = produkt;
     }
 
     /*
@@ -74,6 +79,24 @@ public class Inhalt {
      */
     public void setAllergiecode(String allergiecode) {
         this.allergiecode = allergiecode;
+    }
+
+    /*
+     * gettet Produkt
+     *
+     * @return Wert des Produkt
+     */
+    public Produkt getProdukt() {
+        return produkt;
+    }
+
+    /*
+     * settet Produkt
+     *
+     * @param produkt
+     */
+    public void setProdukt(Produkt produkt) {
+        this.produkt = produkt;
     }
 
     /*
@@ -131,6 +154,7 @@ public class Inhalt {
         return "Inhalt: " + '\n' +
                 "\t\t" + inhaltUUID + '\n' +
                 "\t\t" + name + '\n' +
-                "\t\t" + allergiecode;
+                "\t\t" + allergiecode + '\n' +
+                "\t\t" + produkt;
     }
 }

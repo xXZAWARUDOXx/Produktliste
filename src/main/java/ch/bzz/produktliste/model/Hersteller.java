@@ -1,6 +1,7 @@
 package ch.bzz.produktliste.model;
 
 import ch.bzz.produktliste.Helper;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * ein Hersteller in der Produktliste
@@ -14,6 +15,8 @@ public class Hersteller {
     private String name;
     private int anzFabriken;
     private int anzProduzierbareFlaschenProJahr;
+    @JsonIgnore
+    private Produkt produkt;
 
     /*
     * default Konstruktor
@@ -28,10 +31,12 @@ public class Hersteller {
      * */
     public Hersteller(String name,
                       int anzFabriken,
-                      int anzProduzierbareFlaschenProJahr) {
+                      int anzProduzierbareFlaschenProJahr,
+                      Produkt produkt) {
         this.name = name;
         this.anzFabriken = anzFabriken;
         this.anzProduzierbareFlaschenProJahr = anzProduzierbareFlaschenProJahr;
+        this.produkt = produkt;
     }
 
     /*
@@ -96,6 +101,24 @@ public class Hersteller {
      * */
     public void setAnzProduzierbareFlaschenProJahr(int anzProduzierbareFlaschenProJahr) {
         this.anzProduzierbareFlaschenProJahr = anzProduzierbareFlaschenProJahr;
+    }
+
+    /*
+     * gettet Produkt
+     *
+     * @return Wert der Produkt
+     * */
+    public Produkt getProdukt() {
+        return produkt;
+    }
+
+    /*
+     * settet Produkt
+     *
+     * @param Produkt
+     * */
+    public void setProdukt(Produkt produkt) {
+        this.produkt = produkt;
     }
 
     /*
