@@ -39,7 +39,7 @@ public class DataHandler {
     }
 
     /*
-     * sicher ab, dass es nur eine Instanz von diesem Objekt gibt
+     * sichert ab, dass es nur eine Instanz von diesem Objekt gibt
      * (Singleton-Pattern)
      * @return Instanz des DataHandlers
      */
