@@ -1,0 +1,461 @@
+{
+	"info": {
+		"_postman_id": "d4118a3a-8b67-4c4b-8b60-2fbc8e0085d6",
+		"name": "Produktliste",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0.1: Testservice",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e642331b-9dce-4328-a415-370c5c39a8f8",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9886b480-62e8-425b-a8cf-6cca42e1eb84",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/test/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"test",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.0 alle Produkte auflisten",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5d88c851-b9a0-4826-9677-7bdb82500f38",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "53913746-7467-4bdf-9510-cc4f26d4fab3",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/produkt/liste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"produkt",
+						"liste"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.1 Produkt nach UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36dfc395-b8cb-4745-8c9c-374fda3dabae",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/produkt/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"produkt",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 Produkt mit falscher UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ebd9ca4f-9aba-4d27-ad24-eb06a9d08723",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/produkt/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"produkt",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5050-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.0 alle Inhalte auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "38495299-35fe-49a5-8684-94396e45cc2e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/inhalt/liste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"inhalt",
+						"liste"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 Inhalt nach UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2e2aa065-527c-42eb-afae-65b4b7297fac",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/inhalt/read?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"inhalt",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 Inhalt mit falscher UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e67659a6-4cb4-46d4-84c5-593ab060c7b6",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/inhalt/read?uuid=ecd86148-5050-9999-9999-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"inhalt",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5050-9999-9999-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.0 alle Hersteller auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9defaecc-bf61-4d8a-bc83-9c9531b8d504",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/hersteller/liste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"hersteller",
+						"liste"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 Hersteller nach UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe1425ab-64bd-4b6e-b914-28ea037acab1",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/hersteller/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"hersteller",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 Hersteller mit falscher UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65421de6-02f5-48e1-a900-dec8d176aaf0",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/hersteller/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"hersteller",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5050-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

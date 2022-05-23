@@ -1,0 +1,388 @@
+{
+	"id": "55c55aeb-2c15-4f6b-9680-5db6bb91b12c",
+	"name": "Produktliste",
+	"timestamp": "2022-05-23T20:07:24.148Z",
+	"collection_id": "d4118a3a-8b67-4c4b-8b60-2fbc8e0085d6",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 20,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "16cf44ab-f5d4-40db-b0d6-89a24e744809",
+			"name": "0.1: Testservice",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/test/test",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "a66cc896-5586-44fc-8b2e-81bcc94f5730",
+			"name": "1.0 alle Produkte auflisten",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/produkt/liste",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "bdd8b458-fd27-4044-a6c8-140c4cc2dd18",
+			"name": "1.1 Produkt nach UUID auflisten",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/produkt/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "bbde3c80-8185-4912-9658-efa24b337ac2",
+			"name": "1.2 Produkt mit falscher UUID auflisten",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/produkt/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "1c3a5ee0-ce35-426c-8114-f280f412f779",
+			"name": "2.0 alle Inhalte auflisten",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/inhalt/liste",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "0e09ceb5-2742-4ce5-b21d-2acb0355003c",
+			"name": "2.1 Inhalt nach UUID auflisten",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/inhalt/read?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "6a4a52b5-5030-4878-ab1b-82d3f278f947",
+			"name": "2.2 Inhalt mit falscher UUID auflisten",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/inhalt/read?uuid=ecd86148-5050-9999-9999-f3f4595965dc",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "2ed0c4db-6aeb-450a-9ee9-18fcb521dd0f",
+			"name": "3.0 alle Hersteller auflisten",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/hersteller/liste",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "45d91b3c-225b-45ad-95fd-f5d5478ebeef",
+			"name": "3.1 Hersteller nach UUID auflisten",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/hersteller/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "defca0ae-c88e-4993-a866-672f4154c1cc",
+			"name": "3.2 Hersteller mit falscher UUID auflisten",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/hersteller/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 107,
+	"collection": {
+		"requests": [
+			{
+				"id": "16cf44ab-f5d4-40db-b0d6-89a24e744809",
+				"method": "GET"
+			},
+			{
+				"id": "a66cc896-5586-44fc-8b2e-81bcc94f5730",
+				"method": "GET"
+			},
+			{
+				"id": "bdd8b458-fd27-4044-a6c8-140c4cc2dd18",
+				"method": "GET"
+			},
+			{
+				"id": "bbde3c80-8185-4912-9658-efa24b337ac2",
+				"method": "GET"
+			},
+			{
+				"id": "1c3a5ee0-ce35-426c-8114-f280f412f779",
+				"method": "GET"
+			},
+			{
+				"id": "0e09ceb5-2742-4ce5-b21d-2acb0355003c",
+				"method": "GET"
+			},
+			{
+				"id": "6a4a52b5-5030-4878-ab1b-82d3f278f947",
+				"method": "GET"
+			},
+			{
+				"id": "2ed0c4db-6aeb-450a-9ee9-18fcb521dd0f",
+				"method": "GET"
+			},
+			{
+				"id": "45d91b3c-225b-45ad-95fd-f5d5478ebeef",
+				"method": "GET"
+			},
+			{
+				"id": "defca0ae-c88e-4993-a866-672f4154c1cc",
+				"method": "GET"
+			}
+		]
+	}
+}
