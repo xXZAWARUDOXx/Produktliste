@@ -1,0 +1,17 @@
+[
+    {
+        "inhaltUUID": "ecd86148-9999-9999-9999-f3f4595965dc",
+        "name": "SARMS",
+        "allergiecode" : "B"
+    },
+    {
+        "inhaltUUID": "ecd86148-1111-1111-1111-f3f4595965dc",
+        "name": "SARMS",
+        "allergiecode" : "A"
+    },
+    {
+        "inhaltUUID": "ecd86148-2222-2222-3333-f3f4595965dc",
+        "name": "SARMS",
+        "allergiecode" : "D"
+    }
+] 

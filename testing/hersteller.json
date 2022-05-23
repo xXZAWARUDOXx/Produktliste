@@ -1,0 +1,20 @@
+[
+    {
+        "herstellerUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+        "name": "Orbit",
+        "anzFabriken": "999",
+        "anzProduzierbareFlaschenProJahr": "100000000"
+    },
+    {
+        "herstellerUUID": "ecd86148-5341-9999-81ed-f3f4595965dc",
+        "name": "Orbit",
+        "anzFabriken": "999",
+        "anzProduzierbareFlaschenProJahr": "100000000"
+    },
+    {
+        "herstellerUUID": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+        "name": "GOLDSGYM",
+        "anzFabriken": "999",
+        "anzProduzierbareFlaschenProJahr": "100000000"
+    }
+] 
