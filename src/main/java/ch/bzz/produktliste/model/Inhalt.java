@@ -1,7 +1,6 @@
 package ch.bzz.produktliste.model;
 
 import ch.bzz.produktliste.Helper;
-import ch.bzz.produktliste.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
