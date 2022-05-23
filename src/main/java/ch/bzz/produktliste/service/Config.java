@@ -1,7 +1,5 @@
 package ch.bzz.produktliste.service;
 
-import ch.bzz.produktliste.model.Hersteller;
-
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.io.FileInputStream;
