@@ -3,7 +3,7 @@ package ch.bzz.produktliste.model;
 import ch.bzz.produktliste.Helper;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,12 +14,12 @@ import java.util.List;
  * @verison 1.0
  */
 public class Produkt {
-    private final String produktUUID = Helper.createProduktUUID(this);
+    private final String produktUUID = Helper.createUUID();
     private String name;
     private BigDecimal preis;
-    private LocalDate datum;
-    private List<Inhalt> inhaltListe;
-    private List<Hersteller> herstellerListe;
+    private Date datum;
+    private List<String> inhalt;
+    private String hersteller;
 
     /*
      * default Konstruktor
@@ -34,14 +34,14 @@ public class Produkt {
      */
     public Produkt(String name,
                    BigDecimal preis,
-                   LocalDate datum,
-                   List<Inhalt> inhaltListe,
-                   List<Hersteller> herstellerListe) {
+                   Date datum,
+                   List inhalt,
+                   String hersteller) {
         this.name = name;
         this.preis = preis;
         this.datum = datum;
-        this.inhaltListe = inhaltListe;
-        this.herstellerListe = herstellerListe;
+        this.inhalt = inhalt;
+        this.hersteller = hersteller;
     }
 
     /*
@@ -94,7 +94,7 @@ public class Produkt {
      *
      * @return Wert des datums
      */
-    public LocalDate getDatum() {
+    public Date getDatum() {
         return datum;
     }
 
@@ -103,7 +103,7 @@ public class Produkt {
      *
      * @param datum
      */
-    public void setDatum(LocalDate datum) {
+    public void setDatum(Date datum) {
         this.datum = datum;
     }
 
@@ -112,8 +112,8 @@ public class Produkt {
      *
      * @return die inhaltListe
      */
-    public List<Inhalt> getInhaltListe() {
-        return inhaltListe;
+    public List getInhalt() {
+        return inhalt;
     }
 
     /*
@@ -121,8 +121,8 @@ public class Produkt {
      *
      * @param inhaltListe
      */
-    public void setInhaltListe(List<Inhalt> inhaltListe) {
-        this.inhaltListe = inhaltListe;
+    public void setInhalt(List inhalt) {
+        this.inhalt = inhalt;
     }
 
     /*
@@ -130,8 +130,8 @@ public class Produkt {
      *
      * @return die herstellerListe
      */
-    public List<Hersteller> getHerstellerListe() {
-        return herstellerListe;
+    public String getHersteller() {
+        return hersteller;
     }
 
     /*
@@ -139,9 +139,23 @@ public class Produkt {
      *
      * @param herstellerListe
      */
-    public void setHerstellerListe(List<Hersteller> herstellerListe) {
-        this.herstellerListe = herstellerListe;
+    public void setHersteller(String hersteller) {
+        this.hersteller = hersteller;
     }
+
+    // in Bearbeitung
+    /*@JsonProperty
+    public String getHerstellerUUID() {
+        if (hersteller != null) {
+            return  hersteller.getHerstellerUUID();
+        } else {
+            return null;
+        }
+    }
+
+    public void setHerstellerUUID(String herstellerUUID) {
+        setHersteller(DataHandler.getInstance().readHerstellerByUUID(herstellerUUID));
+    }*/
 
     /*
      * erstellt ein Produkt
@@ -200,7 +214,7 @@ public class Produkt {
                 "\t\t" + name + '\n' +
                 "\t\t" + preis + '\n' +
                 "\t\t" + datum + '\n' +
-                "\t\t" + inhaltListe + '\n' +
-                "\t\t" + herstellerListe;
+                "\t\t" + inhalt + '\n' +
+                "\t\t" + hersteller;
     }
 }
