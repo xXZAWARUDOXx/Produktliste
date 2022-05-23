@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @verison 1.0
  */
 public class Hersteller {
-    private final String herstellerUUID = Helper.createHerstellerUUID(this);
+    private final String herstellerUUID = Helper.createUUID();
     private String name;
     private int anzFabriken;
     private int anzProduzierbareFlaschenProJahr;
