@@ -10,7 +10,7 @@ import ch.bzz.produktliste.Helper;
  * @verison 1.0
  * */
 public class User {
-    private final String userUUID = Helper.createUserUUID(this);
+    private final String userUUID = Helper.createUUID();
     private String username;
     private String role;
     private String password;
