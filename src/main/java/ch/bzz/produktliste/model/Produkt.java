@@ -1,8 +1,11 @@
 package ch.bzz.produktliste.model;
 
 import ch.bzz.produktliste.Helper;
+import ch.bzz.produktliste.data.DataHandler;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,8 +21,8 @@ public class Produkt {
     private String name;
     private BigDecimal preis;
     private Date datum;
-    private List<String> inhalt;
-    private String hersteller;
+    private List<Inhalt> inhalt;
+    private Hersteller hersteller;
 
     /*
      * default Konstruktor
@@ -36,7 +39,7 @@ public class Produkt {
                    BigDecimal preis,
                    Date datum,
                    List inhalt,
-                   String hersteller) {
+                   Hersteller hersteller) {
         this.name = name;
         this.preis = preis;
         this.datum = datum;
@@ -130,7 +133,7 @@ public class Produkt {
      *
      * @return die herstellerListe
      */
-    public String getHersteller() {
+    public Hersteller getHersteller() {
         return hersteller;
     }
 
@@ -139,23 +142,42 @@ public class Produkt {
      *
      * @param herstellerListe
      */
-    public void setHersteller(String hersteller) {
+    public void setHersteller(Hersteller hersteller) {
         this.hersteller = hersteller;
     }
 
     // in Bearbeitung
-    /*@JsonProperty
+    /*@JsonProperty("hersteller")
     public String getHerstellerUUID() {
         if (hersteller != null) {
             return  hersteller.getHerstellerUUID();
         } else {
             return null;
         }
-    }
+    }*/
 
+    /*
+     * sets genre
+     *
+     * @param herstellerUUID Wert der UUID
+     */
+    @JsonProperty("hersteller")
     public void setHerstellerUUID(String herstellerUUID) {
         setHersteller(DataHandler.getInstance().readHerstellerByUUID(herstellerUUID));
-    }*/
+    }
+
+    /*
+     * sets genre
+     *
+     * @param inhalteUUID Wert der UUID
+     */
+    @JsonProperty("inhalt")
+    public void setInhalteByUUID(List<String> inhalteUUID) {
+        setInhalt(new ArrayList<>());
+        for (String s : inhalteUUID) {
+            this.inhalt.add(DataHandler.getInstance().readInhaltByUUID(s));
+        }
+    }
 
     /*
      * erstellt ein Produkt
