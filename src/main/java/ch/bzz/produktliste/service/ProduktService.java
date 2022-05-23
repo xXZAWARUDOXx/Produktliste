@@ -44,9 +44,15 @@ public class ProduktService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readProdukte(@QueryParam("uuid") String produktUUID) {
         Produkt produkt = DataHandler.getInstance().readProduktByUUID(produktUUID);
-        return Response
-                .status(200)
-                .entity(produkt)
-                .build();
+        if (produkt != null) {
+            return Response
+                    .status(200)
+                    .entity(produkt)
+                    .build();
+        } else {
+            return Response
+                    .status(404)
+                    .build();
+        }
     }
 }

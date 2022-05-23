@@ -44,9 +44,15 @@ public class InhaltService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readInhalt(@QueryParam("uuid") String inhaltUUID) {
         Inhalt inhalt = DataHandler.getInstance().readInhaltByUUID(inhaltUUID);
-        return Response
-                .status(200)
-                .entity(inhalt)
-                .build();
+        if (inhalt != null) {
+            return Response
+                    .status(200)
+                    .entity(inhalt)
+                    .build();
+        } else {
+            return Response
+                    .status(404)
+                    .build();
+        }
     }
 }

@@ -44,9 +44,15 @@ public class HerstellerService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readHersteller (@QueryParam("uuid") String herstellerUUID) {
         Hersteller hersteller = DataHandler.getInstance().readHerstellerByUUID(herstellerUUID);
-        return Response
-                .status(200)
-                .entity(hersteller)
-                .build();
+        if (hersteller != null) {
+            return Response
+                    .status(200)
+                    .entity(hersteller)
+                    .build();
+        } else {
+            return Response
+                    .status(404)
+                    .build();
+        }
     }
 }
