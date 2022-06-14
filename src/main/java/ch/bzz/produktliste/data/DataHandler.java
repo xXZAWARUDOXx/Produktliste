@@ -5,9 +5,12 @@ import ch.bzz.produktliste.model.Inhalt;
 import ch.bzz.produktliste.model.Produkt;
 import ch.bzz.produktliste.service.Config;
 
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -172,6 +175,19 @@ public class DataHandler {
             }
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    /*
+    * löscht ein Produkt was über die UUID identifiziert wird
+    * @param produktUUID
+    * @return erfolg=true/false
+    * */
+    public boolean produktLoeschen(String produktUUID) {
+        Produkt produkt = new Produkt();
+        if (produkt != null) {
+            getProduktList().remove(produkt);
+
         }
     }
 
