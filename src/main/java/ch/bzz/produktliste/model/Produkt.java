@@ -163,7 +163,7 @@ public class Produkt {
      */
     @JsonProperty("hersteller")
     public void setHerstellerUUID(String herstellerUUID) {
-        setHersteller(DataHandler.getInstance().readHerstellerByUUID(herstellerUUID));
+        setHersteller(DataHandler.readHerstellerByUUID(herstellerUUID));
     }
 
     /*
@@ -175,7 +175,7 @@ public class Produkt {
     public void setInhalteByUUID(List<String> inhalteUUID) {
         setInhalt(new ArrayList<>());
         for (String s : inhalteUUID) {
-            this.inhalt.add(DataHandler.getInstance().readInhaltByUUID(s));
+            this.inhalt.add(DataHandler.readInhaltByUUID(s));
         }
     }
 

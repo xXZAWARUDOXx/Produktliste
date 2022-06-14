@@ -24,10 +24,9 @@ import java.util.List;
  * @version 1.0
  */
 public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Hersteller> herstellerListe;
-    private List<Inhalt> inhaltListe;
-    private List<Produkt> produktList;
+    private static List<Hersteller> herstellerListe;
+    private static List<Inhalt> inhaltListe;
+    private static List<Produkt> produktList;
 
     /*
      * privater Konstruktor für die Instanzierung
@@ -42,21 +41,10 @@ public class DataHandler {
     }
 
     /*
-     * sichert ab, dass es nur eine Instanz von diesem Objekt gibt
-     * (Singleton-Pattern)
-     * @return Instanz des DataHandlers
-     */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
-    }
-
-    /*
      * liest alle Hersteller
      * @return Liste der Hersteller
      */
-    public List<Hersteller> readAllHersteller() {
+    public static List<Hersteller> readAllHersteller() {
         return getHerstellerList();
     }
 
@@ -65,7 +53,7 @@ public class DataHandler {
      * @param herstellerUUID
      * @return den Hersteller (null=not found)
      */
-    public Hersteller readHerstellerByUUID(String herstellerUUID) {
+    public static Hersteller readHerstellerByUUID(String herstellerUUID) {
         Hersteller hersteller = null;
         for (Hersteller h : getHerstellerList()) {
             if (h.getHerstellerUUID().equals(herstellerUUID)) {
@@ -79,7 +67,7 @@ public class DataHandler {
      * liest alle Inhalte
      * @return Liste der Inhalte
      */
-    public List<Inhalt> readAllInhalte() {
+    public static List<Inhalt> readAllInhalte() {
         return getInhaltList();
     }
 
@@ -88,7 +76,7 @@ public class DataHandler {
      * @param inhaltUUID
      * @return den Inhalt (null=not found)
      */
-    public Inhalt readInhaltByUUID(String inhaltUUID) {
+    public static Inhalt readInhaltByUUID(String inhaltUUID) {
         Inhalt inhalt = null;
         for (Inhalt i : getInhaltList()) {
             if (i.getInhaltUUID().equals(inhaltUUID)) {
@@ -102,7 +90,7 @@ public class DataHandler {
      * liest alle Produkte
      * @return Liste der Inhalte
      */
-    public List<Produkt> readAllProdukte() {
+    public static List<Produkt> readAllProdukte() {
         return getProduktList();
     }
 
@@ -111,7 +99,7 @@ public class DataHandler {
      * @param produktUUID
      * @return das Produkt (null=not found)
      */
-    public Produkt readProduktByUUID(String produktUUID) {
+    public static Produkt readProduktByUUID(String produktUUID) {
         Produkt produkt = null;
         for (Produkt p : getProduktList()) {
             if (p.getProduktUUID().equals(produktUUID)) {
@@ -124,7 +112,7 @@ public class DataHandler {
     /*
      * liest den Hersteller aus einem JSON-File
      */
-    private void readHerstellerJSON() {
+    private static void readHerstellerJSON() {
         try {
             String path = Config.getProperty("herstellerJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -143,7 +131,7 @@ public class DataHandler {
     /*
      * liest den Inhalt aus einem JSON-File
      */
-    private void readInhaltJSON() {
+    private static void readInhaltJSON() {
         try {
             String path = Config.getProperty("inhaltJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -162,7 +150,7 @@ public class DataHandler {
     /*
      * liest die Produkte aus einem JSON-File
      */
-    private void readProduktJSON() {
+    private static void readProduktJSON() {
         try {
             String path = Config.getProperty("produktJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -179,15 +167,37 @@ public class DataHandler {
     }
 
     /*
+     * schreibt eine Produktliste ins JSON-File
+     */
+    private static void schreibProduktJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String produktPath = Config.getProperty("produktJSON");
+        try {
+            fileOutputStream = new FileOutputStream(produktPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getProduktList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /*
     * löscht ein Produkt was über die UUID identifiziert wird
     * @param produktUUID
     * @return erfolg=true/false
     * */
-    public boolean produktLoeschen(String produktUUID) {
+    public static boolean produktLoeschen(String produktUUID) {
         Produkt produkt = new Produkt();
         if (produkt != null) {
             getProduktList().remove(produkt);
-
+            schreibProduktJSON();
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -196,7 +206,7 @@ public class DataHandler {
      *
      * @retun die herstellerListe
      */
-    private List<Hersteller> getHerstellerList() {
+    private static List<Hersteller> getHerstellerList() {
         return herstellerListe;
     }
 
@@ -205,8 +215,8 @@ public class DataHandler {
      *
      * @param herstellerListe den Wert den man setzen will
      */
-    private void setHerstellerList(List<Hersteller> herstellerListe) {
-        this.herstellerListe = herstellerListe;
+    private static void setHerstellerList(List<Hersteller> herstellerListe) {
+        DataHandler.herstellerListe = herstellerListe;
     }
 
     /*
@@ -214,7 +224,7 @@ public class DataHandler {
      *
      * @return Wert der inhaltListet
      */
-    private List<Inhalt> getInhaltList() {
+    private static List<Inhalt> getInhaltList() {
         return inhaltListe;
     }
 
@@ -223,8 +233,8 @@ public class DataHandler {
      *
      * @param inhaltListe der Wert den man setzen will
      */
-    private void setInhaltList(List<Inhalt> inhaltListe) {
-        this.inhaltListe = inhaltListe;
+    private static void setInhaltList(List<Inhalt> inhaltListe) {
+        DataHandler.inhaltListe = inhaltListe;
     }
 
     /*
@@ -232,7 +242,12 @@ public class DataHandler {
      *
      * @return Wert der produktListe
      */
-    public List<Produkt> getProduktList() {
+    public static List<Produkt> getProduktList() {
+        if (produktList == null) {
+            setProduktList(new ArrayList<>());
+            readProduktJSON();
+        }
+
         return produktList;
     }
 
@@ -241,7 +256,7 @@ public class DataHandler {
      *
      * @param produktListe der Wert den man setzen will
      */
-    public void setProduktList(List<Produkt> produktList) {
-        this.produktList = produktList;
+    public static void setProduktList(List<Produkt> produktList) {
+        DataHandler.produktList = produktList;
     }
 }
