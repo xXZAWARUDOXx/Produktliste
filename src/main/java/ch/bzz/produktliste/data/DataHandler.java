@@ -23,7 +23,7 @@ import java.util.List;
  * @date 2022-05-19
  * @version 1.0
  */
-public class DataHandler {
+public final class DataHandler {
     private static List<Hersteller> herstellerListe;
     private static List<Inhalt> inhaltListe;
     private static List<Produkt> produktList;
@@ -38,6 +38,15 @@ public class DataHandler {
         readHerstellerJSON();
         setProduktList(new ArrayList<>());
         readProduktJSON();
+    }
+
+    /*
+    * initialisiert die Listen
+    * */
+    public static void initListen() {
+        DataHandler.setHerstellerList(null);
+        DataHandler.setInhaltList(null);
+        DataHandler.setProduktList(null);
     }
 
     /*
@@ -61,6 +70,15 @@ public class DataHandler {
             }
         }
         return hersteller;
+    }
+
+    /*
+     * erstellt einen Inhalt
+     *
+     */
+    public static void insertInhalte(Inhalt inhalt) {
+        getInhaltList().add(inhalt);
+        schreibInhaltJSON();
     }
 
     /*
@@ -186,6 +204,25 @@ public class DataHandler {
     }
 
     /*
+     * schreibt eine Produktliste ins JSON-File
+     */
+    private static void schreibInhaltJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String inhaltPath = Config.getProperty("inhaltJSON");
+        try {
+            fileOutputStream = new FileOutputStream(inhaltPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getInhaltList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /*
     * löscht ein Produkt was über die UUID identifiziert wird
     * @param produktUUID
     * @return erfolg=true/false
@@ -207,6 +244,10 @@ public class DataHandler {
      * @retun die herstellerListe
      */
     private static List<Hersteller> getHerstellerList() {
+        if (herstellerListe == null) {
+            setHerstellerList(new ArrayList<>());
+            readHerstellerJSON();
+        }
         return herstellerListe;
     }
 
@@ -225,6 +266,9 @@ public class DataHandler {
      * @return Wert der inhaltListet
      */
     private static List<Inhalt> getInhaltList() {
+        if (inhaltListe == null) {
+            setInhaltList(new ArrayList<>());
+        }
         return inhaltListe;
     }
 
@@ -247,7 +291,6 @@ public class DataHandler {
             setProduktList(new ArrayList<>());
             readProduktJSON();
         }
-
         return produktList;
     }
 
