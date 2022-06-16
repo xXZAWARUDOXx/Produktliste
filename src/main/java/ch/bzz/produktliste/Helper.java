@@ -3,7 +3,7 @@ package ch.bzz.produktliste;
 import java.util.UUID;
 
 /**
- * Hilfklasse zur Erstellung von UUIDs
+ * Helper-Class for creating valid UUIDs
  *
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
@@ -11,9 +11,9 @@ import java.util.UUID;
  */
 public class Helper {
     /*
-     * erstellt eine UUID für den Hersteller, Produkt, User und Inhalt
+     * creates a valid UUID for the Producer, Product and Content
      *
-     * @return Wert der UUID
+     * @return value of the UUID
      */
     public static String createUUID() {
         return UUID.randomUUID().toString();

@@ -10,33 +10,33 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @date 2022-05-19
  * @verison 1.0
  */
-public class Hersteller {
-    private final String herstellerUUID = Helper.createUUID();
+public class Producer {
+    private final String producerUUID = Helper.createUUID();
     private String name;
-    private int anzFabriken;
-    private int anzProduzierbareFlaschenProJahr;
+    private int numOfFactories;
+    private int numOfProduceableBottlesPerYear;
     @JsonIgnore
-    private Produkt produkt;
+    private Product product;
 
     /*
-    * default Konstruktor
+    * default constructor
      *
     * */
-    public Hersteller() {
+    public Producer() {
     }
 
     /*
      * Konstruktor zur Instanzierung
      *
      * */
-    public Hersteller(String name,
-                      int anzFabriken,
-                      int anzProduzierbareFlaschenProJahr,
-                      Produkt produkt) {
+    public Producer(String name,
+                    int numOfFactories,
+                    int numOfProduceableBottlesPerYear,
+                    Product product) {
         this.name = name;
-        this.anzFabriken = anzFabriken;
-        this.anzProduzierbareFlaschenProJahr = anzProduzierbareFlaschenProJahr;
-        this.produkt = produkt;
+        this.numOfFactories = numOfFactories;
+        this.numOfProduceableBottlesPerYear = numOfProduceableBottlesPerYear;
+        this.product = product;
     }
 
     /*
@@ -44,8 +44,8 @@ public class Hersteller {
      *
      * @return Wert der herstellerUUID
      * */
-    public String getHerstellerUUID() {
-        return herstellerUUID;
+    public String getProducerUUID() {
+        return producerUUID;
     }
 
     /*
@@ -72,8 +72,8 @@ public class Hersteller {
      *
      * @return Wert der anzFabriken
      * */
-    public int getAnzFabriken() {
-        return anzFabriken;
+    public int getNumOfFactories() {
+        return numOfFactories;
     }
 
     /*
@@ -81,8 +81,8 @@ public class Hersteller {
      *
      * @param anzFabriken
      * */
-    public void setAnzFabriken(int anzFabriken) {
-        this.anzFabriken = anzFabriken;
+    public void setNumOfFactories(int numOfFactories) {
+        this.numOfFactories = numOfFactories;
     }
 
     /*
@@ -90,8 +90,8 @@ public class Hersteller {
      *
      * @return Wert der anzProduzierbareFlaschenProJahr
      * */
-    public int getAnzProduzierbareFlaschenProJahr() {
-        return anzProduzierbareFlaschenProJahr;
+    public int getNumOfProduceableBottlesPerYear() {
+        return numOfProduceableBottlesPerYear;
     }
 
     /*
@@ -99,8 +99,8 @@ public class Hersteller {
      *
      * @param anzProduzierbareFlaschenProJahr
      * */
-    public void setAnzProduzierbareFlaschenProJahr(int anzProduzierbareFlaschenProJahr) {
-        this.anzProduzierbareFlaschenProJahr = anzProduzierbareFlaschenProJahr;
+    public void setNumOfProduceableBottlesPerYear(int numOfProduceableBottlesPerYear) {
+        this.numOfProduceableBottlesPerYear = numOfProduceableBottlesPerYear;
     }
 
     /*
@@ -108,8 +108,8 @@ public class Hersteller {
      *
      * @return Wert der Produkt
      * */
-    public Produkt getProdukt() {
-        return produkt;
+    public Product getProdukt() {
+        return product;
     }
 
     /*
@@ -117,8 +117,8 @@ public class Hersteller {
      *
      * @param Produkt
      * */
-    public void setProdukt(Produkt produkt) {
-        this.produkt = produkt;
+    public void setProdukt(Product product) {
+        this.product = product;
     }
 
     /*
@@ -174,9 +174,9 @@ public class Hersteller {
     @Override
     public String toString() {
         return "Hersteller: " + '\n' +
-                "\t\t" + herstellerUUID + '\n' +
+                "\t\t" + producerUUID + '\n' +
                 "\t\t" + name + '\n' +
-                "\t\t" + anzFabriken + '\n' +
-                "\t\t" + anzProduzierbareFlaschenProJahr;
+                "\t\t" + numOfFactories + '\n' +
+                "\t\t" + numOfProduceableBottlesPerYear;
     }
 }

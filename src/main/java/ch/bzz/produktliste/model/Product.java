@@ -16,35 +16,35 @@ import java.util.List;
  * @date 2022-05-19
  * @verison 1.0
  */
-public class Produkt {
-    private final String produktUUID = Helper.createUUID();
+public class Product {
+    private final String productUUID = Helper.createUUID();
     private String name;
-    private BigDecimal preis;
-    private Date datum;
-    private List<Inhalt> inhalt;
-    private Hersteller hersteller;
+    private BigDecimal price;
+    private Date date;
+    private List<Content> contents;
+    private Producer producer;
 
     /*
      * default Konstruktor
      *
      */
-    public Produkt() {
+    public Product() {
     }
 
     /*
      * Konstruktor zur Instanzierung
      *
      */
-    public Produkt(String name,
-                   BigDecimal preis,
-                   Date datum,
-                   List inhalt,
-                   Hersteller hersteller) {
+    public Product(String name,
+                   BigDecimal price,
+                   Date date,
+                   List contents,
+                   Producer producer) {
         this.name = name;
-        this.preis = preis;
-        this.datum = datum;
-        this.inhalt = inhalt;
-        this.hersteller = hersteller;
+        this.price = price;
+        this.date = date;
+        this.contents = contents;
+        this.producer = producer;
     }
 
     /*
@@ -52,8 +52,8 @@ public class Produkt {
      *
      * @return Wert der produktUUID
      */
-    public String getProduktUUID() {
-        return produktUUID;
+    public String getProductUUID() {
+        return productUUID;
     }
 
     /*
@@ -79,8 +79,8 @@ public class Produkt {
      *
      * @return Wert des preises
      */
-    public BigDecimal getPreis() {
-        return preis;
+    public BigDecimal getPrice() {
+        return price;
     }
 
     /*
@@ -88,8 +88,8 @@ public class Produkt {
      *
      * @param preis
      */
-    public void setPreis(BigDecimal preis) {
-        this.preis = preis;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     /*
@@ -97,8 +97,8 @@ public class Produkt {
      *
      * @return Wert des datums
      */
-    public Date getDatum() {
-        return datum;
+    public Date getDate() {
+        return date;
     }
 
     /*
@@ -106,8 +106,8 @@ public class Produkt {
      *
      * @param datum
      */
-    public void setDatum(Date datum) {
-        this.datum = datum;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     /*
@@ -115,8 +115,8 @@ public class Produkt {
      *
      * @return die inhaltListe
      */
-    public List getInhalt() {
-        return inhalt;
+    public List getContents() {
+        return contents;
     }
 
     /*
@@ -124,8 +124,8 @@ public class Produkt {
      *
      * @param inhaltListe
      */
-    public void setInhalt(List inhalt) {
-        this.inhalt = inhalt;
+    public void setContents(List contents) {
+        this.contents = contents;
     }
 
     /*
@@ -133,8 +133,8 @@ public class Produkt {
      *
      * @return die herstellerListe
      */
-    public Hersteller getHersteller() {
-        return hersteller;
+    public Producer getHersteller() {
+        return producer;
     }
 
     /*
@@ -142,8 +142,8 @@ public class Produkt {
      *
      * @param herstellerListe
      */
-    public void setHersteller(Hersteller hersteller) {
-        this.hersteller = hersteller;
+    public void setHersteller(Producer producer) {
+        this.producer = producer;
     }
 
     // in Bearbeitung
@@ -171,11 +171,11 @@ public class Produkt {
      *
      * @param inhalteUUID Wert der UUID
      */
-    @JsonProperty("inhalt")
+    @JsonProperty("content")
     public void setInhalteByUUID(List<String> inhalteUUID) {
-        setInhalt(new ArrayList<>());
+        setContents(new ArrayList<>());
         for (String s : inhalteUUID) {
-            this.inhalt.add(DataHandler.readInhaltByUUID(s));
+            this.contents.add(DataHandler.readInhaltByUUID(s));
         }
     }
 
@@ -232,11 +232,11 @@ public class Produkt {
     @Override
     public String toString() {
         return "Produkt: " + '\n' +
-                "\t\t" + produktUUID + '\n' +
+                "\t\t" + productUUID + '\n' +
                 "\t\t" + name + '\n' +
-                "\t\t" + preis + '\n' +
-                "\t\t" + datum + '\n' +
-                "\t\t" + inhalt + '\n' +
-                "\t\t" + hersteller;
+                "\t\t" + price + '\n' +
+                "\t\t" + date + '\n' +
+                "\t\t" + contents + '\n' +
+                "\t\t" + producer;
     }
 }

@@ -4,58 +4,58 @@ import ch.bzz.produktliste.Helper;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * ein Inhalt in der Produktliste
+ * a Conent as the part of the Productlist
  *
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
  * @verison 1.0
  */
-public class Inhalt {
-    private final String inhaltUUID = Helper.createUUID();
+public class Content {
+    private final String contentUUID = Helper.createUUID();
     private String name;
-    private String allergiecode;
+    private String allergycode;
     @JsonIgnore
-    private Produkt produkt;
+    private Product product;
 
     /*
-     * default Konstruktor
+     * default constructor
      *
      */
-    public Inhalt() {
+    public Content() {
     }
 
     /*
-     * Konstruktor zur Instanzierung
+     * constructor for instances
      *
      */
-    public Inhalt(String name,
-                  String allergiecode,
-                  Produkt produkt) {
+    public Content(String name,
+                   String allergycode,
+                   Product product) {
         this.name = name;
-        this.allergiecode = allergiecode;
-        this.produkt = produkt;
+        this.allergycode = allergycode;
+        this.product = product;
     }
 
     /*
-     * gettet inhaltUUID
+     * gets the contentUUID
      *
-     * @return Wert der inhaltUUID
+     * @return value of the contentUUID
      */
-    public String getInhaltUUID() {
-        return inhaltUUID;
+    public String getContentUUID() {
+        return contentUUID;
     }
 
     /*
-     * gettet name
+     * gets name
      *
-     * @return Wert des namens
+     * @return value of the name
      */
     public String getName() {
         return name;
     }
 
     /*
-     * settet name
+     * sets name
      *
      * @param name
      */
@@ -64,30 +64,39 @@ public class Inhalt {
     }
 
     /*
-     * gettet allerigecode
+     * gets allergycode
      *
-     * @return Wert des allergiecodes
+     * @return value of the allergycode
      */
-    public String getAllergiecode() {
-        return allergiecode;
+    public String getAllergycode() {
+        return allergycode;
     }
 
     /*
-     * settet allerigecode
+     * sets allergycode
      *
-     * @param allergiecode
+     * @param allergycode
      */
-    public void setAllergiecode(String allergiecode) {
-        this.allergiecode = allergiecode;
+    public void setAllergycode(String allergycode) {
+        this.allergycode = allergycode;
     }
 
     /*
-     * settet Produkt
+     * gets product
      *
-     * @param produkt
+     * @return value of the product
      */
-    public void setProdukt(Produkt produkt) {
-        this.produkt = produkt;
+    public Product getProduct() {
+        return product;
+    }
+
+    /*
+     * sets product
+     *
+     * @param product
+     */
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     /*
@@ -138,14 +147,14 @@ public class Inhalt {
     /*
      * formatiert einen Inhalt zur Ausgabe
      *
-     * @return inhalt als String
+     * @return content als String
      * */
     @Override
     public String toString() {
         return "Inhalt: " + '\n' +
-                "\t\t" + inhaltUUID + '\n' +
+                "\t\t" + contentUUID + '\n' +
                 "\t\t" + name + '\n' +
-                "\t\t" + allergiecode + '\n' +
-                "\t\t" + produkt;
+                "\t\t" + allergycode + '\n' +
+                "\t\t" + product;
     }
 }

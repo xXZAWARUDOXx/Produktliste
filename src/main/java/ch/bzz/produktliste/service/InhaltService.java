@@ -1,7 +1,7 @@
 package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
-import ch.bzz.produktliste.model.Inhalt;
+import ch.bzz.produktliste.model.Content;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,7 +18,7 @@ import java.util.List;
  * @date 2022-05-19
  * @version 1.0
  * */
-@Path("inhalt")
+@Path("content")
 public class InhaltService {
     /*
     * liest eine Liste von Inhalten
@@ -28,10 +28,10 @@ public class InhaltService {
     @Path("liste")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listInhalte() {
-        List<Inhalt> inhaltListe = DataHandler.readAllInhalte();
+        List<Content> contentListe = DataHandler.readAllInhalte();
         return Response
                 .status(200)
-                .entity(inhaltListe)
+                .entity(contentListe)
                 .build();
     }
 
@@ -43,11 +43,11 @@ public class InhaltService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readInhalt(@QueryParam("uuid") String inhaltUUID) {
-        Inhalt inhalt = DataHandler.readInhaltByUUID(inhaltUUID);
-        if (inhalt != null) {
+        Content content = DataHandler.readInhaltByUUID(inhaltUUID);
+        if (content != null) {
             return Response
                     .status(200)
-                    .entity(inhalt)
+                    .entity(content)
                     .build();
         } else {
             return Response

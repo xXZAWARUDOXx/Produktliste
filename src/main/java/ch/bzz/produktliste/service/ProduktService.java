@@ -1,7 +1,7 @@
 package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
-import ch.bzz.produktliste.model.Produkt;
+import ch.bzz.produktliste.model.Product;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -25,10 +25,10 @@ public class ProduktService {
     @Path("liste")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listProdukte() {
-        List<Produkt> produktListe = DataHandler.readAllProdukte();
+        List<Product> productListe = DataHandler.readAllProdukte();
         return Response
                 .status(200)
-                .entity(produktListe)
+                .entity(productListe)
                 .build();
     }
 
@@ -40,11 +40,11 @@ public class ProduktService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readProdukte(@QueryParam("uuid") String produktUUID) {
-        Produkt produkt = DataHandler.readProduktByUUID(produktUUID);
-        if (produkt != null) {
+        Product product = DataHandler.readProduktByUUID(produktUUID);
+        if (product != null) {
             return Response
                     .status(200)
-                    .entity(produkt)
+                    .entity(product)
                     .build();
         } else {
             return Response

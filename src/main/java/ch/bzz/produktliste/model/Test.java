@@ -6,13 +6,13 @@ public class Test {
     }
 
     public void run() {
-        Hersteller hersteller = new Hersteller();
-        System.out.println(hersteller);
+        Producer producer = new Producer();
+        System.out.println(producer);
         User user = new User();
         System.out.println(user);
-        Produkt produkt = new Produkt();
-        System.out.println(produkt);
-        Inhalt inhalt = new Inhalt();
-        System.out.println(inhalt);
+        Product product = new Product();
+        System.out.println(product);
+        Content content = new Content();
+        System.out.println(content);
     }
 }
