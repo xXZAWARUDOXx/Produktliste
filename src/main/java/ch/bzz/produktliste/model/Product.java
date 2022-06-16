@@ -17,7 +17,7 @@ import java.util.List;
  * @verison 1.0
  */
 public class Product {
-    private String productUUID = Helper.createUUID();
+    private final String productUUID = Helper.createUUID();
     private String name;
     private BigDecimal price;
     private Date date;
@@ -51,14 +51,6 @@ public class Product {
      */
     public String getProductUUID() {
         return productUUID;
-    }
-
-    /*
-     * sets name
-     * @param name
-     */
-    public void setProductUUID(String productUUID) {
-        this.productUUID = productUUID;
     }
 
     /*
@@ -163,12 +155,12 @@ public class Product {
     }
 
     /*
-     * formatiert die Ausgabe eines Produktes
-     * @return produkt als String
+     * printing the products
+     * @return product as string
      * */
     @Override
     public String toString() {
-        return "Produkt: " + '\n' +
+        return "product: " + '\n' +
                 "\t\t" + productUUID + '\n' +
                 "\t\t" + name + '\n' +
                 "\t\t" + price + '\n' +

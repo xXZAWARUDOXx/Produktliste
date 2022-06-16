@@ -20,14 +20,12 @@ public class Producer {
 
     /*
     * default constructor
-     *
     * */
     public Producer() {
     }
 
     /*
-     * Konstruktor zur Instanzierung
-     *
+     * constructor for instantiation
      * */
     public Producer(String name,
                     int numOfFactories,
@@ -40,26 +38,23 @@ public class Producer {
     }
 
     /*
-     * gettet herstellerUUID
-     *
-     * @return Wert der herstellerUUID
+     * gets producerUUID
+     * @return value of the producerUUID
      * */
     public String getProducerUUID() {
         return producerUUID;
     }
 
     /*
-     * gettet name
-     *
-     * @return Wert des namens
+     * gets name
+     * @return value of the name
      * */
     public String getName() {
         return name;
     }
 
     /*
-     * settet name
-     *
+     * sets name
      * @param name
      * */
     public void setName(String name) {
@@ -68,112 +63,60 @@ public class Producer {
 
 
     /*
-     * gettet anzFabriken
-     *
-     * @return Wert der anzFabriken
+     * gets numOfFactories
+     * @return value of the numOfFactories
      * */
     public int getNumOfFactories() {
         return numOfFactories;
     }
 
     /*
-     * settet anzFabriken
-     *
-     * @param anzFabriken
+     * sets numOfFactories
+     * @param numOfFactories
      * */
     public void setNumOfFactories(int numOfFactories) {
         this.numOfFactories = numOfFactories;
     }
 
     /*
-     * gettet anzProduzierbareFlaschenProJahr
-     *
-     * @return Wert der anzProduzierbareFlaschenProJahr
+     * gets numOfProduceableBottlesPerYear
+     * @return value of the numOfProduceableBottlesPerYear
      * */
     public int getNumOfProduceableBottlesPerYear() {
         return numOfProduceableBottlesPerYear;
     }
 
     /*
-     * settet anzProduzierbareFlaschenProJahr
-     *
-     * @param anzProduzierbareFlaschenProJahr
+     * sets numOfProduceableBottlesPerYear
+     * @param numOfProduceableBottlesPerYear
      * */
     public void setNumOfProduceableBottlesPerYear(int numOfProduceableBottlesPerYear) {
         this.numOfProduceableBottlesPerYear = numOfProduceableBottlesPerYear;
     }
 
     /*
-     * gettet Produkt
-     *
-     * @return Wert der Produkt
+     * gets product
+     * @return value of the product
      * */
     public Product getProdukt() {
         return product;
     }
 
     /*
-     * settet Produkt
-     *
-     * @param Produkt
+     * sets product
+     * @param product
      * */
     public void setProdukt(Product product) {
         this.product = product;
     }
 
     /*
-     * erstellt einen Hersteller
-     *
-     * @return void
-     * */
-    public void create() {
-
-    }
-
-    /*
-     * liest einen Hersteller
-     *
-     * @return void
-     * */
-    public void read() {
-
-    }
-
-    /*
-     * liest alle Hersteller
-     *
-     * @return void
-     * */
-    public void list() {
-
-    }
-
-    /*
-     * bearbeitet einen Hersteller
-     *
-     * @return void
-     * */
-    public void update() {
-
-    }
-
-    /*
-     * löscht einen Hersteller
-     *
-     * @return void
-     * */
-    public void delete() {
-
-    }
-
-    /*
-     * formatiert die Ausgabe eines Herstellers
-     *
-     * @return hersteller als String
+     * prints the producer
+     * @return producer as string
      * */
     @Override
     public String toString() {
-        return "Hersteller: " + '\n' +
+        return "producer: " + '\n' +
                 "\t\t" + producerUUID + '\n' +
                 "\t\t" + name + '\n' +
                 "\t\t" + numOfFactories + '\n' +

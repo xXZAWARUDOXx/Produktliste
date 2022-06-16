@@ -3,7 +3,7 @@ package ch.bzz.produktliste.model;
 import ch.bzz.produktliste.Helper;
 
 /**
- * ein User, welcher die Applikation bedient
+ * a user, which uses the application
  *
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
@@ -16,14 +16,13 @@ public class User {
     private String password;
 
     /*
-     * default Konstruktor
-     *
+     * default constructor
      * */
     public User() {
     }
 
     /*
-     * Konstruktor zur Instanzierung
+     * constructor for instantiation
      *
      * */
     public User(String username,
@@ -35,26 +34,23 @@ public class User {
     }
 
     /*
-     * gettet userUUID
-     *
-     * @return Wert der userUUID
+     * gets userUUID
+     * @return value of the userUUID
      * */
     public String getUserUUID() {
         return userUUID;
     }
 
     /*
-     * gettet username
-     *
-     * @return Wert des usernamens
+     * gets username
+     * @return value of the username
      * */
     public String getUsername() {
         return username;
     }
 
     /*
-     * settet username
-     *
+     * sets username
      * @param username
      * */
     public void setUsername(String username) {
@@ -62,17 +58,15 @@ public class User {
     }
 
     /*
-     * gettet role
-     *
-     * @return Wert der role
+     * gets role
+     * @return value of the role
      * */
     public String getRole() {
         return role;
     }
 
     /*
-     * settet role
-     *
+     * sets role
      * @param role
      * */
     public void setRole(String role) {
@@ -80,17 +74,15 @@ public class User {
     }
 
     /*
-     * gettet password
-     *
-     * @return Wert des passwords
+     * gets password
+     * @return value of the password
      * */
     public String getPassword() {
         return password;
     }
 
     /*
-     * settet password
-     *
+     * sets password
      * @param password
      * */
     public void setPassword(String password) {
@@ -98,8 +90,7 @@ public class User {
     }
 
     /*
-     * loggt den User ein
-     *
+     * loggs the user in
      * @return void
      * */
     public void logon() {
@@ -107,8 +98,7 @@ public class User {
     }
 
     /*
-     * loggt den User aus
-     *
+     * loggs the user out
      * @return void
      * */
     public void logoff() {
@@ -116,9 +106,8 @@ public class User {
     }
 
     /*
-     * formatiert die Ausgabe eines Users
-     *
-     * @return user als String
+     * prints the user
+     * @return user as string
      * */
     @Override
     public String toString() {

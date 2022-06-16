@@ -4,7 +4,7 @@ import ch.bzz.produktliste.Helper;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * a Conent as the part of the Productlist
+ * a Content as the part of the Productlist
  *
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
@@ -19,14 +19,12 @@ public class Content {
 
     /*
      * default constructor
-     *
      */
     public Content() {
     }
 
     /*
      * constructor for instances
-     *
      */
     public Content(String name,
                    String allergycode,
@@ -38,7 +36,6 @@ public class Content {
 
     /*
      * gets the contentUUID
-     *
      * @return value of the contentUUID
      */
     public String getContentUUID() {
@@ -47,7 +44,6 @@ public class Content {
 
     /*
      * gets name
-     *
      * @return value of the name
      */
     public String getName() {
@@ -56,7 +52,6 @@ public class Content {
 
     /*
      * sets name
-     *
      * @param name
      */
     public void setName(String name) {
@@ -65,7 +60,6 @@ public class Content {
 
     /*
      * gets allergycode
-     *
      * @return value of the allergycode
      */
     public String getAllergycode() {
@@ -74,7 +68,6 @@ public class Content {
 
     /*
      * sets allergycode
-     *
      * @param allergycode
      */
     public void setAllergycode(String allergycode) {
@@ -83,7 +76,6 @@ public class Content {
 
     /*
      * gets product
-     *
      * @return value of the product
      */
     public Product getProduct() {
@@ -92,7 +84,6 @@ public class Content {
 
     /*
      * sets product
-     *
      * @param product
      */
     public void setProduct(Product product) {
@@ -100,58 +91,12 @@ public class Content {
     }
 
     /*
-     * erstellt einen Inhalt
-     *
-     * @return void
-     * */
-    public void create() {
-
-    }
-
-    /*
-     * liest einen Inhalt
-     *
-     * @return void
-     * */
-    public void read() {
-
-    }
-
-    /*
-     * liest alle Inhalte
-     *
-     * @return void
-     * */
-    public void list() {
-
-    }
-
-    /*
-     * bearbeitet einen Inhalt
-     *
-     * @return void
-     * */
-    public void update() {
-
-    }
-
-    /*
-     * löscht einen Inhalt
-     *
-     * @return void
-     * */
-    public void delete() {
-
-    }
-
-    /*
-     * formatiert einen Inhalt zur Ausgabe
-     *
-     * @return content als String
+     * printing content
+     * @return content as string
      * */
     @Override
     public String toString() {
-        return "Inhalt: " + '\n' +
+        return "content: " + '\n' +
                 "\t\t" + contentUUID + '\n' +
                 "\t\t" + name + '\n' +
                 "\t\t" + allergycode + '\n' +
