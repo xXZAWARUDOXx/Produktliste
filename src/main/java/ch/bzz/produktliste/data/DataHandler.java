@@ -76,8 +76,26 @@ public final class DataHandler {
      * erstellt einen Inhalt
      *
      */
-    public static void insertInhalte(Inhalt inhalt) {
+    public static void insertInhalt(Inhalt inhalt) {
         getInhaltList().add(inhalt);
+        schreibInhaltJSON();
+    }
+
+    /*
+     * erstellt einen Hersteller
+     *
+     */
+    public static void insertHersteller(Hersteller hersteller) {
+        getHerstellerList().add(hersteller);
+        schreibHerstellerJSON();
+    }
+
+    /*
+     * erstellt ein Produkt
+     *
+     */
+    public static void insertProdukt(Produkt produkt) {
+        getProduktList().add(produkt);
         schreibInhaltJSON();
     }
 
@@ -223,6 +241,25 @@ public final class DataHandler {
     }
 
     /*
+     * schreibt einen Inhalt ins JSON-File
+     */
+    private static void schreibHerstellerJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String herstellerPath = Config.getProperty("herstellerJSON");
+        try {
+            fileOutputStream = new FileOutputStream(herstellerPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getHerstellerList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /*
     * löscht ein Produkt was über die UUID identifiziert wird
     * @param produktUUID
     * @return erfolg=true/false
@@ -232,6 +269,38 @@ public final class DataHandler {
         if (produkt != null) {
             getProduktList().remove(produkt);
             schreibProduktJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+     * löscht einen Inhalt welcher über die UUID identifiziert wird
+     * @param herstellerUUID
+     * @return erfolg=true/false
+     * */
+    public static boolean inhaltLoeschen(String inhaltUUID) {
+        Inhalt inhalt = new Inhalt();
+        if (inhalt != null) {
+            getProduktList().remove(inhalt);
+            schreibInhaltJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+     * löscht einen Hersteller welcher über die UUID identifiziert wird
+     * @param herstellerUUID
+     * @return erfolg=true/false
+     * */
+    public static boolean herstellerLoeschen(String herstellerUUID) {
+        Hersteller hersteller = new Hersteller();
+        if (hersteller != null) {
+            getProduktList().remove(hersteller);
+            schreibHerstellerJSON();
             return true;
         } else {
             return false;
@@ -268,6 +337,7 @@ public final class DataHandler {
     private static List<Inhalt> getInhaltList() {
         if (inhaltListe == null) {
             setInhaltList(new ArrayList<>());
+            readInhaltJSON();
         }
         return inhaltListe;
     }
