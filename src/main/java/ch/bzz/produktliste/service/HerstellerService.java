@@ -28,7 +28,7 @@ public class HerstellerService {
     @Path("liste")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listHersteller() {
-        List<Producer> producerListe = DataHandler.readAllHersteller();
+        List<Producer> producerListe = DataHandler.readAllProducer();
         return Response
                 .status(200)
                 .entity(producerListe)
@@ -43,7 +43,7 @@ public class HerstellerService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readHersteller (@QueryParam("uuid") String herstellerUUID) {
-        Producer producer = DataHandler.readHerstellerByUUID(herstellerUUID);
+        Producer producer = DataHandler.readProducerByUUID(herstellerUUID);
         if (producer != null) {
             return Response
                     .status(200)

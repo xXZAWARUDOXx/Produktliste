@@ -10,14 +10,14 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * ein Produkt in der Produktliste
+ * a product in the productList
  *
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
  * @verison 1.0
  */
 public class Product {
-    private final String productUUID = Helper.createUUID();
+    private String productUUID = Helper.createUUID();
     private String name;
     private BigDecimal price;
     private Date date;
@@ -25,15 +25,13 @@ public class Product {
     private Producer producer;
 
     /*
-     * default Konstruktor
-     *
+     * default constructor
      */
     public Product() {
     }
 
     /*
-     * Konstruktor zur Instanzierung
-     *
+     * constructor for instantiation
      */
     public Product(String name,
                    BigDecimal price,
@@ -48,26 +46,31 @@ public class Product {
     }
 
     /*
-     * gettet produktUUID
-     *
-     * @return Wert der produktUUID
+     * gets productUUID
+     * @return value of the productUUID
      */
     public String getProductUUID() {
         return productUUID;
     }
 
     /*
-     * gettet name
-     *
-     * @return Wert des namens
+     * sets name
+     * @param name
+     */
+    public void setProductUUID(String productUUID) {
+        this.productUUID = productUUID;
+    }
+
+    /*
+     * gets name
+     * @return value of the name
      */
     public String getName() {
         return name;
     }
 
     /*
-     * settet name
-     *
+     * sets name
      * @param name
      */
     public void setName(String name) {
@@ -75,158 +78,92 @@ public class Product {
     }
 
     /*
-     * gettet preis
-     *
-     * @return Wert des preises
+     * gets price
+     * @return value of the price
      */
     public BigDecimal getPrice() {
         return price;
     }
 
     /*
-     * settet preis
-     *
-     * @param preis
+     * sets price
+     * @param price
      */
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
     /*
-     * gettet datum
-     *
-     * @return Wert des datums
+     * gets date
+     * @return value of the date
      */
     public Date getDate() {
         return date;
     }
 
     /*
-     * settet datum
-     *
-     * @param datum
+     * sets date
+     * @param date
      */
     public void setDate(Date date) {
         this.date = date;
     }
 
     /*
-     * gettet inhaltListe
-     *
-     * @return die inhaltListe
+     * gets contentList
+     * @return value of the contentList
      */
     public List getContents() {
         return contents;
     }
 
     /*
-     * settet inhaltListe
-     *
-     * @param inhaltListe
+     * sets contentList
+     * @param contentList
      */
-    public void setContents(List contents) {
+    public void setContents(List<Content> contents) {
         this.contents = contents;
     }
 
     /*
-     * gettet herstellerListe
-     *
-     * @return die herstellerListe
+     * gets producerList
+     * @return value of the producerList
      */
-    public Producer getHersteller() {
+    public Producer getProducer() {
         return producer;
     }
 
     /*
-     * settet herstellerListe
-     *
-     * @param herstellerListe
+     * sets producerList
+     * @param producerList
      */
-    public void setHersteller(Producer producer) {
+    public void setProducer(Producer producer) {
         this.producer = producer;
     }
 
-    // in Bearbeitung
-    /*@JsonProperty("hersteller")
-    public String getHerstellerUUID() {
-        if (hersteller != null) {
-            return  hersteller.getHerstellerUUID();
-        } else {
-            return null;
-        }
-    }*/
-
     /*
-     * sets genre
-     *
-     * @param herstellerUUID Wert der UUID
+     * sets producer
+     * @param producer
      */
-    @JsonProperty("hersteller")
-    public void setHerstellerUUID(String herstellerUUID) {
-        setHersteller(DataHandler.readHerstellerByUUID(herstellerUUID));
+    @JsonProperty("producer")
+    public void setProducerUUID(String producerUUID) {
+        setProducer(DataHandler.readProducerByUUID(producerUUID));
     }
 
     /*
-     * sets genre
-     *
-     * @param inhalteUUID Wert der UUID
+     * sets contents
+     * @param contents
      */
     @JsonProperty("content")
-    public void setInhalteByUUID(List<String> inhalteUUID) {
+    public void setContentsUUID(List<String> contents) {
         setContents(new ArrayList<>());
-        for (String s : inhalteUUID) {
-            this.contents.add(DataHandler.readInhaltByUUID(s));
+        for (String s : contents) {
+            this.contents.add(DataHandler.readContentByUUID(s));
         }
-    }
-
-    /*
-     * erstellt ein Produkt
-     *
-     * @return void
-     * */
-    public void create() {
-
-    }
-
-    /*
-     * liest ein Produkt
-     *
-     * @return void
-     * */
-    public void read() {
-
-    }
-
-    /*
-     * liest alle Produkte
-     *
-     * @return void
-     * */
-    public void list() {
-
-    }
-
-    /*
-     * bearbeitet ein Produkt
-     *
-     * @return void
-     * */
-    public void update() {
-
-    }
-
-    /*
-     * löscht ein Produkt
-     *
-     * @return void
-     * */
-    public void delete() {
-
     }
 
     /*
      * formatiert die Ausgabe eines Produktes
-     *
      * @return produkt als String
      * */
     @Override

@@ -25,7 +25,7 @@ public class ProduktService {
     @Path("liste")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listProdukte() {
-        List<Product> productListe = DataHandler.readAllProdukte();
+        List<Product> productListe = DataHandler.readAllProducts();
         return Response
                 .status(200)
                 .entity(productListe)
@@ -40,7 +40,7 @@ public class ProduktService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readProdukte(@QueryParam("uuid") String produktUUID) {
-        Product product = DataHandler.readProduktByUUID(produktUUID);
+        Product product = DataHandler.readProductByUUID(produktUUID);
         if (product != null) {
             return Response
                     .status(200)
@@ -63,7 +63,7 @@ public class ProduktService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteProdukt(@QueryParam("uuid") String produktUUID) {
         int status = 200;
-        if (!DataHandler.produktLoeschen(produktUUID)) {
+        if (!DataHandler.deleteProduct(produktUUID)) {
             status = 410;
         }
         return Response.status(status)

@@ -28,7 +28,7 @@ public class InhaltService {
     @Path("liste")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listInhalte() {
-        List<Content> contentListe = DataHandler.readAllInhalte();
+        List<Content> contentListe = DataHandler.readAllContents();
         return Response
                 .status(200)
                 .entity(contentListe)
@@ -43,7 +43,7 @@ public class InhaltService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readInhalt(@QueryParam("uuid") String inhaltUUID) {
-        Content content = DataHandler.readInhaltByUUID(inhaltUUID);
+        Content content = DataHandler.readContentByUUID(inhaltUUID);
         if (content != null) {
             return Response
                     .status(200)
