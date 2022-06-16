@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Services fürs Lesen, Erstellen, Ändern und Löschen von Inhalten
+ * Services for creating, reading, updating and deleting of contents
  *
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
@@ -21,13 +21,13 @@ import java.util.List;
 @Path("content")
 public class InhaltService {
     /*
-    * liest eine Liste von Inhalten
-    * @return liefert Inhalt als JSON
+    * reads a list of contents
+    * @return contents as json
     * */
     @GET
     @Path("liste")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listInhalte() {
+    public Response listContents() {
         List<Content> contentListe = DataHandler.readAllContents();
         return Response
                 .status(200)
@@ -36,13 +36,13 @@ public class InhaltService {
     }
 
     /*
-    * liest einen Inhalt
-    * @return liefert Inhalt als JSON
+    * reads a content
+    * @return content as json
     * */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readInhalt(@QueryParam("uuid") String inhaltUUID) {
+    public Response readContent(@QueryParam("uuid") String inhaltUUID) {
         Content content = DataHandler.readContentByUUID(inhaltUUID);
         if (content != null) {
             return Response

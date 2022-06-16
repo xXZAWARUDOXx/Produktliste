@@ -12,7 +12,6 @@ import java.util.UUID;
 public class Helper {
     /*
      * creates a valid UUID for the Producer, Product and Content
-     *
      * @return value of the UUID
      */
     public static String createUUID() {

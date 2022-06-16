@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Services fürs Lesen, Erstellen, Ändern und Löschen von Herstellern
+ * Services for creating, reading, updating and deleting of producers
  *
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
@@ -21,13 +21,13 @@ import java.util.List;
 @Path("hersteller")
 public class HerstellerService {
     /*
-    * liest eine Liste von Herstellern
-    * @return liefert Hersteller als JSON
+    * reads a list of producers
+    * @return producers as json
     * */
     @GET
     @Path("liste")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listHersteller() {
+    public Response listProducers() {
         List<Producer> producerListe = DataHandler.readAllProducer();
         return Response
                 .status(200)
@@ -36,13 +36,13 @@ public class HerstellerService {
     }
 
     /*
-     * liest einen Hersteller
-     * @return liefert Hersteller als JSON
+     * reads a producers
+     * @return producer as json
      * */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readHersteller (@QueryParam("uuid") String herstellerUUID) {
+    public Response readProducer(@QueryParam("uuid") String herstellerUUID) {
         Producer producer = DataHandler.readProducerByUUID(herstellerUUID);
         if (producer != null) {
             return Response
@@ -55,6 +55,4 @@ public class HerstellerService {
                     .build();
         }
     }
-
-
 }

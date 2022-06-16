@@ -18,13 +18,13 @@ import java.util.List;
 @Path("produkt")
 public class ProduktService {
     /*
-    * liest eine Liste von Produkten
-    * @return liefert Produkte als JSON
+    * reads a list of products
+    * @return products as json
     * */
     @GET
     @Path("liste")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listProdukte() {
+    public Response listProducts() {
         List<Product> productListe = DataHandler.readAllProducts();
         return Response
                 .status(200)
@@ -33,14 +33,14 @@ public class ProduktService {
     }
 
     /*
-    * liest ein Produkt
-    * @return liefert Produkt als JSON
+    * reads a product
+    * @return product as json
     * */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readProdukte(@QueryParam("uuid") String produktUUID) {
-        Product product = DataHandler.readProductByUUID(produktUUID);
+    public Response readProduct(@QueryParam("uuid") String productUUID) {
+        Product product = DataHandler.readProductByUUID(productUUID);
         if (product != null) {
             return Response
                     .status(200)
@@ -54,16 +54,16 @@ public class ProduktService {
     }
 
     /*
-    * loescht ein Produkt identifiziert durch eine UUID
-    * @param produktUUID
+    * deletes a product, searches by productUUID
+    * @param productUUID
     * @return Response
     * */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteProdukt(@QueryParam("uuid") String produktUUID) {
+    public Response deleteProduct(@QueryParam("uuid") String productUUID) {
         int status = 200;
-        if (!DataHandler.deleteProduct(produktUUID)) {
+        if (!DataHandler.deleteProduct(productUUID)) {
             status = 410;
         }
         return Response.status(status)

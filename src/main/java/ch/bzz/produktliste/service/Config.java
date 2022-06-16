@@ -10,7 +10,7 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * konfiguriert die Web-Services und Propertiers
+ * configurates the Web-Services and Propertiers
  *
  * @author bzz Nahro Vergili (slayynahro)
  * @date 2022-05-19
@@ -23,7 +23,6 @@ public class Config extends Application {
 
     /*
      * define all provider classes
-     *
      * @return set of classes
      */
     @Override
@@ -38,7 +37,6 @@ public class Config extends Application {
 
     /*
      * Gets the value of a property
-     *
      * @param property the key of the property to be read
      * @return the value of the property
      */
@@ -53,8 +51,7 @@ public class Config extends Application {
     }
 
     /*
-     * liest das Properties-File
-     *
+     * reads the properties file
      */
     private static void readProperties() {
         InputStream inputStream;
@@ -69,9 +66,8 @@ public class Config extends Application {
     }
 
     /*
-     * settet die Properties
-     *
-     * @param properties der Wert den man setzen will
+     * sets the properties
+     * @param properties
      */
     private static void setProperties(Properties properties) {
         Config.properties = properties;
