@@ -29,9 +29,9 @@ public class Config extends Application {
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(TestService.class);
-        providers.add(HerstellerService.class);
-        providers.add(InhaltService.class);
-        providers.add(ProduktService.class);
+        providers.add(ProducerService.class);
+        providers.add(ContentService.class);
+        providers.add(ProductService.class);
         return providers;
     }
 

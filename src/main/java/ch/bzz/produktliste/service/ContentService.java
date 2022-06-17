@@ -19,13 +19,13 @@ import java.util.List;
  * @version 1.0
  * */
 @Path("content")
-public class InhaltService {
+public class ContentService {
     /*
     * reads a list of contents
     * @return contents as json
     * */
     @GET
-    @Path("liste")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listContents() {
         List<Content> contentListe = DataHandler.readAllContents();

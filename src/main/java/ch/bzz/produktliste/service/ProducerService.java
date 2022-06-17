@@ -18,14 +18,14 @@ import java.util.List;
  * @date 2022-05-19
  * @version 1.0
  * */
-@Path("hersteller")
-public class HerstellerService {
+@Path("producer")
+public class ProducerService {
     /*
     * reads a list of producers
     * @return producers as json
     * */
     @GET
-    @Path("liste")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listProducers() {
         List<Producer> producerListe = DataHandler.readAllProducer();

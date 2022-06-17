@@ -15,8 +15,8 @@ import java.util.List;
  * @date 2022-05-19
  * @version 1.0
  * */
-@Path("produkt")
-public class ProduktService {
+@Path("product")
+public class ProductService {
     /*
     * reads a list of products
     * @return products as json

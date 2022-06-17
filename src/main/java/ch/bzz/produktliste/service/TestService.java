@@ -8,7 +8,6 @@ import javax.ws.rs.core.Response;
 
 /**
  * test service
- *
  */
 @Path("test")
 public class TestService {
