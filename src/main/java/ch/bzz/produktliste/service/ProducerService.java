@@ -3,10 +3,7 @@ package ch.bzz.produktliste.service;
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Producer;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -54,5 +51,23 @@ public class ProducerService {
                     .status(404)
                     .build();
         }
+    }
+
+    /*
+     * deletes a producer, searches by producerUUID
+     * @param producerUUID
+     * @return Response
+     * */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteProducer(@QueryParam("uuid") String producerUUID) {
+        int status = 200;
+        if (!DataHandler.deleteProducer(producerUUID)) {
+            status = 410;
+        }
+        return Response.status(status)
+                .entity("")
+                .build();
     }
 }

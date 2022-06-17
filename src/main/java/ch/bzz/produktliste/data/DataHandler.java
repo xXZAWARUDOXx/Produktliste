@@ -268,7 +268,7 @@ public final class DataHandler {
     public static boolean deleteContent(String contentUUID) {
         Content content = readContentByUUID(contentUUID);
         if (content != null) {
-            getProductList().remove(content);
+            getContentList().remove(content);
             writeContentJSON();
             return true;
         } else {
@@ -284,7 +284,7 @@ public final class DataHandler {
     public static boolean deleteProducer(String producerUUID) {
         Producer producer = readProducerByUUID(producerUUID);
         if (producer != null) {
-            getProductList().remove(producer);
+            getProducerList().remove(producer);
             writeProducerJSON();
             return true;
         } else {

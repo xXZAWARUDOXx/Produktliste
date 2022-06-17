@@ -22,7 +22,7 @@ public class ProductService {
     * @return products as json
     * */
     @GET
-    @Path("liste")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listProducts() {
         List<Product> productListe = DataHandler.readAllProducts();
