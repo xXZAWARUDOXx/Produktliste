@@ -53,7 +53,7 @@ public final class DataHandler {
     public static Producer readProducerByUUID(String producerUUID) {
         Producer producer = null;
         for (Producer h : getProducerList()) {
-            if (h.getProducerUUID().equals(producerUUID)) {
+            if (h.equals(producerUUID)) {
                 producer = h;
             }
         }
@@ -81,7 +81,7 @@ public final class DataHandler {
      */
     public static void insertProduct(Product product) {
         getProductList().add(product);
-        writeContentJSON();
+        writeProductJSON();
     }
 
     /*
@@ -100,7 +100,7 @@ public final class DataHandler {
     public static Content readContentByUUID(String contentUUID) {
         Content content = null;
         for (Content i : getContentList()) {
-            if (i.getContentUUID().equals(contentUUID)) {
+            if (i.equals(contentUUID)) {
                 content = i;
             }
         }
@@ -178,8 +178,8 @@ public final class DataHandler {
                     Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            Product[] produkte = objectMapper.readValue(jsonData, Product[].class);
-            for (Product product : produkte) {
+            Product[] producers = objectMapper.readValue(jsonData, Product[].class);
+            for (Product product : producers) {
                 getProductList().add(product);
             }
         } catch (IOException ex) {

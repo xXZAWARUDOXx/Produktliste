@@ -6,10 +6,11 @@ import ch.bzz.produktliste.model.Product;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Services fürs Lesen, Erstellen, Ändern und Löschen von Produkten
+ * Services for creating, reading, updating and deleting a product
  *
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
@@ -54,6 +55,39 @@ public class ProductService {
     }
 
     /*
+     * creates a product
+     * @param productUUID
+     * @param name
+     * @param price
+     * @param date
+     * @return Response
+     * */
+    @PUT
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response createProduct(@FormParam("productUUID") String productUUID,
+                                  @FormParam("name") String name,
+                                  @FormParam("price") BigDecimal price,
+                                  @FormParam("date") String date,
+                                  @FormParam("contents") List<String> contents,
+                                  @FormParam("producer") String producerUUID) {
+        Product product = new Product();
+        setAttributes(product,
+                      productUUID,
+                      name,
+                      price,
+                      date,
+                      contents,
+                      producerUUID);
+
+        DataHandler.insertProduct(product);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+    /*
     * deletes a product, searches by productUUID
     * @param productUUID
     * @return Response
@@ -69,5 +103,31 @@ public class ProductService {
         return Response.status(status)
                        .entity("")
                        .build();
+    }
+
+    /*
+     * sets the attributes for the product-object
+     * @param product  the product-object
+     * @param name  the name
+     * @param price  the price
+     * @param date  the uuid of the publisher
+     * @param price  the price
+     * @param producer the producer
+     */
+    private void setAttributes(
+            Product product,
+            String productUUID,
+            String name,
+            BigDecimal price,
+            String date,
+            List<String> contents,
+            String producer
+    ) {
+        product.setProductUUID(productUUID);
+        product.setName(name);
+        product.setPrice(price);
+        product.setDate(date);
+        product.setContentsUUID(contents);
+        product.setProducerUUID(producer);
     }
 }

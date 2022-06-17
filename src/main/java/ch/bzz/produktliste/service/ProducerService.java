@@ -2,10 +2,12 @@ package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Producer;
+import ch.bzz.produktliste.model.Product;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -54,6 +56,37 @@ public class ProducerService {
     }
 
     /*
+     * creates a product
+     * @param productUUID
+     * @param name
+     * @param price
+     * @param date
+     * @return Response
+     * */
+    @PUT
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response createProduct(@FormParam("producerUUID") String producerUUID,
+                                  @FormParam("name") String name,
+                                  @FormParam("numOfFactories") int numOfFactories,
+                                  @FormParam("numOfProduceableBottlesPerYear") int numOfProduceableBottlesPerYear,
+                                  @FormParam("product") String product) {
+        Producer producer = new Producer();
+        setAttributes(producer,
+                      producerUUID,
+                      name,
+                      numOfFactories,
+                      numOfProduceableBottlesPerYear,
+                      product);
+
+        DataHandler.insertProducer(producer);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+    /*
      * deletes a producer, searches by producerUUID
      * @param producerUUID
      * @return Response
@@ -69,5 +102,29 @@ public class ProducerService {
         return Response.status(status)
                 .entity("")
                 .build();
+    }
+
+    /*
+     * sets the attributes for the producer-object
+     * @param producer  the producer-object
+     * @param name  the name
+     * @param price  the price
+     * @param date  the uuid of the publisher
+     * @param price  the price
+     * @param producer the producer
+     */
+    private void setAttributes(
+            Producer producer,
+            String producerUUID,
+            String name,
+            int numOfFactories,
+            int numOfProduceableBottlesPerYear,
+            String product
+    ) {
+        producer.setProducerUUID(producerUUID);
+        producer.setName(name);
+        producer.setNumOfFactories(numOfFactories);
+        producer.setNumOfProduceableBottlesPerYear(numOfProduceableBottlesPerYear);
+        producer.setProduct(product);
     }
 }

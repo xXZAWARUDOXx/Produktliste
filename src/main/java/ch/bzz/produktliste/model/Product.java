@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,10 +16,10 @@ import java.util.List;
  * @verison 1.0
  */
 public class Product {
-    private final String productUUID = Helper.createUUID();
+    private String productUUID = Helper.createUUID();
     private String name;
     private BigDecimal price;
-    private Date date;
+    private String date;
     private List<Content> contents;
     private Producer producer;
 
@@ -35,7 +34,7 @@ public class Product {
      */
     public Product(String name,
                    BigDecimal price,
-                   Date date,
+                   String date,
                    List contents,
                    Producer producer) {
         this.name = name;
@@ -51,6 +50,14 @@ public class Product {
      */
     public String getProductUUID() {
         return productUUID;
+    }
+
+    /*
+     * sets productUUID
+     * @param productUUID
+     */
+    public void setProductUUID(String productUUID) {
+        this.productUUID = productUUID;
     }
 
     /*
@@ -89,7 +96,7 @@ public class Product {
      * gets date
      * @return value of the date
      */
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -97,7 +104,7 @@ public class Product {
      * sets date
      * @param date
      */
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

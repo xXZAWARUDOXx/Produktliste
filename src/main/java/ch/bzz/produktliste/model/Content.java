@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @verison 1.0
  */
 public class Content {
-    private final String contentUUID = Helper.createUUID();
+    private String contentUUID = Helper.createUUID();
     private String name;
     private String allergycode;
     @JsonIgnore
@@ -40,6 +40,14 @@ public class Content {
      */
     public String getContentUUID() {
         return contentUUID;
+    }
+
+    /*
+     * sets contentUUID
+     * @param contentUUID
+     */
+    public void setContentUUID(String contentUUID) {
+        this.contentUUID = contentUUID;
     }
 
     /*

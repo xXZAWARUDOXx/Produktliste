@@ -11,12 +11,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @verison 1.0
  */
 public class Producer {
-    private final String producerUUID = Helper.createUUID();
+    private String producerUUID = Helper.createUUID();
     private String name;
     private int numOfFactories;
     private int numOfProduceableBottlesPerYear;
     @JsonIgnore
-    private Product product;
+    private String product;
 
     /*
     * default constructor
@@ -30,7 +30,7 @@ public class Producer {
     public Producer(String name,
                     int numOfFactories,
                     int numOfProduceableBottlesPerYear,
-                    Product product) {
+                    String product) {
         this.name = name;
         this.numOfFactories = numOfFactories;
         this.numOfProduceableBottlesPerYear = numOfProduceableBottlesPerYear;
@@ -43,6 +43,14 @@ public class Producer {
      * */
     public String getProducerUUID() {
         return producerUUID;
+    }
+
+    /*
+     * sets producerUUID
+     * @param producerUUID
+     * */
+    public void setProducerUUID(String producerUUID) {
+        this.producerUUID = producerUUID;
     }
 
     /*
@@ -98,7 +106,7 @@ public class Producer {
      * gets product
      * @return value of the product
      * */
-    public Product getProdukt() {
+    public String getProduct() {
         return product;
     }
 
@@ -106,7 +114,7 @@ public class Producer {
      * sets product
      * @param product
      * */
-    public void setProdukt(Product product) {
+    public void setProduct(String product) {
         this.product = product;
     }
 
