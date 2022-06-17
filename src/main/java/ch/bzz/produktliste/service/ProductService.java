@@ -88,6 +88,43 @@ public class ProductService {
     }
 
     /*
+     * updates a product
+     * @param productUUID
+     * @param name
+     * @param price
+     * @param date
+     * @return Response
+     * */
+    @POST
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateProduct(@FormParam("productUUID") String productUUID,
+                                  @FormParam("name") String name,
+                                  @FormParam("price") BigDecimal price,
+                                  @FormParam("date") String date,
+                                  @FormParam("contents") List<String> contents,
+                                  @FormParam("producer") String producerUUID) {
+        int httpStatus = 200;
+        Product product = DataHandler.readProductByUUID(productUUID);
+        if (product != null) {
+            setAttributes(product,
+                    productUUID,
+                    name,
+                    price,
+                    date,
+                    contents,
+                    producerUUID);
+            DataHandler.updateProduct();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    /*
     * deletes a product, searches by productUUID
     * @param productUUID
     * @return Response

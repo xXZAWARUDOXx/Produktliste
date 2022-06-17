@@ -2,11 +2,12 @@ package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Content;
-import ch.bzz.produktliste.model.Producer;
+import ch.bzz.produktliste.model.Product;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ import java.util.List;
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
  * @version 1.0
+import ch.bzz.produktliste.model.Producer;
  * */
 @Path("content")
 public class ContentService {
@@ -55,11 +57,11 @@ public class ContentService {
     }
 
     /*
-     * creates a product
-     * @param productUUID
+     * creates a content
+     * @param contentUUID
      * @param name
-     * @param price
-     * @param date
+     * @param allergycode
+     * @param product
      * @return Response
      * */
     @PUT
@@ -79,6 +81,39 @@ public class ContentService {
         DataHandler.insertContent(content);
         return Response
                 .status(200)
+                .entity("")
+                .build();
+    }
+
+    /*
+     * updates a content
+     * @param contentUUID
+     * @param name
+     * @param allergycode
+     * @param product
+     * @return Response
+     * */
+    @POST
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateProduct(@FormParam("contentUUID") String contentUUID,
+                                  @FormParam("name") String name,
+                                  @FormParam("allergycode") String allergycode,
+                                  @FormParam("product") String product) {
+        int httpStatus = 200;
+        Content content = DataHandler.readContentByUUID(contentUUID);
+        if (content != null) {
+            setAttributes(content,
+                    contentUUID,
+                    name,
+                    allergycode,
+                    product);
+            DataHandler.updateContent();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
                 .entity("")
                 .build();
     }

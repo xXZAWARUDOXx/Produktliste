@@ -85,6 +85,27 @@ public final class DataHandler {
     }
 
     /*
+     * updates a product
+     */
+    public static void updateProduct() {
+        writeProductJSON();
+    }
+
+    /*
+     * updates a content
+     */
+    public static void updateContent() {
+        writeContentJSON();
+    }
+
+    /*
+     * updates a producer
+     */
+    public static void updateProducer() {
+        writeProducerJSON();
+    }
+
+    /*
      * reads all contents
      * @return list of all contents
      */

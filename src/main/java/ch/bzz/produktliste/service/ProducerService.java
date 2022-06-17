@@ -85,6 +85,41 @@ public class ProducerService {
     }
 
     /*
+     * creates a producer
+     * @param productUUID
+     * @param name
+     * @param price
+     * @param date
+     * @return Response
+     * */
+    @POST
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateProducer(@FormParam("producerUUID") String producerUUID,
+                                  @FormParam("name") String name,
+                                  @FormParam("numOfFactories") int numOfFactories,
+                                  @FormParam("numOfProduceableBottlesPerYear") int numOfProduceableBottlesPerYear,
+                                  @FormParam("product") String product) {
+        int httpStatus = 200;
+        Producer producer = DataHandler.readProducerByUUID(producerUUID);
+        if (producer != null) {
+            setAttributes(producer,
+                    producerUUID,
+                    name,
+                    numOfFactories,
+                    numOfProduceableBottlesPerYear,
+                    product);
+            DataHandler.updateProducer();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    /*
      * deletes a producer, searches by producerUUID
      * @param producerUUID
      * @return Response
