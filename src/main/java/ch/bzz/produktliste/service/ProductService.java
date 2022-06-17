@@ -3,6 +3,8 @@ package ch.bzz.produktliste.service;
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Product;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -40,7 +42,10 @@ public class ProductService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readProduct(@QueryParam("uuid") String productUUID) {
+    public Response readProduct(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("uuid") String productUUID) {
         Product product = DataHandler.readProductByUUID(productUUID);
         if (product != null) {
             return Response
@@ -132,7 +137,10 @@ public class ProductService {
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteProduct(@QueryParam("uuid") String productUUID) {
+    public Response deleteProduct(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("uuid") String productUUID) {
         int status = 200;
         if (!DataHandler.deleteProduct(productUUID)) {
             status = 410;

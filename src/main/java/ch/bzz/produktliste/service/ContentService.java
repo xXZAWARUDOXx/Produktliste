@@ -2,12 +2,12 @@ package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Content;
-import ch.bzz.produktliste.model.Product;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotEmpty;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -42,8 +42,11 @@ public class ContentService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readContent(@QueryParam("uuid") String inhaltUUID) {
-        Content content = DataHandler.readContentByUUID(inhaltUUID);
+    public Response readContent(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("uuid") String contentUUID) {
+        Content content = DataHandler.readContentByUUID(contentUUID);
         if (content != null) {
             return Response
                     .status(200)
@@ -126,7 +129,10 @@ public class ContentService {
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteContent(@QueryParam("uuid") String contentUUID) {
+    public Response deleteContent(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("uuid") String contentUUID) {
         int status = 200;
         if (!DataHandler.deleteContent(contentUUID)) {
             status = 410;

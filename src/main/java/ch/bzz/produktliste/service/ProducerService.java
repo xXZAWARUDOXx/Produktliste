@@ -3,6 +3,8 @@ package ch.bzz.produktliste.service;
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Producer;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -39,7 +41,10 @@ public class ProducerService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readProducer(@QueryParam("uuid") String herstellerUUID) {
+    public Response readProducer(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("uuid") String herstellerUUID) {
         Producer producer = DataHandler.readProducerByUUID(herstellerUUID);
         if (producer != null) {
             return Response
@@ -127,7 +132,10 @@ public class ProducerService {
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteProducer(@QueryParam("uuid") String producerUUID) {
+    public Response deleteProducer(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("uuid") String producerUUID) {
         int status = 200;
         if (!DataHandler.deleteProducer(producerUUID)) {
             status = 410;
