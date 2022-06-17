@@ -2,12 +2,10 @@ package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Producer;
-import ch.bzz.produktliste.model.Product;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -106,11 +104,11 @@ public class ProducerService {
 
     /*
      * sets the attributes for the producer-object
-     * @param producer  the producer-object
-     * @param name  the name
-     * @param price  the price
-     * @param date  the uuid of the publisher
-     * @param price  the price
+     * @param producer the producer-object
+     * @param name the name
+     * @param numOfFactories  the numOfFactories
+     * @param numOfProduceableBottlesPerYear the numOfProduceableBottlesPerYear
+     * @param producerUUID the producerUUID
      * @param producer the producer
      */
     private void setAttributes(

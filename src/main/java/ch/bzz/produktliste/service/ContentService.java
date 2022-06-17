@@ -2,6 +2,7 @@ package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Content;
+import ch.bzz.produktliste.model.Producer;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -54,6 +55,35 @@ public class ContentService {
     }
 
     /*
+     * creates a product
+     * @param productUUID
+     * @param name
+     * @param price
+     * @param date
+     * @return Response
+     * */
+    @PUT
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response createProduct(@FormParam("contentUUID") String contentUUID,
+                                  @FormParam("name") String name,
+                                  @FormParam("allergycode") String allergycode,
+                                  @FormParam("product") String product) {
+        Content content = new Content();
+        setAttributes(content,
+                contentUUID,
+                name,
+                allergycode,
+                product);
+
+        DataHandler.insertContent(content);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+    /*
      * deletes a content, searches by contentUUID
      * @param contentUUID
      * @return Response
@@ -69,5 +99,26 @@ public class ContentService {
         return Response.status(status)
                 .entity("")
                 .build();
+    }
+
+    /*
+     * sets the attributes for the content-object
+     * @param content the content-object
+     * @param name the name
+     * @param contentUUID the contentUUID
+     * @param allergycode the allergycode
+     * @param product the product
+     */
+    private void setAttributes(
+            Content content,
+            String contentUUID,
+            String name,
+            String allergycode,
+            String product
+    ) {
+        content.setContentUUID(contentUUID);
+        content.setName(name);
+        content.setAllergycode(allergycode);
+        content.setProduct(product);
     }
 }

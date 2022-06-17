@@ -15,7 +15,7 @@ public class Content {
     private String name;
     private String allergycode;
     @JsonIgnore
-    private Product product;
+    private String product;
 
     /*
      * default constructor
@@ -28,7 +28,7 @@ public class Content {
      */
     public Content(String name,
                    String allergycode,
-                   Product product) {
+                   String product) {
         this.name = name;
         this.allergycode = allergycode;
         this.product = product;
@@ -86,7 +86,7 @@ public class Content {
      * gets product
      * @return value of the product
      */
-    public Product getProduct() {
+    public String getProduct() {
         return product;
     }
 
@@ -94,7 +94,7 @@ public class Content {
      * sets product
      * @param product
      */
-    public void setProduct(Product product) {
+    public void setProduct(String product) {
         this.product = product;
     }
 
