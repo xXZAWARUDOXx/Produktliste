@@ -1,0 +1,16 @@
+[ {
+  "contentUUID" : "ecd86148-1111-1111-1111-f3f4595965dc",
+  "name" : "SARMS",
+  "allergycode" : "A",
+  "product" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
+}, {
+  "contentUUID" : "ecd86148-2222-2222-3333-f3f4595965dc",
+  "name" : "MK-677",
+  "allergycode" : "C",
+  "product" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
+}, {
+  "contentUUID" : "ecd86148-4444-9999-9999-f3f4595965dc",
+  "name" : "MK-677",
+  "allergycode" : "A",
+  "product" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
+} ]

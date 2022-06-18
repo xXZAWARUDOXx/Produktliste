@@ -1,0 +1,19 @@
+[ {
+  "producerUUID" : "ecd86148-5341-9999-81ed-f3f4595965dc",
+  "name" : "testen",
+  "numOfFactories" : 599,
+  "numOfProduceableBottlesPerYear" : 1919,
+  "product" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
+}, {
+  "producerUUID" : "ecd86148-9999-43c6-81ed-f3f4595965dc",
+  "name" : "GOLDSGYM",
+  "numOfFactories" : 999,
+  "numOfProduceableBottlesPerYear" : 100000000,
+  "product" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
+}, {
+  "producerUUID" : "ecd86148-1111-69e9-9999-f3f4595965dc",
+  "name" : "Orbit",
+  "numOfFactories" : 500,
+  "numOfProduceableBottlesPerYear" : 1919,
+  "product" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
+} ]
