@@ -1,0 +1,13 @@
+[ {
+        "productUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+        "name": "Test",
+        "price": "999",
+        "date": "2022-06-16"
+    },
+    {
+        "productUUID": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+        "name": "Test",
+        "price": "999",
+        "date": "2022-06-16"
+    }
+]

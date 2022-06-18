@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "0.1: Testservice",
+			"name": "0.1: testservice",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -56,7 +56,7 @@
 			"response": []
 		},
 		{
-			"name": "1.0 alle Produkte auflisten",
+			"name": "1.0 list all products",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -89,7 +89,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/produkt/liste",
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/list",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -98,15 +98,15 @@
 					"path": [
 						"Produktliste-v1.0-PRODUKTLISTE",
 						"resource",
-						"produkt",
-						"liste"
+						"product",
+						"list"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "1.1 Produkt nach UUID auflisten",
+			"name": "1.1 list product by UUID",
 			"event": [
 				{
 					"listen": "test",
@@ -129,7 +129,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/produkt/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -138,7 +138,7 @@
 					"path": [
 						"Produktliste-v1.0-PRODUKTLISTE",
 						"resource",
-						"produkt",
+						"product",
 						"read"
 					],
 					"query": [
@@ -152,7 +152,7 @@
 			"response": []
 		},
 		{
-			"name": "1.2 Produkt mit falscher UUID auflisten",
+			"name": "1.2 list product with wrong UUID (not existant)",
 			"event": [
 				{
 					"listen": "test",
@@ -175,7 +175,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/produkt/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+					"raw": "localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
 					"host": [
 						"localhost"
 					],
@@ -183,7 +183,7 @@
 					"path": [
 						"Produktliste-v1.0-PRODUKTLISTE",
 						"resource",
-						"produkt",
+						"product",
 						"read"
 					],
 					"query": [
@@ -197,7 +197,1870 @@
 			"response": []
 		},
 		{
-			"name": "2.0 alle Inhalte auflisten",
+			"name": "1.3 list product with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "935164c5-f80a-4ef2-b73f-86972d7580e7",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-xyz-43c6-81ed-f3f4595965dc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.4 create product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "046ffc10-ede2-41de-8c81-1c77d026aa3c",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5656-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitesti",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.5 create product with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4aed9259-f4b7-42c6-bf01-5dd5adb60803",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-xyz-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitesti",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.6 create product (name to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74b6ef2a-dd16-4943-9cd4-c8adfbf1b7ae",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5656-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "t",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.7 create product (name to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe544209-6971-4ad7-8323-0e972ba27b96",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5656-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.8 create product (price to low)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7db5e26e-8763-476a-a017-237707f65e44",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5656-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitesti",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "0.04",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.9 create product (price to high)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e67157a9-0ac4-441b-ab97-34e289953057",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5656-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitesti",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.10 create product (date to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2845e09c-0f6b-489d-8e27-5ef4c0cb8a0d",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5656-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitesti",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-1",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.11 create product (date to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52865672-7fce-4000-87e5-24ec8d3577ca",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5656-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitesti",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-177",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.12 create product with wrong contentUUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3fceb7a8-53a6-40e2-8325-b6fdbea47a43",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5656-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitesti",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-177",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-xyz-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-9999-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.13 create product with wrong producerUUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74b2a226-9bc3-4061-adfb-446372f8ca70",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5656-43c6-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitesti",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-177",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.14 update product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "911fa107-2467-41f3-af7b-db626c0e8d71",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "mk345",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "560",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.15 update product with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e5359a79-d774-4354-aa6c-b5bcd3db0a00",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "mk345",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "560",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.16 update product with wrong UUID (not existant)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5a23bcd8-6c6a-4d2f-96f5-9e17a8f8497b",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-1234-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "mk345",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "560",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.17 update product (name to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "31192790-e260-4494-9548-b1427ad0e268",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "560",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.18 update product (name to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "942a8ac2-e437-4fd5-b0e0-a05df21d2323",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "560",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.19 update product (price to low)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45faad5d-1ff3-4456-aeb6-6044cd8f4c50",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "awertzr",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "0.04",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.20 update product (price to high)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "56a0e050-5c7d-41bd-abda-f729b5427430",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "aetrrt",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "690.96",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.21 update product (date to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "02ee777a-044a-4c7a-85c3-1482304464fe",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "aetrrt",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "690.95",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-1",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.22 update product (date to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f8ef42c2-5dcc-46b2-9ec5-e09d7c2e47c6",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "aetrrt",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "690.95",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-177",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.23 update product wrong contentUUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d49d14ed-ab2f-42ca-b033-44d9ba66485f",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "aetrrt",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "690.95",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-xyz-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.24 update product wrong productUUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "af12959a-35b7-4d81-aa5a-7b4d7af93edf",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "aetrrt",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "690.95",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2022-06-17",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-xyz-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "contents",
+							"value": "ecd86148-1111-1111-1111-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "producer",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.25 delete product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51d3740f-1f0f-4cea-9489-86e30b69c465",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.26 delete product with wrong UUID (not existant)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2764707f-afe2-4cce-a167-f2e33bd51090",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5050-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.27 delete product with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9595222c-208e-4c23-b8cc-abb55ddc5e7f",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-yxz-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"product",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-yxz-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.0 list all contents",
 			"event": [
 				{
 					"listen": "test",
@@ -220,7 +2083,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/inhalt/liste",
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/list",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -229,15 +2092,15 @@
 					"path": [
 						"Produktliste-v1.0-PRODUKTLISTE",
 						"resource",
-						"inhalt",
-						"liste"
+						"content",
+						"list"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "2.1 Inhalt nach UUID auflisten",
+			"name": "2.1 list content by UUID",
 			"event": [
 				{
 					"listen": "test",
@@ -260,7 +2123,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/inhalt/read?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -269,7 +2132,7 @@
 					"path": [
 						"Produktliste-v1.0-PRODUKTLISTE",
 						"resource",
-						"inhalt",
+						"content",
 						"read"
 					],
 					"query": [
@@ -283,7 +2146,53 @@
 			"response": []
 		},
 		{
-			"name": "2.2 Inhalt mit falscher UUID auflisten",
+			"name": "2.2 list content with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8642eeab-8456-48c5-845a-1deea2bd695d",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-xyz-9999-9999-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-xyz-9999-9999-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3 list content with wrong UUID (not existant)",
 			"event": [
 				{
 					"listen": "test",
@@ -306,7 +2215,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/inhalt/read?uuid=ecd86148-5050-9999-9999-f3f4595965dc",
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-5050-9999-9999-f3f4595965dc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -315,7 +2224,7 @@
 					"path": [
 						"Produktliste-v1.0-PRODUKTLISTE",
 						"resource",
-						"inhalt",
+						"content",
 						"read"
 					],
 					"query": [
@@ -329,7 +2238,1120 @@
 			"response": []
 		},
 		{
-			"name": "3.0 alle Hersteller auflisten",
+			"name": "2.4 create content",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c45085e9-5805-44dd-b40c-e536b39985ba",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-4444-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-677",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "A",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.5 create content with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "539f0707-51a0-4f50-b2b1-646f83a882ce",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-xyz-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-677",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "A",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.6 create content (name to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "29ac8704-c457-4b2d-a9f2-c39247d83664",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-4444-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Ma",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "A",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.7 create content (name to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "29191580-24d7-4895-bcb5-bfd146396285",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-4444-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-67MK-67MK-67MK-67MK-67MK-67MK-67MK-67i",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "A",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.8 create content (allergycode to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0e14ab6-7540-4a14-814c-28188ee3d2fd",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-4444-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "K-67MK-67MK-67MK-67MK-67MK-67MK-67MK-67i",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.9 create content (allergycode to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0a3afc24-9068-4f65-9e3e-86431b3b13aa",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-4444-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "M-67MK-67MK-67MK-67MK-67MK-67MK-67MK-67i",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "Aa",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.10 create content with wrong productUUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4c1884ce-09f2-4776-be70-0743e62746e7",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-4444-9999-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "M-67MK-67MK-67MK-67MK-67MK-67MK-67MK-67i",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "A",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.11 update content",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f3967800-2b1b-43b4-b330-4b46e4c2a354",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-2222-2222-3333-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-677",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "C",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.12 update content with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d62388d7-1e4d-4f9a-aac1-053e14d544d4",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-xyz-2222-3333-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-677",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "C",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.13 update content with wrong UUID (not existant)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52e0a072-ed3b-42bf-adc5-a458fb7fa08e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-5341-43c6-8169-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-677",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "C",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.14 update content (name to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "caeaf380-e9f1-4fe5-80bd-d7bfa4b7470c",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-5341-43c6-8169-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "C",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.15 update content (name to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c9d89d78-cff8-4d6d-bba3-f2e4a6a5f991",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-5341-43c6-8169-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-25MK-25MK-25MK-25MK-25MK-25MK-25MK-252",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "C",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.16 update content (allergycode to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfd924ab-a9b4-4685-bc2d-ab944602652e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-5341-43c6-8169-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-2MK-25MK-25MK-25MK-25MK-25MK-25MK-252",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.17 update content (allergycode to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b329b16-1ab9-4f3c-9161-b41ebb4c398b",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-5341-43c6-8169-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-2MK-25MK-25MK-25MK-25MK-25MK-25MK-252",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "as",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.18 update content with wrong productUUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9190f131-ea22-4b25-ae14-835949e0615e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contentUUID",
+							"value": "ecd86148-5341-43c6-8169-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "MK-2MK-25MK-25MK-25MK-25MK-25MK-25MK-252",
+							"type": "text"
+						},
+						{
+							"key": "allergycode",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.19 delete content",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c95ca21-d792-4bfe-9741-b7b10cf1ff57",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-9999-9999-9999-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.20 delete content with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "185a2262-3da6-435f-8f4f-6a5f36e47dd0",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-xyz-9999-9999-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-xyz-9999-9999-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.21 delete content with wrong UUID (not existant)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d02cbf3-a386-4fae-b540-0419a28ccf02",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-9969-9999-9999-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"content",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-9969-9999-9999-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.0 list all producers",
 			"event": [
 				{
 					"listen": "test",
@@ -352,7 +3374,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/hersteller/liste",
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/list",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -361,15 +3383,15 @@
 					"path": [
 						"Produktliste-v1.0-PRODUKTLISTE",
 						"resource",
-						"hersteller",
-						"liste"
+						"producer",
+						"list"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "3.1 Hersteller nach UUID auflisten",
+			"name": "3.1 list producer by UUID",
 			"event": [
 				{
 					"listen": "test",
@@ -392,7 +3414,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/hersteller/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-5341-9999-81ed-f3f4595965dc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -401,13 +3423,13 @@
 					"path": [
 						"Produktliste-v1.0-PRODUKTLISTE",
 						"resource",
-						"hersteller",
+						"producer",
 						"read"
 					],
 					"query": [
 						{
 							"key": "uuid",
-							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+							"value": "ecd86148-5341-9999-81ed-f3f4595965dc"
 						}
 					]
 				}
@@ -415,12 +3437,58 @@
 			"response": []
 		},
 		{
-			"name": "3.2 Hersteller mit falscher UUID auflisten",
+			"name": "3.2 list producer with wrong UUID (formal)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "65421de6-02f5-48e1-a900-dec8d176aaf0",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-xyz-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 list producer with wrong UUID (not existant)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0ed4f84c-13dd-4583-be52-c83810c2081b",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(404);",
@@ -438,7 +3506,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/hersteller/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -447,13 +3515,1551 @@
 					"path": [
 						"Produktliste-v1.0-PRODUKTLISTE",
 						"resource",
-						"hersteller",
+						"producer",
 						"read"
 					],
 					"query": [
 						{
 							"key": "uuid",
 							"value": "ecd86148-5050-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4 create producer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fd0f72b-fd5a-4866-ad64-ad1b5e8490ba",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-1111-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Orbit",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "500",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.5 create producer with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b4997ee-187c-4643-8d8e-045fb3d805f5",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-xyz-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Orbit",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "500",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.6 create producer (name to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a60045b-238f-4df6-a6db-c81cb32ab83a",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-1111-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "o",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "500",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.7 create producer (name to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b22ab15c-5209-48da-ba7a-aa718ec1eb6e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-1111-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "500",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.8 create producer (numOfFactories to low)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b1037f3e-b7f8-4348-84c6-0d52f2126ab4",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-1111-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.9 create producer (numOfFactories to high)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ddc5eea8-41b0-4448-9318-5e074d5e82b0",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-1111-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.10 create producer (numOfProduceableBottlesPerYear to low)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2f469a68-972b-43b2-a60f-d5bd41484b96",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-1111-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "600",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.11 create producer (numOfProduceableBottlesPerYear to high)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e5ecf02b-9023-4754-8ca5-fa257126ecf3",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-1111-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "600",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1000000001",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.12 create producer (numOfProduceableBottlesPerYear to high)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "29380210-51c0-4857-8bea-813252f8222d",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-1111-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "600",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1000000001",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.13 create producer with wrong productUUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f171ca3b-646e-4eae-97cd-6cd705375327",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-1111-69e9-9999-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "600",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1000000000",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.14 update producers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f148d6b0-a409-4b91-b39c-93e8b4eab016",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-5341-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testen",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "599",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.15 update producers with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e839ef6a-f8bc-4767-af26-e37ba7ece02a",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-xyz-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testen",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "599",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.16 update producers with wrong UUID (not existant)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "882f95d3-1a93-4e50-a1fb-2f2fbafbda6a",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-6969-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testen",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "599",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.17 update producers (name to short)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "390ff967-a873-436c-b5fa-63be7a8bc28e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-5341-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "599",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.18 update producers (name to long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f980edb9-f768-489f-993e-56736801e903",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-5341-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "599",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.19 update producers (numOfFactories to low)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51f80688-12fb-4b77-bf2b-dfe1774ae4f1",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-5341-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.20 update producers (numOfFactories to high)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df7f9634-4c3e-47ee-a702-f6aba11c81a9",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-5341-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1919",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.21 update producers (numOfProduceableBottlesPerYear to low)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0a9b25c-5862-469d-b257-3b1fc557970a",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-5341-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "899",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.22 update producers (numOfProduceableBottlesPerYear to high)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "47efd56d-76b0-43fb-88e4-5b98d70ab343",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-5341-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "899",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1000000001",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.23 update producers with wrong productUUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "faeaf0c3-f560-41e3-a165-5a775c24050a",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "producerUUID",
+							"value": "ecd86148-5341-9999-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testitestitestitestitestitestitestitestii",
+							"type": "text"
+						},
+						{
+							"key": "numOfFactories",
+							"value": "899",
+							"type": "text"
+						},
+						{
+							"key": "numOfProduceableBottlesPerYear",
+							"value": "1000000001",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.24 delete producer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a9d365a-ea7c-4cf7-9082-27a40aee7a1e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.25 delete producer with wrong UUID (formal)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b340a55-ee45-4fe5-8ffb-6355531fbd61",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/delete?uuid=ecd86148-xyz-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-xyz-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.26 delete producer with wrong UUID (not existant)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "37accf6c-9a9d-49e1-953b-f0c2f92a1155",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is undefined\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/delete?uuid=ecd86148-9606-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produktliste-v1.0-PRODUKTLISTE",
+						"resource",
+						"producer",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-9606-43c6-81ed-f3f4595965dc"
 						}
 					]
 				}
