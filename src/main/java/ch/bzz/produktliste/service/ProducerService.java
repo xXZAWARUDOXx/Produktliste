@@ -79,6 +79,7 @@ public class ProducerService {
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
                                   String producerUUID,
                                   @FormParam("product")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
                                   String product) {
         producer.setProducerUUID(producerUUID);
         producer.setProduct(product);
@@ -108,6 +109,7 @@ public class ProducerService {
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
                                   String producerUUID,
                                   @FormParam("product")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
                                   String product) {
         int httpStatus = 200;
         Producer oldProducer = DataHandler.readProducerByUUID(producerUUID);
