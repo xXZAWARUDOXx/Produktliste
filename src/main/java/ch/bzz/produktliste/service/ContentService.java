@@ -67,7 +67,7 @@ public class ContentService {
      * @param product
      * @return Response
      * */
-    @PUT
+    @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createProduct(@FormParam("contentUUID") String contentUUID,
@@ -96,7 +96,7 @@ public class ContentService {
      * @param product
      * @return Response
      * */
-    @POST
+    @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateProduct(@FormParam("contentUUID") String contentUUID,

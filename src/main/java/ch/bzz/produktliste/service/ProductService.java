@@ -1,8 +1,10 @@
 package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
+import ch.bzz.produktliste.model.Content;
 import ch.bzz.produktliste.model.Product;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
@@ -67,24 +69,17 @@ public class ProductService {
      * @param date
      * @return Response
      * */
-    @PUT
+    @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response createProduct(@FormParam("productUUID") String productUUID,
-                                  @FormParam("name") String name,
-                                  @FormParam("price") BigDecimal price,
-                                  @FormParam("date") String date,
-                                  @FormParam("contents") List<String> contents,
+    public Response createProduct(
+                                  @Valid @BeanParam Product product,
+                                  @FormParam("productUUID")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                  String productUUID,
                                   @FormParam("producer") String producerUUID) {
-        Product product = new Product();
-        setAttributes(product,
-                      productUUID,
-                      name,
-                      price,
-                      date,
-                      contents,
-                      producerUUID);
-
+        product.setProductUUID(productUUID);
+        product.setProducerUUID(producerUUID);
         DataHandler.insertProduct(product);
         return Response
                 .status(200)
@@ -100,24 +95,24 @@ public class ProductService {
      * @param date
      * @return Response
      * */
-    @POST
+    @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateProduct(@FormParam("productUUID") String productUUID,
-                                  @FormParam("name") String name,
-                                  @FormParam("price") BigDecimal price,
-                                  @FormParam("date") String date,
-                                  @FormParam("contents") List<String> contents,
+    public Response updateProduct(
+                                  @Valid @BeanParam Product product,
+                                  @FormParam("productUUID")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                  String productUUID,
                                   @FormParam("producer") String producerUUID) {
         int httpStatus = 200;
-        Product product = DataHandler.readProductByUUID(productUUID);
-        if (product != null) {
-            setAttributes(product,
+        Product oldProduct = DataHandler.readProductByUUID(productUUID);
+        if (oldProduct != null) {
+            setAttributes(oldProduct,
                     productUUID,
-                    name,
-                    price,
-                    date,
-                    contents,
+                    product.getName(),
+                    product.getPrice(),
+                    product.getDate(),
+                    product.getContents(),
                     producerUUID);
             DataHandler.updateProduct();
         } else {
@@ -165,14 +160,14 @@ public class ProductService {
             String name,
             BigDecimal price,
             String date,
-            List<String> contents,
+            List<Content> contents,
             String producer
     ) {
         product.setProductUUID(productUUID);
         product.setName(name);
         product.setPrice(price);
         product.setDate(date);
-        product.setContentsUUID(contents);
+        product.setContents(contents);
         product.setProducerUUID(producer);
     }
 }

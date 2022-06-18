@@ -51,13 +51,12 @@ public final class DataHandler {
      * @return the producer (null=not found)
      */
     public static Producer readProducerByUUID(String producerUUID) {
-        Producer producer = null;
-        for (Producer h : getProducerList()) {
-            if (h.equals(producerUUID)) {
-                producer = h;
+        for (Producer producer : getProducerList()) {
+            if (producer.getProducerUUID().equals(producerUUID)) {
+                return producer;
             }
         }
-        return producer;
+        return null;
     }
 
     /*
@@ -119,13 +118,12 @@ public final class DataHandler {
      * @return the content (null=not found)
      */
     public static Content readContentByUUID(String contentUUID) {
-        Content content = null;
-        for (Content i : getContentList()) {
-            if (i.equals(contentUUID)) {
-                content = i;
+        for (Content content : getContentList()) {
+            if (content.getContentUUID().equals(contentUUID)) {
+                return content;
             }
         }
-        return content;
+        return null;
     }
 
     /*
@@ -180,8 +178,8 @@ public final class DataHandler {
                     Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            Content[] inhalte = objectMapper.readValue(jsonData, Content[].class);
-            for (Content content : inhalte) {
+            Content[] contents = objectMapper.readValue(jsonData, Content[].class);
+            for (Content content : contents) {
                 getContentList().add(content);
             }
         } catch (IOException ex) {
@@ -199,8 +197,8 @@ public final class DataHandler {
                     Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            Product[] producers = objectMapper.readValue(jsonData, Product[].class);
-            for (Product product : producers) {
+            Product[] products = objectMapper.readValue(jsonData, Product[].class);
+            for (Product product : products) {
                 getProductList().add(product);
             }
         } catch (IOException ex) {

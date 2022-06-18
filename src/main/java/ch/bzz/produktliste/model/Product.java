@@ -2,8 +2,14 @@ package ch.bzz.produktliste.model;
 
 import ch.bzz.produktliste.Helper;
 import ch.bzz.produktliste.data.DataHandler;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +22,19 @@ import java.util.List;
  * @verison 1.0
  */
 public class Product {
-    private String productUUID = Helper.createUUID();
+    private String productUUID;
+    @FormParam("name")
+    @Size(min = 4, max = 40)
     private String name;
+    @FormParam("price")
+    @DecimalMax(value = "690.95")
+    @DecimalMin(value = "0.05")
     private BigDecimal price;
+    @FormParam("date")
+    @Size(min = 10, max = 10)
     private String date;
     private List<Content> contents;
+    @JsonIgnore
     private Producer producer;
 
     /*
@@ -154,6 +168,7 @@ public class Product {
      * @param contents
      */
     @JsonProperty("content")
+    @FormParam("contents")
     public void setContentsUUID(List<String> contents) {
         setContents(new ArrayList<>());
         for (String s : contents) {

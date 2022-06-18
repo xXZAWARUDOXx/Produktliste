@@ -3,6 +3,8 @@ package ch.bzz.produktliste.model;
 import ch.bzz.produktliste.Helper;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.ws.rs.FormParam;
+
 /**
  * a Content as the part of the Productlist
  *
