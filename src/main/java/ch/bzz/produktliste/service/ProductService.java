@@ -73,11 +73,15 @@ public class ProductService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createProduct(
-                                  @Valid @BeanParam Product product,
+                                  @Valid
+                                  @BeanParam
+                                  Product product,
                                   @FormParam("productUUID")
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
                                   String productUUID,
-                                  @FormParam("producer") String producerUUID) {
+                                  @FormParam("producer")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                  String producerUUID) {
         product.setProductUUID(productUUID);
         product.setProducerUUID(producerUUID);
         DataHandler.insertProduct(product);
@@ -99,11 +103,15 @@ public class ProductService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateProduct(
-                                  @Valid @BeanParam Product product,
+                                  @Valid
+                                  @BeanParam
+                                  Product product,
                                   @FormParam("productUUID")
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
                                   String productUUID,
-                                  @FormParam("producer") String producerUUID) {
+                                  @FormParam("producer")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                  String producerUUID) {
         int httpStatus = 200;
         Product oldProduct = DataHandler.readProductByUUID(productUUID);
         if (oldProduct != null) {

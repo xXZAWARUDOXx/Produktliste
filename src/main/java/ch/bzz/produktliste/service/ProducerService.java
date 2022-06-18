@@ -3,6 +3,7 @@ package ch.bzz.produktliste.service;
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Producer;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
@@ -44,7 +45,8 @@ public class ProducerService {
     public Response readProducer(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("uuid") String herstellerUUID) {
+            @QueryParam("uuid")
+            String herstellerUUID) {
         Producer producer = DataHandler.readProducerByUUID(herstellerUUID);
         if (producer != null) {
             return Response
@@ -69,19 +71,17 @@ public class ProducerService {
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response createProduct(@FormParam("producerUUID") String producerUUID,
-                                  @FormParam("name") String name,
-                                  @FormParam("numOfFactories") int numOfFactories,
-                                  @FormParam("numOfProduceableBottlesPerYear") int numOfProduceableBottlesPerYear,
-                                  @FormParam("product") String product) {
-        Producer producer = new Producer();
-        setAttributes(producer,
-                      producerUUID,
-                      name,
-                      numOfFactories,
-                      numOfProduceableBottlesPerYear,
-                      product);
-
+    public Response createProduct(
+                                  @Valid
+                                  @BeanParam
+                                  Producer producer,
+                                  @FormParam("producerUUID")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                  String producerUUID,
+                                  @FormParam("product")
+                                  String product) {
+        producer.setProducerUUID(producerUUID);
+        producer.setProduct(product);
         DataHandler.insertProducer(producer);
         return Response
                 .status(200)
@@ -100,19 +100,23 @@ public class ProducerService {
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateProducer(@FormParam("producerUUID") String producerUUID,
-                                  @FormParam("name") String name,
-                                  @FormParam("numOfFactories") int numOfFactories,
-                                  @FormParam("numOfProduceableBottlesPerYear") int numOfProduceableBottlesPerYear,
-                                  @FormParam("product") String product) {
+    public Response updateProducer(
+                                  @Valid
+                                  @BeanParam
+                                  Producer producer,
+                                  @FormParam("producerUUID")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                  String producerUUID,
+                                  @FormParam("product")
+                                  String product) {
         int httpStatus = 200;
-        Producer producer = DataHandler.readProducerByUUID(producerUUID);
-        if (producer != null) {
-            setAttributes(producer,
+        Producer oldProducer = DataHandler.readProducerByUUID(producerUUID);
+        if (oldProducer != null) {
+            setAttributes(oldProducer,
                     producerUUID,
-                    name,
-                    numOfFactories,
-                    numOfProduceableBottlesPerYear,
+                    producer.getName(),
+                    producer.getNumOfFactories(),
+                    producer.getNumOfProduceableBottlesPerYear(),
                     product);
             DataHandler.updateProducer();
         } else {

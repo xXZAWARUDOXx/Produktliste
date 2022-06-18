@@ -1,8 +1,10 @@
 package ch.bzz.produktliste.model;
 
 import ch.bzz.produktliste.Helper;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
 
 /**
@@ -14,9 +16,16 @@ import javax.ws.rs.FormParam;
  */
 public class Content {
     private String contentUUID = Helper.createUUID();
+    @FormParam("name")
+    @NotEmpty
+    @Size(min = 4, max = 40)
     private String name;
+    @FormParam("allergycode")
+    @NotEmpty
+    @Size(min = 1, max = 1)
     private String allergycode;
-    @JsonIgnore
+    @FormParam("product")
+    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String product;
 
     /*

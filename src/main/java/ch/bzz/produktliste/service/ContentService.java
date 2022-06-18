@@ -3,6 +3,7 @@ package ch.bzz.produktliste.service;
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Content;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.NotEmpty;
 import javax.ws.rs.*;
@@ -70,17 +71,18 @@ public class ContentService {
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response createProduct(@FormParam("contentUUID") String contentUUID,
-                                  @FormParam("name") String name,
-                                  @FormParam("allergycode") String allergycode,
-                                  @FormParam("product") String product) {
-        Content content = new Content();
-        setAttributes(content,
-                contentUUID,
-                name,
-                allergycode,
-                product);
-
+    public Response createProduct(
+                                  @Valid
+                                  @BeanParam
+                                  Content content,
+                                  @FormParam("contentUUID")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                  String contentUUID,
+                                  @FormParam("product")
+                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                  String product) {
+        content.setContentUUID(contentUUID);
+        content.setProduct(product);
         DataHandler.insertContent(content);
         return Response
                 .status(200)
@@ -99,17 +101,21 @@ public class ContentService {
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateProduct(@FormParam("contentUUID") String contentUUID,
-                                  @FormParam("name") String name,
-                                  @FormParam("allergycode") String allergycode,
-                                  @FormParam("product") String product) {
+    public Response updateProduct(
+                                  @Valid
+                                  @BeanParam
+                                  Content content,
+                                  @FormParam("contentUUID")
+                                  String contentUUID,
+                                  @FormParam("product")
+                                  String product) {
         int httpStatus = 200;
-        Content content = DataHandler.readContentByUUID(contentUUID);
-        if (content != null) {
-            setAttributes(content,
+        Content oldContent = DataHandler.readContentByUUID(contentUUID);
+        if (oldContent != null) {
+            setAttributes(oldContent,
                     contentUUID,
-                    name,
-                    allergycode,
+                    content.getName(),
+                    content.getAllergycode(),
                     product);
             DataHandler.updateContent();
         } else {

@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
 import java.math.BigDecimal;
@@ -22,7 +21,7 @@ import java.util.List;
  * @verison 1.0
  */
 public class Product {
-    private String productUUID;
+    private String productUUID = Helper.createUUID();
     @FormParam("name")
     @Size(min = 4, max = 40)
     private String name;

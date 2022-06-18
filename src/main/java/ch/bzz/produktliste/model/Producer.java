@@ -1,10 +1,12 @@
 package ch.bzz.produktliste.model;
 
 import ch.bzz.produktliste.Helper;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.validation.constraints.*;
+import javax.ws.rs.FormParam;
 
 /**
- * ein Hersteller in der Produktliste
+ * a producer in the productList
  *
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
@@ -12,10 +14,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 public class Producer {
     private String producerUUID = Helper.createUUID();
+    @FormParam("name")
+    @Size(min = 4, max = 40)
+    @NotEmpty
     private String name;
+    @FormParam("numOfFactories")
+    @NotNull
+    @Min(value = 0)
+    @Max(value = 900)
     private int numOfFactories;
+    @FormParam("numOfProduceableBottlesPerYear")
+    @NotNull
+    @Min(value = 1)
+    @Max(value = 1000000000)
     private int numOfProduceableBottlesPerYear;
-    @JsonIgnore
+    @FormParam("product")
+    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String product;
 
     /*
