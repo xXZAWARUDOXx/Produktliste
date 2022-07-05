@@ -1,6 +1,6 @@
 package ch.bzz.produktliste.model;
 
-import ch.bzz.produktliste.Helper;
+import ch.bzz.produktliste.helper.Helper;
 
 import javax.validation.constraints.*;
 import javax.ws.rs.FormParam;
