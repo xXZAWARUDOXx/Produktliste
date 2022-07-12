@@ -90,22 +90,6 @@ public class User {
     }
 
     /*
-     * loggs the user in
-     * @return void
-     * */
-    public void logon() {
-
-    }
-
-    /*
-     * loggs the user out
-     * @return void
-     * */
-    public void logoff() {
-
-    }
-
-    /*
      * prints the user
      * @return user as string
      * */

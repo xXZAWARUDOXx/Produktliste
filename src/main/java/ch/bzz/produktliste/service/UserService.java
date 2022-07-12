@@ -2,6 +2,7 @@ package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.UserData;
 import ch.bzz.produktliste.model.User;
+import ch.bzz.produktliste.util.AES256;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -29,7 +30,7 @@ public class UserService {
     }
         NewCookie cookie = new NewCookie(
                 "userRole",
-                user.getRole(),
+                AES256.encrypt(user.getRole()),
                 "/",
                 "",             // zb gwhalin.ch
                 "Login-Cookie",

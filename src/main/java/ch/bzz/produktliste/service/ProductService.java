@@ -3,6 +3,7 @@ package ch.bzz.produktliste.service;
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Content;
 import ch.bzz.produktliste.model.Product;
+import ch.bzz.produktliste.util.AES256;
 import ch.bzz.produktliste.util.Helper;
 
 import javax.validation.Valid;
@@ -34,7 +35,7 @@ public class ProductService {
             @CookieParam("userRole") String userRole) {
         List<Product> productListe = null;
         int httpStatus = 200;
-        if (userRole == null || userRole.equals("guest")) {
+        if (userRole == null || AES256.decrypt(userRole).equals("guest")) {
             httpStatus = 403;
         } else {
             productListe = DataHandler.readAllProducts();
@@ -59,7 +60,7 @@ public class ProductService {
             @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Product product = DataHandler.readProductByUUID(productUUID);
-        if (userRole == null || userRole.equals("guest")) {
+        if (userRole == null || AES256.decrypt(userRole).equals("guest")) {
             httpStatus = 403;
             product = null;
         } else if(product == null) {
@@ -94,7 +95,7 @@ public class ProductService {
                                   String producerUUID,
                                   @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
-        if(userRole == null || !userRole.equals("admin")) {
+        if(userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else {
             product.setProductUUID(Helper.createUUID());
@@ -130,7 +131,7 @@ public class ProductService {
                                   @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Product oldProduct = DataHandler.readProductByUUID(productUUID);
-        if (userRole == null || !userRole.equals("admin")) {
+        if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else if (oldProduct != null) {
             setAttributes(oldProduct,
@@ -164,7 +165,7 @@ public class ProductService {
             @QueryParam("uuid") String productUUID,
             @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
-        if (userRole == null || !userRole.equals("admin")) {
+        if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else {
             if (!DataHandler.deleteProduct(productUUID)) {

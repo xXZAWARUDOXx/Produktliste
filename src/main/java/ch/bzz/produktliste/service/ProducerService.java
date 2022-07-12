@@ -2,6 +2,7 @@ package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Producer;
+import ch.bzz.produktliste.util.AES256;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -31,7 +32,7 @@ public class ProducerService {
             @CookieParam("userRole") String userRole) {
         List<Producer> producerListe = null;
         int httpStatus = 200;
-        if (userRole == null || userRole.equals("guest")) {
+        if (userRole == null || AES256.decrypt(userRole).equals("guest")) {
             httpStatus = 403;
         } else {
             producerListe = DataHandler.readAllProducer();
@@ -57,7 +58,7 @@ public class ProducerService {
             @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Producer producer = DataHandler.readProducerByUUID(herstellerUUID);
-        if (userRole == null || userRole.equals("guest")) {
+        if (userRole == null || AES256.decrypt(userRole).equals("guest")) {
             httpStatus = 403;
             producer = null;
         } else if (producer == null) {
@@ -92,7 +93,7 @@ public class ProducerService {
                                   String product,
                                   @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
-        if (userRole == null || !userRole.equals("admin")) {
+        if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else {
             producer.setProducerUUID(producerUUID);
@@ -129,7 +130,7 @@ public class ProducerService {
                                   @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Producer oldProducer = DataHandler.readProducerByUUID(producerUUID);
-        if (userRole == null || !userRole.equals("admin")) {
+        if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else if (oldProducer != null) {
             setAttributes(oldProducer,
@@ -162,7 +163,7 @@ public class ProducerService {
             @QueryParam("uuid") String producerUUID,
             @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
-        if (userRole == null || !userRole.equals("admin")) {
+        if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else {
             if (!DataHandler.deleteProducer(producerUUID)) {

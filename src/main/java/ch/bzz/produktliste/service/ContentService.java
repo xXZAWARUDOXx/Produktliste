@@ -2,6 +2,8 @@ package ch.bzz.produktliste.service;
 
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Content;
+import ch.bzz.produktliste.util.AES256;
+import sun.security.krb5.internal.crypto.Aes256;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
@@ -17,7 +19,6 @@ import java.util.List;
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
  * @version 1.0
-import ch.bzz.produktliste.model.Producer;
  * */
 @Path("content")
 public class ContentService {
@@ -33,7 +34,7 @@ public class ContentService {
     ) {
         List<Content> contentListe = null;
         int httpStatus = 200;
-        if (userRole == null || userRole.equals("guest")) {
+        if (userRole == null || AES256.decrypt(userRole).equals("guest")) {
             httpStatus = 403;
         } else {
             contentListe = DataHandler.readAllContents();
@@ -58,7 +59,7 @@ public class ContentService {
             @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Content content = DataHandler.readContentByUUID(contentUUID);
-        if (userRole == null || userRole.equals("guest")) {
+        if (userRole == null || AES256.decrypt(userRole).equals("guest")) {
             httpStatus = 403;
             content = null;
         } else if (content == null) {
@@ -93,7 +94,7 @@ public class ContentService {
                                   String product,
                                   @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
-        if (userRole == null || !userRole.equals("admin")) {
+        if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else {
             content.setContentUUID(contentUUID);
@@ -130,7 +131,7 @@ public class ContentService {
                                   @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Content oldContent = DataHandler.readContentByUUID(contentUUID);
-        if (userRole == null || !userRole.equals("admin")) {
+        if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else if (oldContent != null) {
             setAttributes(oldContent,
@@ -162,7 +163,7 @@ public class ContentService {
             @QueryParam("uuid") String contentUUID,
             @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
-        if (userRole == null || !userRole.equals("admin")) {
+        if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else {
             if (!DataHandler.deleteContent(contentUUID)) {
