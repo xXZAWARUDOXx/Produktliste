@@ -1,7 +1,7 @@
 package ch.bzz.produktliste.model;
 
-import ch.bzz.produktliste.util.Helper;
 import ch.bzz.produktliste.data.DataHandler;
+import ch.bzz.produktliste.util.Helper;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

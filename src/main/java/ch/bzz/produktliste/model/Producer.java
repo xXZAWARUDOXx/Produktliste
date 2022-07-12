@@ -33,8 +33,8 @@ public class Producer {
     private String product;
 
     /*
-    * default constructor
-    * */
+     * default constructor
+     * */
     public Producer() {
     }
 

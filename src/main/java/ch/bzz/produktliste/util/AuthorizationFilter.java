@@ -20,10 +20,9 @@ import java.util.*;
 @Provider
 public class AuthorizationFilter implements javax.ws.rs.container.ContainerRequestFilter {
 
+    private static final String AUTHORIZATION_PROPERTY = "Authorization";
     @Context
     private ResourceInfo resourceInfo;
-
-    private static final String AUTHORIZATION_PROPERTY = "Authorization";
 
     @Override
     public void filter(ContainerRequestContext requestContext) {

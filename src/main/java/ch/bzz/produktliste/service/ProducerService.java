@@ -16,15 +16,15 @@ import java.util.List;
  * Services for creating, reading, updating and deleting of producers
  *
  * @author bzz: Vergili Nahro
- * @date 2022-05-19
  * @version 1.0
- * */
+ * @date 2022-05-19
+ */
 @Path("producer")
 public class ProducerService {
     /*
-    * reads a list of producers
-    * @return producers as json
-    * */
+     * reads a list of producers
+     * @return producers as json
+     * */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -54,7 +54,7 @@ public class ProducerService {
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid")
-            String herstellerUUID,
+                    String herstellerUUID,
             @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Producer producer = DataHandler.readProducerByUUID(herstellerUUID);
@@ -82,16 +82,16 @@ public class ProducerService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createProduct(
-                                  @Valid
-                                  @BeanParam
-                                  Producer producer,
-                                  @FormParam("producerUUID")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String producerUUID,
-                                  @FormParam("product")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String product,
-                                  @CookieParam("userRole") String userRole) {
+            @Valid
+            @BeanParam
+                    Producer producer,
+            @FormParam("producerUUID")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String producerUUID,
+            @FormParam("product")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String product,
+            @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
@@ -118,16 +118,16 @@ public class ProducerService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateProducer(
-                                  @Valid
-                                  @BeanParam
-                                  Producer producer,
-                                  @FormParam("producerUUID")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String producerUUID,
-                                  @FormParam("product")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String product,
-                                  @CookieParam("userRole") String userRole) {
+            @Valid
+            @BeanParam
+                    Producer producer,
+            @FormParam("producerUUID")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String producerUUID,
+            @FormParam("product")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String product,
+            @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Producer oldProducer = DataHandler.readProducerByUUID(producerUUID);
         if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {

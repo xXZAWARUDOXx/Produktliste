@@ -17,17 +17,17 @@ public class UserService {
     @POST
     @Path("login")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response login (
+    public Response login(
             @FormParam("username") String username,
             @FormParam("password") String password
-    ){
+    ) {
         int httpStatus;
         User user = UserData.findUser(username, password);
-        if(user == null || user.getRole() == null || user.getRole().equals("guest")) {
-        httpStatus = 404;
-        } else{
-        httpStatus = 200;
-    }
+        if (user == null || user.getRole() == null || user.getRole().equals("guest")) {
+            httpStatus = 404;
+        } else {
+            httpStatus = 200;
+        }
         NewCookie cookie = new NewCookie(
                 "userRole",
                 AES256.encrypt(user.getRole()),
@@ -42,7 +42,7 @@ public class UserService {
                 .entity("")
                 .cookie(cookie)
                 .build();
-        return  response;
+        return response;
 
     }
 
@@ -54,7 +54,7 @@ public class UserService {
     @DELETE
     @Path("logout")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response logout () {
+    public Response logout() {
         NewCookie cookie = new NewCookie(
                 "userRole",
                 "guest",

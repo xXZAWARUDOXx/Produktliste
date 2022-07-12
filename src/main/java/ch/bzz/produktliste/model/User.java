@@ -8,7 +8,7 @@ import ch.bzz.produktliste.util.Helper;
  * @author bzz: Vergili Nahro
  * @date 2022-05-19
  * @verison 1.0
- * */
+ */
 public class User {
     private final String userUUID = Helper.createUUID();
     private String username;

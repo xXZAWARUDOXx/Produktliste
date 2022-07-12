@@ -4,7 +4,6 @@ import ch.bzz.produktliste.model.Content;
 import ch.bzz.produktliste.model.Producer;
 import ch.bzz.produktliste.model.Product;
 import ch.bzz.produktliste.service.Config;
-
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -20,8 +19,8 @@ import java.util.List;
  * reads and writes the data in the JSON-files
  *
  * @author bzz: Vergili Nahro
- * @date 2022-05-19
  * @version 1.0
+ * @date 2022-05-19
  */
 public final class DataHandler {
     private static List<Producer> producerList;
@@ -29,8 +28,8 @@ public final class DataHandler {
     private static List<Product> productList;
 
     /*
-    * initializes the lists
-    * */
+     * initializes the lists
+     * */
     public static void initListen() {
         DataHandler.setProducerList(null);
         DataHandler.setContentList(null);
@@ -264,10 +263,10 @@ public final class DataHandler {
     }
 
     /*
-    * deletes a product, searches by productUUID
-    * @param productUUID
-    * @return success=true/false
-    * */
+     * deletes a product, searches by productUUID
+     * @param productUUID
+     * @return success=true/false
+     * */
     public static boolean deleteProduct(String productUUID) {
         Product product = readProductByUUID(productUUID);
         if (product != null) {

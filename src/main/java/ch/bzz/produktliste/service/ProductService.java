@@ -19,15 +19,15 @@ import java.util.List;
  * Services for creating, reading, updating and deleting a product
  *
  * @author bzz: Vergili Nahro
- * @date 2022-05-19
  * @version 1.0
- * */
+ * @date 2022-05-19
+ */
 @Path("product")
 public class ProductService {
     /*
-    * reads a list of products
-    * @return products as json
-    * */
+     * reads a list of products
+     * @return products as json
+     * */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,9 +47,9 @@ public class ProductService {
     }
 
     /*
-    * reads a product
-    * @return product as json
-    * */
+     * reads a product
+     * @return product as json
+     * */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -63,7 +63,7 @@ public class ProductService {
         if (userRole == null || AES256.decrypt(userRole).equals("guest")) {
             httpStatus = 403;
             product = null;
-        } else if(product == null) {
+        } else if (product == null) {
             httpStatus = 410;
         }
         return Response
@@ -84,18 +84,18 @@ public class ProductService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createProduct(
-                                  @Valid
-                                  @BeanParam
-                                  Product product,
-                                  @FormParam("productUUID")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String productUUID,
-                                  @FormParam("producer")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String producerUUID,
-                                  @CookieParam("userRole") String userRole) {
+            @Valid
+            @BeanParam
+                    Product product,
+            @FormParam("productUUID")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String productUUID,
+            @FormParam("producer")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String producerUUID,
+            @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
-        if(userRole == null || !AES256.decrypt(userRole).equals("admin")) {
+        if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
         } else {
             product.setProductUUID(Helper.createUUID());
@@ -119,16 +119,16 @@ public class ProductService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateProduct(
-                                  @Valid
-                                  @BeanParam
-                                  Product product,
-                                  @FormParam("productUUID")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String productUUID,
-                                  @FormParam("producer")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String producerUUID,
-                                  @CookieParam("userRole") String userRole) {
+            @Valid
+            @BeanParam
+                    Product product,
+            @FormParam("productUUID")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String productUUID,
+            @FormParam("producer")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String producerUUID,
+            @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Product oldProduct = DataHandler.readProductByUUID(productUUID);
         if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
@@ -152,10 +152,10 @@ public class ProductService {
     }
 
     /*
-    * deletes a product, searches by productUUID
-    * @param productUUID
-    * @return Response
-    * */
+     * deletes a product, searches by productUUID
+     * @param productUUID
+     * @return Response
+     * */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
@@ -173,8 +173,8 @@ public class ProductService {
             }
         }
         return Response.status(httpStatus)
-                       .entity("")
-                       .build();
+                .entity("")
+                .build();
     }
 
     /*

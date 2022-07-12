@@ -13,28 +13,13 @@ import java.util.Set;
  * configurates the Web-Services and Propertiers
  *
  * @author bzz Nahro Vergili (slayynahro)
- * @date 2022-05-19
  * @version 1.0
+ * @date 2022-05-19
  */
 @ApplicationPath("/resource")
 public class Config extends Application {
     private static final String PROPERTIES_PATH = "/home/bzz/webapp/productList.properties";
     private static Properties properties = null;
-
-    /*
-     * define all provider classes
-     * @return set of classes
-     */
-    @Override
-    public Set<Class<?>> getClasses() {
-        HashSet providers = new HashSet<Class<?>>();
-        providers.add(TestService.class);
-        providers.add(ProducerService.class);
-        providers.add(ContentService.class);
-        providers.add(ProductService.class);
-        providers.add(UserService.class);
-        return providers;
-    }
 
     /*
      * Gets the value of a property
@@ -72,5 +57,20 @@ public class Config extends Application {
      */
     private static void setProperties(Properties properties) {
         Config.properties = properties;
+    }
+
+    /*
+     * define all provider classes
+     * @return set of classes
+     */
+    @Override
+    public Set<Class<?>> getClasses() {
+        HashSet providers = new HashSet<Class<?>>();
+        providers.add(TestService.class);
+        providers.add(ProducerService.class);
+        providers.add(ContentService.class);
+        providers.add(ProductService.class);
+        providers.add(UserService.class);
+        return providers;
     }
 }

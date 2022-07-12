@@ -3,11 +3,10 @@ package ch.bzz.produktliste.service;
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Content;
 import ch.bzz.produktliste.util.AES256;
-import sun.security.krb5.internal.crypto.Aes256;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,15 +16,15 @@ import java.util.List;
  * Services for creating, reading, updating and deleting of contents
  *
  * @author bzz: Vergili Nahro
- * @date 2022-05-19
  * @version 1.0
- * */
+ * @date 2022-05-19
+ */
 @Path("content")
 public class ContentService {
     /*
-    * reads a list of contents
-    * @return contents as json
-    * */
+     * reads a list of contents
+     * @return contents as json
+     * */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,9 +45,9 @@ public class ContentService {
     }
 
     /*
-    * reads a content
-    * @return content as json
-    * */
+     * reads a content
+     * @return content as json
+     * */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -83,16 +82,16 @@ public class ContentService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createProduct(
-                                  @Valid
-                                  @BeanParam
-                                  Content content,
-                                  @FormParam("contentUUID")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String contentUUID,
-                                  @FormParam("product")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String product,
-                                  @CookieParam("userRole") String userRole) {
+            @Valid
+            @BeanParam
+                    Content content,
+            @FormParam("contentUUID")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String contentUUID,
+            @FormParam("product")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String product,
+            @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
             httpStatus = 403;
@@ -119,16 +118,16 @@ public class ContentService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateProduct(
-                                  @Valid
-                                  @BeanParam
-                                  Content content,
-                                  @FormParam("contentUUID")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String contentUUID,
-                                  @FormParam("product")
-                                  @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String product,
-                                  @CookieParam("userRole") String userRole) {
+            @Valid
+            @BeanParam
+                    Content content,
+            @FormParam("contentUUID")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String contentUUID,
+            @FormParam("product")
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String product,
+            @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Content oldContent = DataHandler.readContentByUUID(contentUUID);
         if (userRole == null || !AES256.decrypt(userRole).equals("admin")) {
