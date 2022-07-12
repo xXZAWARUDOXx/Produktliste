@@ -1,6 +1,6 @@
 package ch.bzz.produktliste.model;
 
-import ch.bzz.produktliste.helper.Helper;
+import ch.bzz.produktliste.util.Helper;
 
 /**
  * a user, which uses the application

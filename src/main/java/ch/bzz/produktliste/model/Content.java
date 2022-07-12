@@ -1,6 +1,6 @@
 package ch.bzz.produktliste.model;
 
-import ch.bzz.produktliste.helper.Helper;
+import ch.bzz.produktliste.util.Helper;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;

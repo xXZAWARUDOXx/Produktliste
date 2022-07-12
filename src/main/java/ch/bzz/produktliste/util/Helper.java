@@ -1,4 +1,4 @@
-package ch.bzz.produktliste.helper;
+package ch.bzz.produktliste.util;
 
 import java.util.UUID;
 
