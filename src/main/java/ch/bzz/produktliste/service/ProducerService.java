@@ -27,10 +27,17 @@ public class ProducerService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listProducers() {
-        List<Producer> producerListe = DataHandler.readAllProducer();
+    public Response listProducers(
+            @CookieParam("userRole") String userRole) {
+        List<Producer> producerListe = null;
+        int httpStatus = 200;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            producerListe = DataHandler.readAllProducer();
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(producerListe)
                 .build();
     }
@@ -46,18 +53,20 @@ public class ProducerService {
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid")
-            String herstellerUUID) {
+            String herstellerUUID,
+            @CookieParam("userRole") String userRole) {
+        int httpStatus = 200;
         Producer producer = DataHandler.readProducerByUUID(herstellerUUID);
-        if (producer != null) {
-            return Response
-                    .status(200)
-                    .entity(producer)
-                    .build();
-        } else {
-            return Response
-                    .status(404)
-                    .build();
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+            producer = null;
+        } else if (producer == null) {
+            httpStatus = 410;
         }
+        return Response
+                .status(httpStatus)
+                .entity(producer)
+                .build();
     }
 
     /*
@@ -80,12 +89,18 @@ public class ProducerService {
                                   String producerUUID,
                                   @FormParam("product")
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String product) {
-        producer.setProducerUUID(producerUUID);
-        producer.setProduct(product);
-        DataHandler.insertProducer(producer);
+                                  String product,
+                                  @CookieParam("userRole") String userRole) {
+        int httpStatus = 200;
+        if (userRole == null || !userRole.equals("admin")) {
+            httpStatus = 403;
+        } else {
+            producer.setProducerUUID(producerUUID);
+            producer.setProduct(product);
+            DataHandler.insertProducer(producer);
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -110,10 +125,13 @@ public class ProducerService {
                                   String producerUUID,
                                   @FormParam("product")
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String product) {
+                                  String product,
+                                  @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Producer oldProducer = DataHandler.readProducerByUUID(producerUUID);
-        if (oldProducer != null) {
+        if (userRole == null || !userRole.equals("admin")) {
+            httpStatus = 403;
+        } else if (oldProducer != null) {
             setAttributes(oldProducer,
                     producerUUID,
                     producer.getName(),
@@ -141,12 +159,17 @@ public class ProducerService {
     public Response deleteProducer(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("uuid") String producerUUID) {
-        int status = 200;
-        if (!DataHandler.deleteProducer(producerUUID)) {
-            status = 410;
+            @QueryParam("uuid") String producerUUID,
+            @CookieParam("userRole") String userRole) {
+        int httpStatus = 200;
+        if (userRole == null || !userRole.equals("admin")) {
+            httpStatus = 403;
+        } else {
+            if (!DataHandler.deleteProducer(producerUUID)) {
+                httpStatus = 410;
+            }
         }
-        return Response.status(status)
+        return Response.status(httpStatus)
                 .entity("")
                 .build();
     }

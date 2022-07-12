@@ -3,6 +3,7 @@ package ch.bzz.produktliste.service;
 import ch.bzz.produktliste.data.DataHandler;
 import ch.bzz.produktliste.model.Content;
 import ch.bzz.produktliste.model.Product;
+import ch.bzz.produktliste.util.Helper;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -29,10 +30,17 @@ public class ProductService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listProducts() {
-        List<Product> productListe = DataHandler.readAllProducts();
+    public Response listProducts(
+            @CookieParam("userRole") String userRole) {
+        List<Product> productListe = null;
+        int httpStatus = 200;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            productListe = DataHandler.readAllProducts();
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(productListe)
                 .build();
     }
@@ -47,18 +55,20 @@ public class ProductService {
     public Response readProduct(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("uuid") String productUUID) {
+            @QueryParam("uuid") String productUUID,
+            @CookieParam("userRole") String userRole) {
+        int httpStatus = 200;
         Product product = DataHandler.readProductByUUID(productUUID);
-        if (product != null) {
-            return Response
-                    .status(200)
-                    .entity(product)
-                    .build();
-        } else {
-            return Response
-                    .status(404)
-                    .build();
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+            product = null;
+        } else if(product == null) {
+            httpStatus = 410;
         }
+        return Response
+                .status(httpStatus)
+                .entity(product)
+                .build();
     }
 
     /*
@@ -81,12 +91,17 @@ public class ProductService {
                                   String productUUID,
                                   @FormParam("producer")
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String producerUUID) {
-        product.setProductUUID(productUUID);
-        product.setProducerUUID(producerUUID);
-        DataHandler.insertProduct(product);
+                                  String producerUUID,
+                                  @CookieParam("userRole") String userRole) {
+        int httpStatus = 200;
+        if(userRole == null || !userRole.equals("admin")) {
+            httpStatus = 403;
+        } else {
+            product.setProductUUID(Helper.createUUID());
+            DataHandler.insertProduct(product);
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -111,10 +126,13 @@ public class ProductService {
                                   String productUUID,
                                   @FormParam("producer")
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String producerUUID) {
+                                  String producerUUID,
+                                  @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Product oldProduct = DataHandler.readProductByUUID(productUUID);
-        if (oldProduct != null) {
+        if (userRole == null || !userRole.equals("admin")) {
+            httpStatus = 403;
+        } else if (oldProduct != null) {
             setAttributes(oldProduct,
                     productUUID,
                     product.getName(),
@@ -143,12 +161,17 @@ public class ProductService {
     public Response deleteProduct(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("uuid") String productUUID) {
-        int status = 200;
-        if (!DataHandler.deleteProduct(productUUID)) {
-            status = 410;
+            @QueryParam("uuid") String productUUID,
+            @CookieParam("userRole") String userRole) {
+        int httpStatus = 200;
+        if (userRole == null || !userRole.equals("admin")) {
+            httpStatus = 403;
+        } else {
+            if (!DataHandler.deleteProduct(productUUID)) {
+                httpStatus = 410;
+            }
         }
-        return Response.status(status)
+        return Response.status(httpStatus)
                        .entity("")
                        .build();
     }

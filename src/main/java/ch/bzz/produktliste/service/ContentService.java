@@ -28,10 +28,18 @@ public class ContentService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listContents() {
-        List<Content> contentListe = DataHandler.readAllContents();
+    public Response listContents(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Content> contentListe = null;
+        int httpStatus = 200;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            contentListe = DataHandler.readAllContents();
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(contentListe)
                 .build();
     }
@@ -46,18 +54,20 @@ public class ContentService {
     public Response readContent(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("uuid") String contentUUID) {
+            @QueryParam("uuid") String contentUUID,
+            @CookieParam("userRole") String userRole) {
+        int httpStatus = 200;
         Content content = DataHandler.readContentByUUID(contentUUID);
-        if (content != null) {
-            return Response
-                    .status(200)
-                    .entity(content)
-                    .build();
-        } else {
-            return Response
-                    .status(404)
-                    .build();
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+            content = null;
+        } else if (content == null) {
+            httpStatus = 410;
         }
+        return Response
+                .status(httpStatus)
+                .entity(content)
+                .build();
     }
 
     /*
@@ -80,12 +90,18 @@ public class ContentService {
                                   String contentUUID,
                                   @FormParam("product")
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String product) {
-        content.setContentUUID(contentUUID);
-        content.setProduct(product);
-        DataHandler.insertContent(content);
+                                  String product,
+                                  @CookieParam("userRole") String userRole) {
+        int httpStatus = 200;
+        if (userRole == null || !userRole.equals("admin")) {
+            httpStatus = 403;
+        } else {
+            content.setContentUUID(contentUUID);
+            content.setProduct(product);
+            DataHandler.insertContent(content);
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -110,10 +126,13 @@ public class ContentService {
                                   String contentUUID,
                                   @FormParam("product")
                                   @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                  String product) {
+                                  String product,
+                                  @CookieParam("userRole") String userRole) {
         int httpStatus = 200;
         Content oldContent = DataHandler.readContentByUUID(contentUUID);
-        if (oldContent != null) {
+        if (userRole == null || !userRole.equals("admin")) {
+            httpStatus = 403;
+        } else if (oldContent != null) {
             setAttributes(oldContent,
                     contentUUID,
                     content.getName(),
@@ -140,12 +159,17 @@ public class ContentService {
     public Response deleteContent(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("uuid") String contentUUID) {
-        int status = 200;
-        if (!DataHandler.deleteContent(contentUUID)) {
-            status = 410;
+            @QueryParam("uuid") String contentUUID,
+            @CookieParam("userRole") String userRole) {
+        int httpStatus = 200;
+        if (userRole == null || !userRole.equals("admin")) {
+            httpStatus = 403;
+        } else {
+            if (!DataHandler.deleteContent(contentUUID)) {
+                httpStatus = 410;
+            }
         }
-        return Response.status(status)
+        return Response.status(httpStatus)
                 .entity("")
                 .build();
     }
