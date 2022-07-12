@@ -1,51 +1,51 @@
 {
-	"id": "4cff6bd0-bebf-4a19-9305-92c784a7b9f2",
+	"id": "fe98e868-21af-4b98-b4b1-8b5cc091821c",
 	"name": "Produktliste",
-	"timestamp": "2022-06-18T14:17:45.571Z",
+	"timestamp": "2022-07-12T14:18:39.869Z",
 	"collection_id": "d4118a3a-8b67-4c4b-8b60-2fbc8e0085d6",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 156,
+	"totalPass": 222,
 	"totalFail": 0,
 	"results": [
 		{
-			"id": "16cf44ab-f5d4-40db-b0d6-89a24e744809",
-			"name": "0.1: testservice",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/test/test",
-			"time": 56,
+			"id": "13df9bdc-6e39-44be-8d7e-b9caf9fee91c",
+			"name": "4.0 User login",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/user/login",
+			"time": 331,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
 				"Status test": true,
-				"Content-Type header is text/plain": true
+				"Content-Type header is undefined": true
 			},
 			"testPassFailCounts": {
 				"Status test": {
 					"pass": 1,
 					"fail": 0
 				},
-				"Content-Type header is text/plain": {
+				"Content-Type header is undefined": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				56
+				331
 			],
 			"allTests": [
 				{
 					"Status test": true,
-					"Content-Type header is text/plain": true
+					"Content-Type header is undefined": true
 				}
 			]
 		},
 		{
-			"id": "a66cc896-5586-44fc-8b2e-81bcc94f5730",
+			"id": "e0ce92a5-b189-40d0-ba10-f25247ded978",
 			"name": "1.0 list all products",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/list",
-			"time": 135,
+			"time": 391,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -65,7 +65,7 @@
 				}
 			},
 			"times": [
-				135
+				391
 			],
 			"allTests": [
 				{
@@ -75,10 +75,10 @@
 			]
 		},
 		{
-			"id": "bdd8b458-fd27-4044-a6c8-140c4cc2dd18",
+			"id": "8fb717f3-891c-4c63-94e0-b65147b96e87",
 			"name": "1.1 list product by UUID",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
-			"time": 16,
+			"time": 381,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -98,7 +98,7 @@
 				}
 			},
 			"times": [
-				16
+				381
 			],
 			"allTests": [
 				{
@@ -108,13 +108,574 @@
 			]
 		},
 		{
-			"id": "bbde3c80-8185-4912-9658-efa24b337ac2",
-			"name": "1.2 list product with wrong UUID (not existant)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+			"id": "bf05af83-8857-4ab5-9e1f-ddb15c2815f0",
+			"name": "1.4 create product",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+			"time": 431,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				431
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "fffb0782-edf1-4bca-a6fa-31d4d864e1f9",
+			"name": "1.14 update product",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 415,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				415
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "341e3063-f38f-4b32-9f45-7c041260cbec",
+			"name": "1.25 delete product",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 473,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				473
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "ef5df007-b994-4c16-80c6-21d0100464f5",
+			"name": "2.0 list all contents",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/list",
+			"time": 435,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				435
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "4a17fb13-05c7-4e7c-9366-5e692c6e6178",
+			"name": "2.1 list content by UUID",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+			"time": 434,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				434
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "875f4b24-f8ea-45f3-a1a4-36e6b4fb4d66",
+			"name": "2.4 create content",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+			"time": 575,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				575
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "84c11b87-e31f-44cd-9826-a2652c4aeae0",
+			"name": "2.11 update content",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"time": 616,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				616
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "f9896d5f-ecc7-4f3f-8778-d1afce0fce51",
+			"name": "2.19 delete content",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+			"time": 489,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				489
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "80855ad4-4bf4-4bf9-b9f6-4441713ade4b",
+			"name": "3.0 list all producers",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/list",
+			"time": 652,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				652
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "147fe508-04e1-40ea-8f92-5bd9b21d9890",
+			"name": "3.1 list producer by UUID",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-5341-9999-81ed-f3f4595965dc",
+			"time": 715,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				715
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "761f3c39-5217-417a-83ac-38f175e472fd",
+			"name": "3.4 create producer",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+			"time": 651,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				651
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "2fc78cbe-bca8-46eb-b0d5-d38c272d8f4f",
+			"name": "3.14 update producers",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+			"time": 576,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				576
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "02657d6c-0c73-4f25-bfaf-2e1638f0851d",
+			"name": "3.24 delete producer",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 971,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				971
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "3092320d-fd7c-4197-a25b-eb32a1e8af77",
+			"name": "4.1 User logout",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/user/logout",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "4bfada79-967a-4c36-bf3e-43f50e628207",
+			"name": "1.0 list all products",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/list",
+			"time": 13,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "31064b22-76f0-4a8a-a853-4f7c1d98b693",
+			"name": "1.1 list product by UUID Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 21,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "72e0f710-b78a-4543-81f6-fc9578939f65",
+			"name": "1.4 create product Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+			"time": 13,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "04630fb4-67da-4a5a-aac9-0f94ca86a465",
+			"name": "1.14 update product Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
 			"time": 7,
 			"responseCode": {
-				"code": 404,
-				"name": "Not Found"
+				"code": 403,
+				"name": "Forbidden"
 			},
 			"tests": {
 				"Status test": true,
@@ -141,13 +702,13 @@
 			]
 		},
 		{
-			"id": "a5cf4d82-e307-430a-a0f3-6613ec6614c0",
-			"name": "1.3 list product with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-xyz-43c6-81ed-f3f4595965dc",
-			"time": 55,
+			"id": "00f3a6ae-df63-4936-b0d0-f94658784b97",
+			"name": "1.25 delete product Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 5,
 			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
+				"code": 403,
+				"name": "Forbidden"
 			},
 			"tests": {
 				"Status test": true,
@@ -164,7 +725,7 @@
 				}
 			},
 			"times": [
-				55
+				5
 			],
 			"allTests": [
 				{
@@ -174,10 +735,373 @@
 			]
 		},
 		{
-			"id": "69676307-2288-49e3-8abf-2f7acbdeb472",
-			"name": "1.4 create product",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
-			"time": 124,
+			"id": "16d1205b-33c5-4a99-af3b-f83af5bfd097",
+			"name": "2.0 list all contents Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/list",
+			"time": 13,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "c1dc9da8-1984-4799-945f-c0cf15ea667d",
+			"name": "2.1 list content by UUID Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+			"time": 7,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "46e01533-ffd7-4ee9-b964-2503e82f11f7",
+			"name": "2.4 create content Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+			"time": 16,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "475344ab-e1d9-40bf-8ba4-2bf84fd01078",
+			"name": "2.11 update content Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"time": 5,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "041b2226-0c28-4ea9-afd8-8982b8eb5648",
+			"name": "2.19 delete content Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+			"time": 6,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "e5fa94a2-31b0-41b2-a116-486b61a4b16c",
+			"name": "3.0 list all producers Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/list",
+			"time": 11,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "5110a4f6-13b7-41aa-9bcc-2c19b564bff9",
+			"name": "3.1 list producer by UUID Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-5341-9999-81ed-f3f4595965dc",
+			"time": 7,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "92fa1ca4-4627-432c-9e92-0d76644b2eef",
+			"name": "3.4 create producer Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+			"time": 33,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "53d9efe1-2c99-4c08-a178-143d5f88ecb8",
+			"name": "3.14 update producers Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+			"time": 9,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "13db7c5c-bd3b-4668-ba24-6ce16ac6f31c",
+			"name": "3.24 delete producer Copy",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 23,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "16cf44ab-f5d4-40db-b0d6-89a24e744809",
+			"name": "0.1: testservice",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/test/test",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "c5a39137-4cea-4cfe-8399-dc34dc533f6e",
+			"name": "4.0 Admin login",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/user/login",
+			"time": 611,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -197,7 +1121,7 @@
 				}
 			},
 			"times": [
-				124
+				611
 			],
 			"allTests": [
 				{
@@ -207,10 +1131,109 @@
 			]
 		},
 		{
-			"id": "3948268e-66ff-4b1b-a0f6-3f77ea3f1b1a",
-			"name": "1.5 create product with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
-			"time": 17,
+			"id": "a66cc896-5586-44fc-8b2e-81bcc94f5730",
+			"name": "1.0 list all products",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/list",
+			"time": 526,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				526
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "bdd8b458-fd27-4044-a6c8-140c4cc2dd18",
+			"name": "1.1 list product by UUID",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 793,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				793
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "bbde3c80-8185-4912-9658-efa24b337ac2",
+			"name": "1.2 list product with wrong UUID (not existant)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+			"time": 730,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				730
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "a5cf4d82-e307-430a-a0f3-6613ec6614c0",
+			"name": "1.3 list product with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/read?uuid=ecd86148-xyz-43c6-81ed-f3f4595965dc",
+			"time": 50,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -230,7 +1253,73 @@
 				}
 			},
 			"times": [
-				17
+				50
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "69676307-2288-49e3-8abf-2f7acbdeb472",
+			"name": "1.4 create product",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+			"time": 719,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				719
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "3948268e-66ff-4b1b-a0f6-3f77ea3f1b1a",
+			"name": "1.5 create product with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+			"time": 22,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
 			],
 			"allTests": [
 				{
@@ -276,864 +1365,6 @@
 			"id": "63d114f3-06fb-4de4-89bc-22420ace4b07",
 			"name": "1.7 create product (name to long)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
-			"time": 15,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				15
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "c9afc7d8-db61-46da-afe8-9a6ff7d6a0b5",
-			"name": "1.8 create product (price to low)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
-			"time": 17,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				17
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "cf0e14d6-c539-413b-95f0-0b98d1f26135",
-			"name": "1.9 create product (price to high)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
-			"time": 17,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				17
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "39c38aa6-364a-4cab-8cdb-a1d1073a2727",
-			"name": "1.10 create product (date to short)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
-			"time": 13,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				13
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "e8dcd4a8-4e2b-4c3f-9b96-8d5e5204be01",
-			"name": "1.11 create product (date to long)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
-			"time": 13,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				13
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "c22370f1-0cdf-427a-8a00-22c787536f29",
-			"name": "1.12 create product with wrong contentUUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
-			"time": 21,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				21
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "234ae7bc-72a6-46ed-a67f-7eb3f5dfcc5a",
-			"name": "1.13 create product with wrong producerUUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
-			"time": 10,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				10
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "4e394421-6d4d-440d-99e5-9c807d49161b",
-			"name": "1.14 update product",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 47,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				47
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "cd5d0546-23ad-4b11-8353-b737a3d8f186",
-			"name": "1.15 update product with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 12,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				12
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "18a01e7b-c64b-41a7-a288-53fd48361af0",
-			"name": "1.16 update product with wrong UUID (not existant)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 18,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				18
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "ef9c9b73-e589-45d1-ace2-b92a42bc6cf5",
-			"name": "1.17 update product (name to short)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 6,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "7fa89da0-8ddd-4e24-ab64-45e6372716de",
-			"name": "1.18 update product (name to long)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 24,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				24
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "eea4faaa-cfc3-48f1-88d0-50409f88ae94",
-			"name": "1.19 update product (price to low)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 24,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				24
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "8469270d-92fa-4c8d-b4ad-1337fa99231c",
-			"name": "1.20 update product (price to high)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 13,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				13
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "a9815b87-61d8-4e5b-9a5f-a792f5135805",
-			"name": "1.21 update product (date to short)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 21,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				21
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "c3599240-841a-451e-a145-6ad40f1f09f5",
-			"name": "1.22 update product (date to long)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 29,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				29
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "4b661a35-2f50-4765-9b55-e2192b452a9b",
-			"name": "1.23 update product wrong contentUUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 7,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "e883cec4-de72-4e9d-869b-ce50c9b3bf61",
-			"name": "1.24 update product wrong productUUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
-			"time": 23,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				23
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "48ddf9ad-b0fa-4d2c-9345-35e94ded4e0f",
-			"name": "1.25 delete product",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
-			"time": 22,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				22
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "8f37d027-a1d7-4388-8d05-271bb50f76d6",
-			"name": "1.26 delete product with wrong UUID (not existant)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
-			"time": 7,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "18df6559-dba7-4c74-8d03-12af7d5f171e",
-			"name": "1.27 delete product with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-yxz-43c6-81ed-f3f4595965dc",
-			"time": 5,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "1c3a5ee0-ce35-426c-8114-f280f412f779",
-			"name": "2.0 list all contents",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/list",
-			"time": 38,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is application/json": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is application/json": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				38
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is application/json": true
-				}
-			]
-		},
-		{
-			"id": "0e09ceb5-2742-4ce5-b21d-2acb0355003c",
-			"name": "2.1 list content by UUID",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
-			"time": 5,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is application/json": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is application/json": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is application/json": true
-				}
-			]
-		},
-		{
-			"id": "59219369-1cb7-4b85-9d02-3fc6f6b72017",
-			"name": "2.2 list content with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-xyz-9999-9999-f3f4595965dc",
-			"time": 4,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				4
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "6a4a52b5-5030-4878-ab1b-82d3f278f947",
-			"name": "2.3 list content with wrong UUID (not existant)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-5050-9999-9999-f3f4595965dc",
-			"time": 24,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				24
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "abf19121-c7f5-4a19-8596-26cedf30d568",
-			"name": "2.4 create content",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
-			"time": 58,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				58
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "fe8080b6-2f7d-4700-8aa0-10e165a338b2",
-			"name": "2.5 create content with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
 			"time": 16,
 			"responseCode": {
 				"code": 400,
@@ -1164,273 +1395,9 @@
 			]
 		},
 		{
-			"id": "fbb89241-2cff-452c-8b2f-9258e813527b",
-			"name": "2.6 create content (name to short)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
-			"time": 12,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				12
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "696a8038-6fed-422e-8152-96b963f62534",
-			"name": "2.7 create content (name to long)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
-			"time": 28,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				28
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "cb14406a-cb52-438a-88a9-6e4145523ffc",
-			"name": "2.8 create content (allergycode to short)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
-			"time": 24,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				24
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "867a5d6f-6296-48af-830c-40a626bfaaf1",
-			"name": "2.9 create content (allergycode to long)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
-			"time": 22,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				22
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "e94802a5-6aba-4598-b67e-4350fc137875",
-			"name": "2.10 create content with wrong productUUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
-			"time": 17,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				17
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "e184dad9-3b4b-4d21-992f-4f8b8b6d4771",
-			"name": "2.11 update content",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
-			"time": 15,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				15
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "1074dce9-b032-4b46-b33e-6ee1963841d8",
-			"name": "2.12 update content with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
-			"time": 8,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				8
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "117ad5d9-e3c7-441e-836d-44dfdc1dbe68",
-			"name": "2.13 update content with wrong UUID (not existant)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
-			"time": 18,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				18
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "c664224f-3790-4408-b3a8-ab10afbba7bf",
-			"name": "2.14 update content (name to short)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"id": "c9afc7d8-db61-46da-afe8-9a6ff7d6a0b5",
+			"name": "1.8 create product (price to low)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
 			"time": 7,
 			"responseCode": {
 				"code": 400,
@@ -1461,8 +1428,1229 @@
 			]
 		},
 		{
+			"id": "cf0e14d6-c539-413b-95f0-0b98d1f26135",
+			"name": "1.9 create product (price to high)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+			"time": 24,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				24
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "39c38aa6-364a-4cab-8cdb-a1d1073a2727",
+			"name": "1.10 create product (date to short)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+			"time": 18,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "e8dcd4a8-4e2b-4c3f-9b96-8d5e5204be01",
+			"name": "1.11 create product (date to long)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "c22370f1-0cdf-427a-8a00-22c787536f29",
+			"name": "1.12 create product with wrong contentUUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "234ae7bc-72a6-46ed-a67f-7eb3f5dfcc5a",
+			"name": "1.13 create product with wrong producerUUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/create",
+			"time": 59,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "4e394421-6d4d-440d-99e5-9c807d49161b",
+			"name": "1.14 update product",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 788,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				788
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "cd5d0546-23ad-4b11-8353-b737a3d8f186",
+			"name": "1.15 update product with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 25,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "18a01e7b-c64b-41a7-a288-53fd48361af0",
+			"name": "1.16 update product with wrong UUID (not existant)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 528,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				528
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "ef9c9b73-e589-45d1-ace2-b92a42bc6cf5",
+			"name": "1.17 update product (name to short)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "7fa89da0-8ddd-4e24-ab64-45e6372716de",
+			"name": "1.18 update product (name to long)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "eea4faaa-cfc3-48f1-88d0-50409f88ae94",
+			"name": "1.19 update product (price to low)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 16,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "8469270d-92fa-4c8d-b4ad-1337fa99231c",
+			"name": "1.20 update product (price to high)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "a9815b87-61d8-4e5b-9a5f-a792f5135805",
+			"name": "1.21 update product (date to short)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "c3599240-841a-451e-a145-6ad40f1f09f5",
+			"name": "1.22 update product (date to long)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "4b661a35-2f50-4765-9b55-e2192b452a9b",
+			"name": "1.23 update product wrong contentUUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 26,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "e883cec4-de72-4e9d-869b-ce50c9b3bf61",
+			"name": "1.24 update product wrong productUUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/update",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "48ddf9ad-b0fa-4d2c-9345-35e94ded4e0f",
+			"name": "1.25 delete product",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 756,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				756
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "8f37d027-a1d7-4388-8d05-271bb50f76d6",
+			"name": "1.26 delete product with wrong UUID (not existant)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+			"time": 547,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				547
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "18df6559-dba7-4c74-8d03-12af7d5f171e",
+			"name": "1.27 delete product with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/product/delete?uuid=ecd86148-yxz-43c6-81ed-f3f4595965dc",
+			"time": 16,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "1c3a5ee0-ce35-426c-8114-f280f412f779",
+			"name": "2.0 list all contents",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/list",
+			"time": 569,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				569
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "0e09ceb5-2742-4ce5-b21d-2acb0355003c",
+			"name": "2.1 list content by UUID",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+			"time": 666,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				666
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "59219369-1cb7-4b85-9d02-3fc6f6b72017",
+			"name": "2.2 list content with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-xyz-9999-9999-f3f4595965dc",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "6a4a52b5-5030-4878-ab1b-82d3f278f947",
+			"name": "2.3 list content with wrong UUID (not existant)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/read?uuid=ecd86148-5050-9999-9999-f3f4595965dc",
+			"time": 590,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				590
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "abf19121-c7f5-4a19-8596-26cedf30d568",
+			"name": "2.4 create content",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+			"time": 466,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				466
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "fe8080b6-2f7d-4700-8aa0-10e165a338b2",
+			"name": "2.5 create content with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "fbb89241-2cff-452c-8b2f-9258e813527b",
+			"name": "2.6 create content (name to short)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "696a8038-6fed-422e-8152-96b963f62534",
+			"name": "2.7 create content (name to long)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "cb14406a-cb52-438a-88a9-6e4145523ffc",
+			"name": "2.8 create content (allergycode to short)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "867a5d6f-6296-48af-830c-40a626bfaaf1",
+			"name": "2.9 create content (allergycode to long)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "e94802a5-6aba-4598-b67e-4350fc137875",
+			"name": "2.10 create content with wrong productUUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/create",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "e184dad9-3b4b-4d21-992f-4f8b8b6d4771",
+			"name": "2.11 update content",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"time": 641,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				641
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "1074dce9-b032-4b46-b33e-6ee1963841d8",
+			"name": "2.12 update content with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"time": 13,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "117ad5d9-e3c7-441e-836d-44dfdc1dbe68",
+			"name": "2.13 update content with wrong UUID (not existant)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"time": 809,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				809
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "c664224f-3790-4408-b3a8-ab10afbba7bf",
+			"name": "2.14 update content (name to short)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"time": 19,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
 			"id": "b5d3ba4f-a24b-4a07-a97a-7fb37b4a1df3",
 			"name": "2.15 update content (name to long)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"time": 15,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "3c102b92-f8ba-474c-bb86-84d3c5b031b6",
+			"name": "2.16 update content (allergycode to short)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "c0c07e18-ae2a-4294-afd8-fb9e0f9ac9f0",
+			"name": "2.17 update content (allergycode to long)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"time": 27,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				27
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "3387a126-27b2-45ee-8f50-3ca9030c19a6",
+			"name": "2.18 update content with wrong productUUID (formal)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
 			"time": 20,
 			"responseCode": {
@@ -1494,10 +2682,43 @@
 			]
 		},
 		{
-			"id": "3c102b92-f8ba-474c-bb86-84d3c5b031b6",
-			"name": "2.16 update content (allergycode to short)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
-			"time": 16,
+			"id": "1d589a2e-85c1-44e1-a103-94ff4c6f2571",
+			"name": "2.19 delete content",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
+			"time": 789,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				789
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "5197700f-ec11-4781-bc9c-17fbbd3f30d1",
+			"name": "2.20 delete content with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-xyz-9999-9999-f3f4595965dc",
+			"time": 5,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1517,7 +2738,7 @@
 				}
 			},
 			"times": [
-				16
+				5
 			],
 			"allTests": [
 				{
@@ -1527,9 +2748,207 @@
 			]
 		},
 		{
-			"id": "c0c07e18-ae2a-4294-afd8-fb9e0f9ac9f0",
-			"name": "2.17 update content (allergycode to long)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
+			"id": "f826deaa-163d-4ea4-9c65-04fe4de015bb",
+			"name": "2.21 delete content with wrong UUID (not existant)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-9969-9999-9999-f3f4595965dc",
+			"time": 831,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				831
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "2ed0c4db-6aeb-450a-9ee9-18fcb521dd0f",
+			"name": "3.0 list all producers",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/list",
+			"time": 743,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				743
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "45d91b3c-225b-45ad-95fd-f5d5478ebeef",
+			"name": "3.1 list producer by UUID",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-5341-9999-81ed-f3f4595965dc",
+			"time": 703,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				703
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "defca0ae-c88e-4993-a866-672f4154c1cc",
+			"name": "3.2 list producer with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-xyz-43c6-81ed-f3f4595965dc",
+			"time": 17,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "a66ffc85-4dab-4ae6-8bc8-c530ac569c04",
+			"name": "3.3 list producer with wrong UUID (not existant)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
+			"time": 600,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				600
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "999f0736-540d-440f-b312-5e9205d8286b",
+			"name": "3.4 create producer",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+			"time": 507,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				507
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "37d17f53-c5da-4ac2-b633-8968ef00503f",
+			"name": "3.5 create producer with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
 			"time": 9,
 			"responseCode": {
 				"code": 400,
@@ -1560,338 +2979,107 @@
 			]
 		},
 		{
-			"id": "3387a126-27b2-45ee-8f50-3ca9030c19a6",
-			"name": "2.18 update content with wrong productUUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/update",
-			"time": 28,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				28
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "1d589a2e-85c1-44e1-a103-94ff4c6f2571",
-			"name": "2.19 delete content",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-9999-9999-9999-f3f4595965dc",
-			"time": 17,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				17
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "5197700f-ec11-4781-bc9c-17fbbd3f30d1",
-			"name": "2.20 delete content with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-xyz-9999-9999-f3f4595965dc",
-			"time": 12,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				12
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "f826deaa-163d-4ea4-9c65-04fe4de015bb",
-			"name": "2.21 delete content with wrong UUID (not existant)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/content/delete?uuid=ecd86148-9969-9999-9999-f3f4595965dc",
-			"time": 8,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				8
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "2ed0c4db-6aeb-450a-9ee9-18fcb521dd0f",
-			"name": "3.0 list all producers",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/list",
-			"time": 22,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is application/json": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is application/json": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				22
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is application/json": true
-				}
-			]
-		},
-		{
-			"id": "45d91b3c-225b-45ad-95fd-f5d5478ebeef",
-			"name": "3.1 list producer by UUID",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-5341-9999-81ed-f3f4595965dc",
-			"time": 15,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is application/json": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is application/json": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				15
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is application/json": true
-				}
-			]
-		},
-		{
-			"id": "defca0ae-c88e-4993-a866-672f4154c1cc",
-			"name": "3.2 list producer with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-xyz-43c6-81ed-f3f4595965dc",
-			"time": 7,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "a66ffc85-4dab-4ae6-8bc8-c530ac569c04",
-			"name": "3.3 list producer with wrong UUID (not existant)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/read?uuid=ecd86148-5050-43c6-81ed-f3f4595965dc",
-			"time": 7,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "999f0736-540d-440f-b312-5e9205d8286b",
-			"name": "3.4 create producer",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
-			"time": 33,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				33
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "37d17f53-c5da-4ac2-b633-8968ef00503f",
-			"name": "3.5 create producer with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
-			"time": 19,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				19
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
 			"id": "7b57f5ef-6517-4366-a7f5-a7ed7800d93f",
 			"name": "3.6 create producer (name to short)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+			"time": 26,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "9731216e-5d43-41db-9c2c-16f195cbcb51",
+			"name": "3.7 create producer (name to long)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+			"time": 20,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "27437766-e96f-4995-b29d-9272fb26f628",
+			"name": "3.8 create producer (numOfFactories to low)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "633427f7-cf2b-4eb8-aef2-b3bcffa1bfae",
+			"name": "3.9 create producer (numOfFactories to high)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
 			"time": 13,
 			"responseCode": {
@@ -1923,8 +3111,8 @@
 			]
 		},
 		{
-			"id": "9731216e-5d43-41db-9c2c-16f195cbcb51",
-			"name": "3.7 create producer (name to long)",
+			"id": "d3e6b1da-18a4-4b3e-a034-66b23a7c12a2",
+			"name": "3.10 create producer (numOfProduceableBottlesPerYear to low)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
 			"time": 10,
 			"responseCode": {
@@ -1956,339 +3144,9 @@
 			]
 		},
 		{
-			"id": "27437766-e96f-4995-b29d-9272fb26f628",
-			"name": "3.8 create producer (numOfFactories to low)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
-			"time": 24,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				24
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "633427f7-cf2b-4eb8-aef2-b3bcffa1bfae",
-			"name": "3.9 create producer (numOfFactories to high)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
-			"time": 17,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				17
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "d3e6b1da-18a4-4b3e-a034-66b23a7c12a2",
-			"name": "3.10 create producer (numOfProduceableBottlesPerYear to low)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
-			"time": 25,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				25
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
 			"id": "d10247a9-4ede-4633-b7e1-6e20f241d8ac",
 			"name": "3.11 create producer (numOfProduceableBottlesPerYear to high)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
-			"time": 29,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				29
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "cf77f4e4-83b1-4b30-aa46-8edf91cdff13",
-			"name": "3.12 create producer (numOfProduceableBottlesPerYear to high)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
-			"time": 34,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				34
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "7e068747-0442-4983-a88d-e04784e6e83f",
-			"name": "3.13 create producer with wrong productUUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
-			"time": 14,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				14
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "818b763b-0699-4d77-8293-6db5531c1c4c",
-			"name": "3.14 update producers",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
-			"time": 31,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				31
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "a1512eb0-4de3-4bb9-bea3-28aafb80d1dc",
-			"name": "3.15 update producers with wrong UUID (formal)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
-			"time": 45,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				45
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "ed0d3771-0583-402a-b912-f3c4d2fa8679",
-			"name": "3.16 update producers with wrong UUID (not existant)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
-			"time": 17,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				17
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "ce40a15d-28e2-46b1-ab65-5e0743870654",
-			"name": "3.17 update producers (name to short)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
-			"time": 13,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true,
-				"Content-Type header is undefined": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is undefined": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				13
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"Content-Type header is undefined": true
-				}
-			]
-		},
-		{
-			"id": "a8740d2f-b6af-4084-b8ab-ad1a18fbf432",
-			"name": "3.18 update producers (name to long)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
 			"time": 12,
 			"responseCode": {
 				"code": 400,
@@ -2319,10 +3177,10 @@
 			]
 		},
 		{
-			"id": "43e2b530-6b60-466d-b670-e5f9f749de32",
-			"name": "3.19 update producers (numOfFactories to low)",
-			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
-			"time": 13,
+			"id": "cf77f4e4-83b1-4b30-aa46-8edf91cdff13",
+			"name": "3.12 create producer (numOfProduceableBottlesPerYear to high)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+			"time": 32,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -2342,7 +3200,7 @@
 				}
 			},
 			"times": [
-				13
+				32
 			],
 			"allTests": [
 				{
@@ -2352,8 +3210,206 @@
 			]
 		},
 		{
-			"id": "878fbf32-b429-4a54-8451-ba01d6a0f122",
-			"name": "3.20 update producers (numOfFactories to high)",
+			"id": "7e068747-0442-4983-a88d-e04784e6e83f",
+			"name": "3.13 create producer with wrong productUUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/create",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "818b763b-0699-4d77-8293-6db5531c1c4c",
+			"name": "3.14 update producers",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+			"time": 838,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				838
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "a1512eb0-4de3-4bb9-bea3-28aafb80d1dc",
+			"name": "3.15 update producers with wrong UUID (formal)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "ed0d3771-0583-402a-b912-f3c4d2fa8679",
+			"name": "3.16 update producers with wrong UUID (not existant)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+			"time": 613,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				613
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "ce40a15d-28e2-46b1-ab65-5e0743870654",
+			"name": "3.17 update producers (name to short)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+			"time": 14,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "a8740d2f-b6af-4084-b8ab-ad1a18fbf432",
+			"name": "3.18 update producers (name to long)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+			"time": 19,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "43e2b530-6b60-466d-b670-e5f9f749de32",
+			"name": "3.19 update producers (numOfFactories to low)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
 			"time": 15,
 			"responseCode": {
@@ -2385,10 +3441,10 @@
 			]
 		},
 		{
-			"id": "dabd1f2a-29de-447f-ac08-24cc8cfc6a67",
-			"name": "3.21 update producers (numOfProduceableBottlesPerYear to low)",
+			"id": "878fbf32-b429-4a54-8451-ba01d6a0f122",
+			"name": "3.20 update producers (numOfFactories to high)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
-			"time": 16,
+			"time": 8,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -2408,7 +3464,40 @@
 				}
 			},
 			"times": [
-				16
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is undefined": true
+				}
+			]
+		},
+		{
+			"id": "dabd1f2a-29de-447f-ac08-24cc8cfc6a67",
+			"name": "3.21 update producers (numOfProduceableBottlesPerYear to low)",
+			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is undefined": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is undefined": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
 			],
 			"allTests": [
 				{
@@ -2421,7 +3510,7 @@
 			"id": "074bee62-cfb5-48b1-a7f6-e92efa2dc452",
 			"name": "3.22 update producers (numOfProduceableBottlesPerYear to high)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
-			"time": 13,
+			"time": 37,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -2441,7 +3530,7 @@
 				}
 			},
 			"times": [
-				13
+				37
 			],
 			"allTests": [
 				{
@@ -2454,7 +3543,7 @@
 			"id": "6f0bbeac-3e07-4176-ad7f-e89b08104830",
 			"name": "3.23 update producers with wrong productUUID (formal)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/update",
-			"time": 13,
+			"time": 26,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -2474,7 +3563,7 @@
 				}
 			},
 			"times": [
-				13
+				26
 			],
 			"allTests": [
 				{
@@ -2487,7 +3576,7 @@
 			"id": "3d72846d-ebcb-4926-b749-3e394f94c740",
 			"name": "3.24 delete producer",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
-			"time": 28,
+			"time": 612,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -2507,7 +3596,7 @@
 				}
 			},
 			"times": [
-				28
+				612
 			],
 			"allTests": [
 				{
@@ -2520,7 +3609,7 @@
 			"id": "89355f30-f38a-479a-be94-90227b94fcb5",
 			"name": "3.25 delete producer with wrong UUID (formal)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/delete?uuid=ecd86148-xyz-43c6-81ed-f3f4595965dc",
-			"time": 4,
+			"time": 7,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -2540,7 +3629,7 @@
 				}
 			},
 			"times": [
-				4
+				7
 			],
 			"allTests": [
 				{
@@ -2553,7 +3642,7 @@
 			"id": "d13627ea-6ac5-48bd-a38d-cbe2ad960ceb",
 			"name": "3.26 delete producer with wrong UUID (not existant)",
 			"url": "http://localhost:8080/Produktliste-v1.0-PRODUKTLISTE/resource/producer/delete?uuid=ecd86148-9606-43c6-81ed-f3f4595965dc",
-			"time": 18,
+			"time": 592,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -2573,7 +3662,7 @@
 				}
 			},
 			"times": [
-				18
+				592
 			],
 			"allTests": [
 				{
@@ -2584,12 +3673,144 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 1697,
+	"totalTime": 26157,
 	"collection": {
 		"requests": [
 			{
+				"id": "13df9bdc-6e39-44be-8d7e-b9caf9fee91c",
+				"method": "POST"
+			},
+			{
+				"id": "e0ce92a5-b189-40d0-ba10-f25247ded978",
+				"method": "GET"
+			},
+			{
+				"id": "8fb717f3-891c-4c63-94e0-b65147b96e87",
+				"method": "GET"
+			},
+			{
+				"id": "bf05af83-8857-4ab5-9e1f-ddb15c2815f0",
+				"method": "POST"
+			},
+			{
+				"id": "fffb0782-edf1-4bca-a6fa-31d4d864e1f9",
+				"method": "PUT"
+			},
+			{
+				"id": "341e3063-f38f-4b32-9f45-7c041260cbec",
+				"method": "DELETE"
+			},
+			{
+				"id": "ef5df007-b994-4c16-80c6-21d0100464f5",
+				"method": "GET"
+			},
+			{
+				"id": "4a17fb13-05c7-4e7c-9366-5e692c6e6178",
+				"method": "GET"
+			},
+			{
+				"id": "875f4b24-f8ea-45f3-a1a4-36e6b4fb4d66",
+				"method": "POST"
+			},
+			{
+				"id": "84c11b87-e31f-44cd-9826-a2652c4aeae0",
+				"method": "PUT"
+			},
+			{
+				"id": "f9896d5f-ecc7-4f3f-8778-d1afce0fce51",
+				"method": "DELETE"
+			},
+			{
+				"id": "80855ad4-4bf4-4bf9-b9f6-4441713ade4b",
+				"method": "GET"
+			},
+			{
+				"id": "147fe508-04e1-40ea-8f92-5bd9b21d9890",
+				"method": "GET"
+			},
+			{
+				"id": "761f3c39-5217-417a-83ac-38f175e472fd",
+				"method": "POST"
+			},
+			{
+				"id": "2fc78cbe-bca8-46eb-b0d5-d38c272d8f4f",
+				"method": "PUT"
+			},
+			{
+				"id": "02657d6c-0c73-4f25-bfaf-2e1638f0851d",
+				"method": "DELETE"
+			},
+			{
+				"id": "3092320d-fd7c-4197-a25b-eb32a1e8af77",
+				"method": "DELETE"
+			},
+			{
+				"id": "4bfada79-967a-4c36-bf3e-43f50e628207",
+				"method": "GET"
+			},
+			{
+				"id": "31064b22-76f0-4a8a-a853-4f7c1d98b693",
+				"method": "GET"
+			},
+			{
+				"id": "72e0f710-b78a-4543-81f6-fc9578939f65",
+				"method": "POST"
+			},
+			{
+				"id": "04630fb4-67da-4a5a-aac9-0f94ca86a465",
+				"method": "PUT"
+			},
+			{
+				"id": "00f3a6ae-df63-4936-b0d0-f94658784b97",
+				"method": "DELETE"
+			},
+			{
+				"id": "16d1205b-33c5-4a99-af3b-f83af5bfd097",
+				"method": "GET"
+			},
+			{
+				"id": "c1dc9da8-1984-4799-945f-c0cf15ea667d",
+				"method": "GET"
+			},
+			{
+				"id": "46e01533-ffd7-4ee9-b964-2503e82f11f7",
+				"method": "POST"
+			},
+			{
+				"id": "475344ab-e1d9-40bf-8ba4-2bf84fd01078",
+				"method": "PUT"
+			},
+			{
+				"id": "041b2226-0c28-4ea9-afd8-8982b8eb5648",
+				"method": "DELETE"
+			},
+			{
+				"id": "e5fa94a2-31b0-41b2-a116-486b61a4b16c",
+				"method": "GET"
+			},
+			{
+				"id": "5110a4f6-13b7-41aa-9bcc-2c19b564bff9",
+				"method": "GET"
+			},
+			{
+				"id": "92fa1ca4-4627-432c-9e92-0d76644b2eef",
+				"method": "POST"
+			},
+			{
+				"id": "53d9efe1-2c99-4c08-a178-143d5f88ecb8",
+				"method": "PUT"
+			},
+			{
+				"id": "13db7c5c-bd3b-4668-ba24-6ce16ac6f31c",
+				"method": "DELETE"
+			},
+			{
 				"id": "16cf44ab-f5d4-40db-b0d6-89a24e744809",
 				"method": "GET"
+			},
+			{
+				"id": "c5a39137-4cea-4cfe-8399-dc34dc533f6e",
+				"method": "POST"
 			},
 			{
 				"id": "a66cc896-5586-44fc-8b2e-81bcc94f5730",
